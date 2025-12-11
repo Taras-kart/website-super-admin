@@ -1,0 +1,171 @@
+.admin-homepage {
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.admin-body {
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+.admin-sidebar {
+  width: 24%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.sidebar-button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  padding: 12px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 80%;
+  text-align: center;
+}
+
+.sidebar-button:hover {
+  border-color: gold;
+  color: gold;
+}
+
+.sidebar-button.active {
+  width: 80%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background-size: 250%;
+  background-position: left;
+  color: gold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.sidebar-button.active span {
+  position: relative;
+  z-index: 2;
+  color: gold !important;
+}
+
+.sidebar-button.active::before {
+  position: absolute;
+  content: '';
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
+  transition-duration: 1s;
+  z-index: 1;
+}
+
+.sidebar-button.active:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.sidebar-button.active:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.sidebar-button.active:active {
+  transform: scale(0.95);
+}
+
+.admin-main {
+  width: 75%;
+  padding: 30px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-left: 25%;
+  height: calc(100vh - 70px);
+}
+
+.admin-main::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .admin-body {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    position: relative;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+    top: 0;
+  }
+
+  .sidebar-button {
+    width: auto;
+  }
+
+  .admin-main {
+    margin-left: 0;
+    width: 100%;
+    height: calc(100vh - 70px - 100px);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-button {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .admin-main {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar-button {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .admin-sidebar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar-button {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .admin-sidebar {
+    justify-content: center;
+    gap: 8px;
+  }
+}
