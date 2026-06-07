@@ -8,25 +8,36 @@ export function AuthProvider({ children }) {
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    const t = localStorage.getItem('auth_token')
-    const u = localStorage.getItem('auth_user')
-    if (t && u) {
+    // Check both possible keys
+    const t = localStorage.getItem('auth_token') || localStorage.getItem('admin_token')
+    const u = localStorage.getItem('auth_user') || localStorage.getItem('admin_user')
+    
+    if (t) {
       setToken(t)
-      try { setUser(JSON.parse(u)) } catch { setUser(null) }
+      if (u) {
+        try { setUser(JSON.parse(u)) } catch { setUser(null) }
+      }
     }
     setReady(true)
   }, [])
 
-  const login = useCallback((t, u) => {
-    localStorage.setItem('auth_token', t)
-    localStorage.setItem('auth_user', JSON.stringify(u || null))
+  const login = useCallback((t, u, isSuperAdmin = false) => {
+    // Store based on role to avoid confusion
+    const tKey = isSuperAdmin ? 'admin_token' : 'auth_token'
+    const uKey = isSuperAdmin ? 'admin_user' : 'auth_user'
+    
+    localStorage.setItem(tKey, t)
+    localStorage.setItem(uKey, JSON.stringify(u || null))
     setToken(t)
     setUser(u || null)
   }, [])
 
   const logout = useCallback(() => {
+    // Clear all possible keys
     localStorage.removeItem('auth_token')
     localStorage.removeItem('auth_user')
+    localStorage.removeItem('admin_token')
+    localStorage.removeItem('admin_user')
     setToken(null)
     setUser(null)
   }, [])

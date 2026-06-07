@@ -255,39 +255,32 @@ export default function ImportStock() {
 
 // --- ROBUST FETCH WAREHOUSES ---
   useEffect(() => {
-    const fetchWarehouses = async () => {
-      try {
-        const token = localStorage.getItem('auth_token') || localStorage.getItem('admin_token') || '';
-        const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
-          headers: token ? { Authorization: `Bearer ${token}` } : {}
-        });
-        
-        const data = await res.json();
-        
-        // Aggressively hunt for the array in the response
-        let arr = [];
-        if (Array.isArray(data)) arr = data;
-        else if (Array.isArray(data?.data)) arr = data.data;
-        else if (Array.isArray(data?.warehouses)) arr = data.warehouses;
-        else if (Array.isArray(data?.data?.shipping_address)) arr = data.data.shipping_address;
-        else if (Array.isArray(data?.data?.data)) arr = data.data.data;
-
-        setWarehouses(arr);
-
-// Auto-select if user has a default branch (For ImportStock.js)
-if (user?.branch_id && arr.length > 0 && !selectedBranchId) {
-  setSelectedBranchId(String(user.branch_id));
-} else if (arr.length > 0 && !selectedBranchId) {
-  // If no user branch, just default to the first one in the list
-  setSelectedBranchId(String(arr[0].id)); 
-}
-
-      } catch (err) {
-        console.error('Failed to load warehouses', err);
-      } finally {
-        setLoadingWarehouses(false);
+const fetchWarehouses = async () => {
+    setLoadingWarehouses(true);
+    try {
+      const token = localStorage.getItem("auth_token") || localStorage.getItem("admin_token") || "";
+      const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      });
+      
+      // If the backend fails (e.g. 500 error), res.ok will be false.
+      // Instead of letting it crash, we treat it as an empty list.
+      if (!res.ok) {
+        console.warn("Backend failed to fetch warehouses:", res.status);
+        setWarehouses([]); 
+        return;
       }
-    };
+
+      const data = await res.json();
+      let arr = Array.isArray(data) ? data : (data?.data || data?.warehouses || []);
+      setWarehouses(arr);
+    } catch (err) {
+      console.error('Failed to load warehouses', err);
+      setWarehouses([]);
+    } finally {
+      setLoadingWarehouses(false);
+    }
+  };
 
     fetchWarehouses();
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import axios from "axios";
 import "./BranchAdmin.css";
 import Navbar from "./NavbarAdmin";
-
+const API_BASE = process.env.REACT_APP_API_BASE_URL || "https://taras-kart-backend.vercel.app";
 const BranchAdmin = () => {
   const [branchAdmins, setBranchAdmins] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
@@ -67,27 +67,32 @@ const token = useMemo(() => {
     }
   }, [axiosInstance]);
 
-  // --- FIX 3: Robust array hunting for Warehouses ---
-  const fetchWarehouses = useCallback(async () => {
+const fetchWarehouses = async () => {
     setLoadingWarehouses(true);
     try {
-      const res = await axiosInstance.get("/api/shiprocket/warehouses");
-      const data = res.data;
+      const token = localStorage.getItem("auth_token") || localStorage.getItem("admin_token") || "";
+      const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      });
       
-      let arr = [];
-      if (Array.isArray(data)) arr = data;
-      else if (Array.isArray(data?.data)) arr = data.data;
-      else if (Array.isArray(data?.warehouses)) arr = data.warehouses;
-      else if (Array.isArray(data?.data?.shipping_address)) arr = data.data.shipping_address;
-      else if (Array.isArray(data?.data?.data)) arr = data.data.data;
+      // If the backend fails (e.g. 500 error), res.ok will be false.
+      // Instead of letting it crash, we treat it as an empty list.
+      if (!res.ok) {
+        console.warn("Backend failed to fetch warehouses:", res.status);
+        setWarehouses([]); 
+        return;
+      }
 
+      const data = await res.json();
+      let arr = Array.isArray(data) ? data : (data?.data || data?.warehouses || []);
       setWarehouses(arr);
-    } catch (e) {
-      setError(prev => prev || e?.response?.data?.message || "Failed to load warehouses");
+    } catch (err) {
+      console.error('Failed to load warehouses', err);
+      setWarehouses([]);
     } finally {
       setLoadingWarehouses(false);
     }
-  }, [axiosInstance]);
+  };
 
   useEffect(() => {
     fetchBranchAdmins();
