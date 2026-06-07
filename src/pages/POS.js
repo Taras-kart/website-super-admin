@@ -32,6 +32,10 @@ export default function POS() {
   const [paymentMethod, setPaymentMethod] = useState('CASH');
   const [paymentRef, setPaymentRef] = useState('');
   const [error, setError] = useState('');
+  // --- BRANCH SELECTOR STATE ---
+  const [warehouses, setWarehouses] = useState([]);
+  const [selectedBranchId, setSelectedBranchId] = useState('ALL');
+  const [loadingWarehouses, setLoadingWarehouses] = useState(true);
 
 // --- ROBUST FETCH WAREHOUSES ---
   useEffect(() => {
