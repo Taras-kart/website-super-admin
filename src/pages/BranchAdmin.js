@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import axios from "axios";
 import "./BranchAdmin.css";
 import Navbar from "./NavbarAdmin";
@@ -28,14 +28,15 @@ const BranchAdmin = () => {
     warehouseId: ""
   });
 
+  // --- FIX 1: Check all possible token keys ---
   const token = useMemo(() => {
     if (typeof window === "undefined") return "";
-    return localStorage.getItem("token") || "";
+    return localStorage.getItem("auth_token") || localStorage.getItem("admin_token") || localStorage.getItem("token") || "";
   }, []);
 
   const axiosInstance = useMemo(() => {
     const instance = axios.create({
-      baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"
+      baseURL: process.env.REACT_APP_API_BASE_URL || "https://taras-kart-backend.vercel.app"
     });
     if (token) {
       instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -44,35 +45,54 @@ const BranchAdmin = () => {
     return instance;
   }, [token]);
 
-  const fetchBranchAdmins = async () => {
+  // --- FIX 2: Robust array hunting for Branch Admins ---
+  const fetchBranchAdmins = useCallback(async () => {
     setLoadingAdmins(true);
     setError("");
     try {
       const res = await axiosInstance.get("/api/auth-branch/branch-admins");
-      setBranchAdmins(Array.isArray(res.data) ? res.data : []);
+      const data = res.data;
+      
+      let arr = [];
+      if (Array.isArray(data)) arr = data;
+      else if (Array.isArray(data?.data)) arr = data.data;
+      else if (Array.isArray(data?.admins)) arr = data.admins;
+      else if (Array.isArray(data?.data?.data)) arr = data.data.data;
+      
+      setBranchAdmins(arr);
     } catch (e) {
       setError(e?.response?.data?.message || "Failed to load branch admins");
     } finally {
       setLoadingAdmins(false);
     }
-  };
+  }, [axiosInstance]);
 
-  const fetchWarehouses = async () => {
+  // --- FIX 3: Robust array hunting for Warehouses ---
+  const fetchWarehouses = useCallback(async () => {
     setLoadingWarehouses(true);
-    setError("");
     try {
       const res = await axiosInstance.get("/api/shiprocket/warehouses");
-      setWarehouses(Array.isArray(res.data) ? res.data : []);
+      const data = res.data;
+      
+      let arr = [];
+      if (Array.isArray(data)) arr = data;
+      else if (Array.isArray(data?.data)) arr = data.data;
+      else if (Array.isArray(data?.warehouses)) arr = data.warehouses;
+      else if (Array.isArray(data?.data?.shipping_address)) arr = data.data.shipping_address;
+      else if (Array.isArray(data?.data?.data)) arr = data.data.data;
+
+      setWarehouses(arr);
     } catch (e) {
       setError(prev => prev || e?.response?.data?.message || "Failed to load warehouses");
     } finally {
       setLoadingWarehouses(false);
     }
-  };
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchBranchAdmins();
     fetchWarehouses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const resetForm = () => {

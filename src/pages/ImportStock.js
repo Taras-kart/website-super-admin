@@ -253,7 +253,7 @@ export default function ImportStock() {
     setGender(saved);
   }, []);
 
-  // --- NEW: FETCH WAREHOUSES ---
+// --- ROBUST FETCH WAREHOUSES ---
   useEffect(() => {
     const fetchWarehouses = async () => {
       try {
@@ -261,21 +261,37 @@ export default function ImportStock() {
         const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
           headers: token ? { Authorization: `Bearer ${token}` } : {}
         });
+        
         const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          setWarehouses(data);
-          if (!selectedBranchId) {
-            setSelectedBranchId(String(data[0].id));
-          }
-        }
+        
+        // Aggressively hunt for the array in the response
+        let arr = [];
+        if (Array.isArray(data)) arr = data;
+        else if (Array.isArray(data?.data)) arr = data.data;
+        else if (Array.isArray(data?.warehouses)) arr = data.warehouses;
+        else if (Array.isArray(data?.data?.shipping_address)) arr = data.data.shipping_address;
+        else if (Array.isArray(data?.data?.data)) arr = data.data.data;
+
+        setWarehouses(arr);
+
+// Auto-select if user has a default branch (For ImportStock.js)
+if (user?.branch_id && arr.length > 0 && !selectedBranchId) {
+  setSelectedBranchId(String(user.branch_id));
+} else if (arr.length > 0 && !selectedBranchId) {
+  // If no user branch, just default to the first one in the list
+  setSelectedBranchId(String(arr[0].id)); 
+}
+
       } catch (err) {
         console.error('Failed to load warehouses', err);
       } finally {
         setLoadingWarehouses(false);
       }
     };
+
     fetchWarehouses();
-  }, [selectedBranchId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchJobs = useCallback(async () => {
     if (!branchId) return;

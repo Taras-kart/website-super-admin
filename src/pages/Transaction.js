@@ -51,28 +51,42 @@ export default function Transaction() {
     return token ? { Authorization: `Bearer ${token}` } : {};
   }, [token]);
 
-  // --- NEW: FETCH WAREHOUSES ON MOUNT ---
+// --- ROBUST FETCH WAREHOUSES ---
   useEffect(() => {
     const fetchWarehouses = async () => {
       try {
+        const token = localStorage.getItem('auth_token') || localStorage.getItem('admin_token') || '';
         const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
-          headers: authHeaders
+          headers: token ? { Authorization: `Bearer ${token}` } : {}
         });
+        
         const data = await res.json();
-        if (Array.isArray(data)) {
-          setWarehouses(data);
-          if (user?.branch_id) {
-            setSelectedBranchId(String(user.branch_id));
-          }
+        
+        // Aggressively hunt for the array in the response
+        let arr = [];
+        if (Array.isArray(data)) arr = data;
+        else if (Array.isArray(data?.data)) arr = data.data;
+        else if (Array.isArray(data?.warehouses)) arr = data.warehouses;
+        else if (Array.isArray(data?.data?.shipping_address)) arr = data.data.shipping_address;
+        else if (Array.isArray(data?.data?.data)) arr = data.data.data;
+
+        setWarehouses(arr);
+
+        // Auto-select if user has a default branch
+        if (user?.branch_id && arr.length > 0 && selectedBranchId === 'ALL') {
+          setSelectedBranchId(String(user.branch_id));
         }
+
       } catch (err) {
         console.error('Failed to load warehouses', err);
       } finally {
         setLoadingWarehouses(false);
       }
     };
-    if (token) fetchWarehouses();
-  }, [token, authHeaders, user]);
+
+    fetchWarehouses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchTx = async () => {
     setLoading(true);
