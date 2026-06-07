@@ -7,10 +7,10 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [ready, setReady] = useState(false)
 
-  useEffect(() => {
-    // Check both possible keys
-    const t = localStorage.getItem('auth_token') || localStorage.getItem('admin_token')
-    const u = localStorage.getItem('auth_user') || localStorage.getItem('admin_user')
+useEffect(() => {
+    // Check Super Admin token FIRST, then fallback to regular token
+    const t = localStorage.getItem('admin_token') || localStorage.getItem('auth_token')
+    const u = localStorage.getItem('admin_user') || localStorage.getItem('auth_user')
     
     if (t) {
       setToken(t)
