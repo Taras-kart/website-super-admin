@@ -14,11 +14,6 @@ const uuid = () =>
 
 export default function POS() {
   const { token, user } = useAuth();
-  
-  // --- NEW: BRANCH SELECTOR STATE ---
-  const [warehouses, setWarehouses] = useState([]);
-  const [branchId, setBranchId] = useState(user?.branch_id || user?.branchId || '');
-  const [loadingWarehouses, setLoadingWarehouses] = useState(true);
 
   const eanInputRef = useRef(null);
 
@@ -34,6 +29,7 @@ export default function POS() {
   const [error, setError] = useState('');
   // --- BRANCH SELECTOR STATE ---
   const [warehouses, setWarehouses] = useState([]);
+  const [branchId, setBranchId] = useState(user?.branch_id || user?.branchId || '');
   const [selectedBranchId, setSelectedBranchId] = useState('ALL');
   const [loadingWarehouses, setLoadingWarehouses] = useState(true);
 
