@@ -14,7 +14,11 @@ const uuid = () =>
 
 export default function POS() {
   const { token, user } = useAuth();
-  const branchId = user?.branch_id || user?.branchId || null;
+  
+  // --- NEW: BRANCH SELECTOR STATE ---
+  const [warehouses, setWarehouses] = useState([]);
+  const [branchId, setBranchId] = useState(user?.branch_id || user?.branchId || '');
+  const [loadingWarehouses, setLoadingWarehouses] = useState(true);
 
   const eanInputRef = useRef(null);
 
@@ -28,6 +32,30 @@ export default function POS() {
   const [paymentMethod, setPaymentMethod] = useState('CASH');
   const [paymentRef, setPaymentRef] = useState('');
   const [error, setError] = useState('');
+
+  // --- NEW: FETCH WAREHOUSES ON MOUNT ---
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
+          headers: token ? { Authorization: `Bearer ${token}` } : {}
+        });
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setWarehouses(data);
+          if (!branchId) {
+            setBranchId(String(data[0].id));
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load warehouses', err);
+      } finally {
+        setLoadingWarehouses(false);
+      }
+    };
+    fetchWarehouses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
 
   useEffect(() => {
     eanInputRef.current?.focus();
@@ -218,6 +246,31 @@ export default function POS() {
   return (
     <div className="pos-page">
       <Navbar />
+
+      {/* --- NEW: BRANCH SELECTOR BAR --- */}
+      <div style={{ padding: '16px 24px', backgroundColor: '#111', borderBottom: '1px solid #333', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <h3 style={{ margin: 0, color: 'gold' }}>Select Branch Context:</h3>
+        {loadingWarehouses ? (
+          <span style={{ color: '#aaa' }}>Loading branches...</span>
+        ) : (
+          <select 
+            style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: '1px solid gold', fontSize: '14px', minWidth: '250px' }}
+            value={branchId}
+            onChange={(e) => {
+              setBranchId(e.target.value);
+              setItems([]); // Clear the cart when switching branches!
+            }}
+          >
+            <option value="" disabled>-- Select a Branch --</option>
+            {warehouses.map(w => (
+              <option key={w.id} value={w.id}>
+                {w.name} ({w.city})
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
+
       <div className="pos-container">
         <div className="pos-header">
           <div className="pos-title">POS</div>
@@ -233,7 +286,8 @@ export default function POS() {
             type="text"
             placeholder="Scan EAN or type manually"
             value={ean}
-            onChange={(e) => setEan(e.target.value.replace(/[^\d]/g, ''))}
+            // --- NEW: ALPHANUMERIC REGEX ---
+            onChange={(e) => setEan(e.target.value.replace(/[^A-Za-z0-9-]/g, '').toUpperCase())}
             onKeyDown={onKeyDown}
           />
           <button className="btn gold" onClick={handleManualAdd} disabled={searching || !ean}>

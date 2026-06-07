@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './Stocks.css'
 import Navbar from './NavbarAdmin'
 import { useAuth } from './AdminAuth'
@@ -27,7 +27,12 @@ const cf = (v) => {
 
 export default function Stocks() {
   const { user } = useAuth()
-  const branchId = user?.branch_id
+  
+  // --- NEW: WAREHOUSE (BRANCH) SELECTION STATE ---
+  const [warehouses, setWarehouses] = useState([])
+  const [selectedBranchId, setSelectedBranchId] = useState('')
+  const [loadingWarehouses, setLoadingWarehouses] = useState(true)
+
   const [raw, setRaw] = useState([])
   const [loading, setLoading] = useState(true)
   const [chip, setChip] = useState('All')
@@ -39,15 +44,50 @@ export default function Stocks() {
   const [gender, setGender] = useState('ALL')
   const searchRef = useRef(null)
   const [csvUrl, setCsvUrl] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 50
 
-  const fetchStocks = async () => {
-    if (!branchId) return
+  useEffect(() => {
+    const g = localStorage.getItem('stocks_gender') || 'ALL'
+    setGender(g)
+  }, [])
+
+  // --- NEW: FETCH WAREHOUSES ON MOUNT ---
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const token = localStorage.getItem('auth_token') || localStorage.getItem('admin_token') || ''
+        const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
+          headers: token ? { Authorization: `Bearer ${token}` } : {}
+        })
+        const data = await res.json()
+        if (Array.isArray(data) && data.length > 0) {
+          setWarehouses(data)
+          // Default to the first branch if user has no branch_id
+          const defaultBranch = user?.branch_id || String(data[0].id)
+          setSelectedBranchId(String(defaultBranch))
+        }
+      } catch (err) {
+        console.error('Failed to load warehouses', err)
+      } finally {
+        setLoadingWarehouses(false)
+      }
+    }
+    fetchWarehouses()
+  }, [user])
+
+  const fetchStocks = useCallback(async () => {
+    if (!selectedBranchId) {
+      setRaw([])
+      setLoading(false)
+      return
+    }
     setLoading(true)
     try {
       const token = localStorage.getItem('auth_token') || localStorage.getItem('admin_token') || ''
       const params = new URLSearchParams()
       if (gender !== 'ALL') params.set('gender', gender)
-      const res = await fetch(`${API_BASE}/api/branch/${encodeURIComponent(branchId)}/stock${params.toString() ? `?${params.toString()}` : ''}`, {
+      const res = await fetch(`${API_BASE}/api/branch/${encodeURIComponent(selectedBranchId)}/stock${params.toString() ? `?${params.toString()}` : ''}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         credentials: 'omit',
         mode: 'cors'
@@ -59,23 +99,13 @@ export default function Stocks() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [selectedBranchId, gender]) // Dependency updated to selectedBranchId
 
   useEffect(() => {
-    const g = localStorage.getItem('stocks_gender') || 'ALL'
-    setGender(g)
-  }, [])
-
-  useEffect(() => {
-    fetchStocks()
-  }, [branchId, gender])
-
-  useEffect(() => {
-    const h = setTimeout(() => {
+    if (selectedBranchId) {
       fetchStocks()
-    }, 0)
-    return () => clearTimeout(h)
-  }, [])
+    }
+  }, [fetchStocks, selectedBranchId])
 
   const rows = useMemo(
     () =>
@@ -138,13 +168,22 @@ export default function Stocks() {
     return sorted
   }, [rows, chip, brand, search, sortBy])
 
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  const paginatedRows = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    return filtered.slice(startIndex, startIndex + itemsPerPage);
+  }, [filtered, currentPage]);
+
   useEffect(() => {
     if (!filtered.length) {
-      setCsvUrl('')
+      setCsvUrl((prev) => {
+        if (prev) URL.revokeObjectURL(prev)
+        return ''
+      })
       return
     }
     const header = ['Sl. No,Status,Brand,Product,Pattern,Fit,Mark,Size,Colour,EAN,MRP,Sale Price,Cost Price,Qty,Reserved']
-    const lines = filtered.map((s, i) =>
+    const lines = paginatedRows.map((s, i) =>
       [
         i + 1,
         s.status.toUpperCase(),
@@ -170,7 +209,16 @@ export default function Stocks() {
       if (prev) URL.revokeObjectURL(prev)
       return url
     })
-  }, [filtered])
+    return () => {
+      URL.revokeObjectURL(url)
+    }
+  }, [filtered, paginatedRows])
+
+  useEffect(() => {
+    return () => {
+      if (csvUrl) URL.revokeObjectURL(csvUrl)
+    }
+  }, [csvUrl])
 
   const onGenderChange = (g) => {
     setGender(g)
@@ -185,6 +233,28 @@ export default function Stocks() {
   return (
     <div className="stocks-page">
       <Navbar />
+      
+      {/* --- NEW: BRANCH SELECTOR BAR --- */}
+      <div style={{ padding: '16px 24px', backgroundColor: '#111', borderBottom: '1px solid #333', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <h3 style={{ margin: 0, color: 'gold' }}>Select Branch Context:</h3>
+        {loadingWarehouses ? (
+          <span style={{ color: '#aaa' }}>Loading branches...</span>
+        ) : (
+          <select 
+            style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: '1px solid gold', fontSize: '14px', minWidth: '250px' }}
+            value={selectedBranchId}
+            onChange={(e) => setSelectedBranchId(e.target.value)}
+          >
+            <option value="" disabled>-- Select a Branch --</option>
+            {warehouses.map(w => (
+              <option key={w.id} value={w.id}>
+                {w.name} ({w.city})
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
+
       <div className="stocks-toolbar">
         <div className="bar-row">
           <div className="seg">
@@ -330,9 +400,9 @@ export default function Stocks() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((s, index) => (
+                {paginatedRows.map((s, index) => (
                   <tr key={s.id} className={`row-${s.status}`}>
-                    <td className="mono">{index + 1}</td>
+                    <td className="mono">{(currentPage - 1) * itemsPerPage + index + 1}</td>
                     <td>
                       <span className={`status ${s.status}`}>
                         {s.status === 'out' ? 'Out' : s.status === 'low' ? 'Low' : s.status === 'high' ? 'High' : 'OK'}
@@ -360,6 +430,25 @@ export default function Stocks() {
                 )}
               </tbody>
             </table>
+            {totalPages > 1 && (
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', padding: '16px', background: '#111' }}>
+                <button 
+                  className="refresh" 
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))} 
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+                <span style={{ color: 'white', fontWeight: 'bold', alignSelf: 'center' }}>Page {currentPage} of {totalPages}</span>
+                <button 
+                  className="refresh" 
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} 
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>

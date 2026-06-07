@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './Transaction.css';
 import Navbar from './NavbarAdmin';
+import { useAuth } from './AdminAuth'; // Added useAuth
 
 const DEFAULT_API_BASE = 'https://taras-kart-backend.vercel.app';
 const API_BASE_RAW =
@@ -22,6 +23,7 @@ const fmtINR = (n) =>
   new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 2 }).format(toNum(n));
 
 export default function Transaction() {
+  const { token, user } = useAuth();
   const [raw, setRaw] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -36,10 +38,46 @@ export default function Transaction() {
   const [confirmId, setConfirmId] = useState(null);
   const [showConfirm, setShowConfirm] = useState(false);
 
+  // --- NEW: BRANCH SELECTOR STATE ---
+  const [warehouses, setWarehouses] = useState([]);
+  const [selectedBranchId, setSelectedBranchId] = useState('ALL');
+  const [loadingWarehouses, setLoadingWarehouses] = useState(true);
+
+  // --- NEW: PAGINATION STATE ---
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 50;
+
+  const authHeaders = useMemo(() => {
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  }, [token]);
+
+  // --- NEW: FETCH WAREHOUSES ON MOUNT ---
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
+          headers: authHeaders
+        });
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setWarehouses(data);
+          if (user?.branch_id) {
+            setSelectedBranchId(String(user.branch_id));
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load warehouses', err);
+      } finally {
+        setLoadingWarehouses(false);
+      }
+    };
+    if (token) fetchWarehouses();
+  }, [token, authHeaders, user]);
+
   const fetchTx = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/orders`);
+      const res = await fetch(`${API_BASE}/api/orders`, { headers: authHeaders });
       const data = res.ok ? await res.json() : [];
       setRaw(toArray(data));
     } catch {
@@ -51,6 +89,7 @@ export default function Transaction() {
 
   useEffect(() => {
     fetchTx();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const rows = useMemo(
@@ -78,7 +117,7 @@ export default function Transaction() {
           statusRaw.includes('fail') || statusRaw.includes('declin') || statusRaw.includes('cancel') ? 'Failed' :
           'Completed';
         const amount = toNum(t.amount ?? t.total ?? t.total_amount ?? t.grand_total ?? t.final_amount ?? 0);
-        return { id, transactionId, productName, date, status, amount };
+        return { id, transactionId, productName, date, status, amount, branch_id: t.branch_id || 'WEB' };
       }),
     [raw]
   );
@@ -94,6 +133,12 @@ export default function Transaction() {
 
   const filtered = useMemo(() => {
     let list = rows;
+    
+    // --- NEW: BRANCH FILTER LOGIC ---
+    if (selectedBranchId !== 'ALL') {
+      list = list.filter((r) => String(r.branch_id) === String(selectedBranchId));
+    }
+
     if (statusChip !== 'All') list = list.filter((r) => r.status === statusChip);
     if (statusSel !== 'All') list = list.filter((r) => r.status === statusSel);
     if (search.trim()) {
@@ -127,11 +172,23 @@ export default function Transaction() {
     if (sortBy === 'product_asc') sorted.sort((a, b) => a.productName.localeCompare(b.productName));
     if (sortBy === 'status_asc') sorted.sort((a, b) => a.status.localeCompare(b.status));
     return sorted;
-  }, [rows, statusChip, statusSel, search, dateFrom, dateTo, minAmt, maxAmt, sortBy]);
+  }, [rows, statusChip, statusSel, search, dateFrom, dateTo, minAmt, maxAmt, sortBy, selectedBranchId]);
+
+  // Reset pagination on filter change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [statusChip, statusSel, search, dateFrom, dateTo, minAmt, maxAmt, sortBy, selectedBranchId]);
+
+  // --- NEW: PAGINATE ROWS ---
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  const paginatedRows = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    return filtered.slice(startIndex, startIndex + itemsPerPage);
+  }, [filtered, currentPage]);
 
   const deleteRow = async (id) => {
     try {
-      const res = await fetch(`${API_BASE}/api/orders/${encodeURIComponent(id)}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE}/api/orders/${encodeURIComponent(id)}`, { method: 'DELETE', headers: authHeaders });
       if (!res.ok) throw new Error();
       setRaw((prev) => prev.filter((r) => (r.id ?? r.order_id ?? r.transaction_id) !== id));
       setPopupMessage('Transaction deleted');
@@ -148,11 +205,12 @@ export default function Transaction() {
   };
 
   const exportCsv = () => {
-    const headers = ['Transaction ID', 'Product Name', 'Date', 'Status', 'Amount'];
+    const headers = ['Transaction ID', 'Branch', 'Product Name', 'Date', 'Status', 'Amount'];
     const lines = [headers.join(',')].concat(
       filtered.map((r) =>
         [
           `"${r.transactionId}"`,
+          `"${r.branch_id}"`,
           `"${r.productName.replace(/"/g, '""')}"`,
           `"${toDate(r.date)?.toISOString()?.slice(0, 19).replace('T', ' ') ?? ''}"`,
           `"${r.status}"`,
@@ -172,6 +230,28 @@ export default function Transaction() {
   return (
     <div className="transactions">
       <Navbar />
+      
+      {/* --- NEW: BRANCH SELECTOR BAR --- */}
+      <div style={{ padding: '16px 24px', backgroundColor: '#111', borderBottom: '1px solid #333', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <h3 style={{ margin: 0, color: 'gold' }}>Select Branch Context:</h3>
+        {loadingWarehouses ? (
+          <span style={{ color: '#aaa' }}>Loading branches...</span>
+        ) : (
+          <select 
+            style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: '1px solid gold', fontSize: '14px', minWidth: '250px' }}
+            value={selectedBranchId}
+            onChange={(e) => setSelectedBranchId(e.target.value)}
+          >
+            <option value="ALL">All Branches (Global View)</option>
+            {warehouses.map(w => (
+              <option key={w.id} value={w.id}>
+                {w.name} ({w.city})
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
+
       <div className="transaction-page">
         <div className="transaction-header">
           <h2>Transaction History</h2>
@@ -251,11 +331,12 @@ export default function Transaction() {
         </div>
 
         <div className="transaction-table">
-          <h3>Transaction Details</h3>
+          <h3>Transaction Details ({filtered.length})</h3>
           <table>
             <thead>
               <tr>
                 <th>Transaction ID</th>
+                <th>Branch</th>
                 <th>Product Name</th>
                 <th>Date</th>
                 <th>Status</th>
@@ -264,9 +345,10 @@ export default function Transaction() {
               </tr>
             </thead>
             <tbody>
-              {filtered.map((transaction) => (
+              {paginatedRows.map((transaction) => (
                 <tr key={transaction.id}>
                   <td>{transaction.transactionId}</td>
+                  <td>{transaction.branch_id}</td>
                   <td>{transaction.productName || '-'}</td>
                   <td>{toDate(transaction.date)?.toLocaleString() || '-'}</td>
                   <td>
@@ -295,15 +377,36 @@ export default function Transaction() {
                   </td>
                 </tr>
               ))}
-              {!filtered.length && (
+              {!paginatedRows.length && (
                 <tr>
-                  <td colSpan="6" style={{ padding: 16, color: 'gold' }}>
+                  <td colSpan="7" style={{ padding: 16, color: 'gold' }}>
                     No matching transactions
                   </td>
                 </tr>
               )}
             </tbody>
           </table>
+          
+          {/* --- NEW: PAGINATION CONTROLS --- */}
+          {totalPages > 1 && (
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', padding: '16px', background: '#111', marginTop: '10px' }}>
+              <button 
+                style={{ padding: '8px 16px', background: '#333', color: 'white', border: 'none', borderRadius: '4px', cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }}
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))} 
+                disabled={currentPage === 1}
+              >
+                Previous
+              </button>
+              <span style={{ color: 'white', fontWeight: 'bold', alignSelf: 'center' }}>Page {currentPage} of {totalPages}</span>
+              <button 
+                style={{ padding: '8px 16px', background: '#333', color: 'white', border: 'none', borderRadius: '4px', cursor: currentPage === totalPages ? 'not-allowed' : 'pointer' }}
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} 
+                disabled={currentPage === totalPages}
+              >
+                Next
+              </button>
+            </div>
+          )}
         </div>
 
         {popupMessage && <div className="popup-card">{popupMessage}</div>}

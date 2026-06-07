@@ -1,6 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import './Sales.css';
 import Navbar from './NavbarAdmin';
+import { useAuth } from './AdminAuth';
+import OrderDetailPopup from './OrderDetailPopup';
 
 const DEFAULT_API_BASE = 'https://taras-kart-backend.vercel.app';
 const API_BASE_RAW =
@@ -109,6 +111,7 @@ function buildExpectedDeliveryText(trackingSnapshot, sale, latestShipment) {
 }
 
 export default function Sales() {
+  const { token, user } = useAuth();
   const [sales, setSales] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState('ALL');
@@ -118,44 +121,80 @@ export default function Sales() {
   const [detail, setDetail] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
 
-  const fetchSales = async () => {
+  // --- NEW: BRANCH SELECTOR STATE ---
+  const [warehouses, setWarehouses] = useState([]);
+  const [selectedBranchId, setSelectedBranchId] = useState('ALL');
+  const [loadingWarehouses, setLoadingWarehouses] = useState(true);
+
+  const authHeaders = useMemo(() => {
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  }, [token]);
+
+  // --- NEW: FETCH WAREHOUSES ON MOUNT ---
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
+          headers: authHeaders
+        });
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setWarehouses(data);
+          if (user?.branch_id) {
+            setSelectedBranchId(String(user.branch_id));
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load warehouses', err);
+      } finally {
+        setLoadingWarehouses(false);
+      }
+    };
+    if (token) fetchWarehouses();
+  }, [token, authHeaders, user]);
+
+  const fetchSales = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/sales/web`);
-      const data = await res.json();
+      if (!token) return;
+      // Force admin endpoint to get ALL sales
+      const res = await fetch(`${API_BASE}/api/sales/admin`, { headers: authHeaders });
+      const data = await res.json().catch(() => []);
       setSales(Array.isArray(data) ? data : []);
     } catch {
       setSales([]);
     } finally {
       setLoading(false);
     }
-  };
+  }, [token, authHeaders]);
 
   useEffect(() => {
     fetchSales();
-  }, []);
+  }, [fetchSales]);
 
-  const getPayable = (s) => {
+  const getPayable = useCallback((s) => {
     if (s && s.totals && s.totals.payable != null) return Number(s.totals.payable);
     if (s && s.total != null) return Number(s.total);
     if (Array.isArray(s?.items) && s.items.length) {
       return s.items.reduce((acc, it) => acc + Number(it.price || 0) * Number(it.qty || 0), 0);
     }
     return 0;
-  };
+  }, []);
 
-  const getCustomerLabel = (s) => {
+  const getCustomerLabel = useCallback((s) => {
     const name = s?.customer_name && String(s.customer_name).trim();
     if (name) return name;
     if (s?.branch_id) return `Branch #${s.branch_id}`;
     return '-';
-  };
+  }, []);
 
   const filtered = useMemo(() => {
     const ql = q.trim().toLowerCase();
     const fromTs = from ? new Date(from + 'T00:00:00').getTime() : null;
     const toTs = to ? new Date(to + 'T23:59:59').getTime() : null;
     return sales.filter((s) => {
+      // --- NEW: BRANCH FILTER LOGIC ---
+      const okBranch = selectedBranchId === 'ALL' || String(s.branch_id) === String(selectedBranchId);
       const okStatus = status === 'ALL' ? true : String(s.status || '').toUpperCase() === status;
       const created = s.created_at ? new Date(s.created_at).getTime() : null;
       const okFrom = fromTs ? (created ? created >= fromTs : true) : true;
@@ -174,55 +213,58 @@ export default function Sales() {
         .join(' ')
         .toLowerCase();
       const okQ = ql ? hay.includes(ql) : true;
-      return okStatus && okFrom && okTo && okQ;
+      return okBranch && okStatus && okFrom && okTo && okQ;
     });
-  }, [sales, status, q, from, to]);
+  }, [sales, status, q, from, to, selectedBranchId, getCustomerLabel, getPayable]);
 
   const grand = useMemo(() => {
     return filtered.reduce((acc, s) => acc + getPayable(s), 0);
-  }, [filtered]);
+  }, [filtered, getPayable]);
 
-  const openDetail = async (id) => {
-    setDetailLoading(true);
-    setDetail(null);
-    try {
-      const [saleRes, shRes] = await Promise.all([
-        fetch(`${API_BASE}/api/sales/web/${id}`),
-        fetch(`${API_BASE}/api/shipments/by-sale/${id}`)
-      ]);
-      const saleJson = await saleRes.json().catch(() => null);
-      const shJson = await shRes.json().catch(() => []);
-      const sale = saleJson && saleJson.sale ? saleJson.sale : saleJson;
-      const items = Array.isArray(saleJson?.items) ? saleJson.items : [];
-      const shipments = Array.isArray(shJson) ? shJson : [];
-      const latestShipment = shipments.length ? shipments[shipments.length - 1] : null;
-      let trackingRaw = null;
-      const trackOrderId = latestShipment?.shiprocket_order_id || latestShipment?.awb || '';
-      if (trackOrderId) {
-        try {
-          const trRes = await fetch(
-            `${API_BASE}/api/shiprocket/track/${encodeURIComponent(trackOrderId)}`
-          );
-          const trJson = await trRes.json().catch(() => null);
-          if (trRes.ok && trJson) trackingRaw = trJson;
-        } catch {
-          trackingRaw = null;
-        }
-      }
-      const trackingSnapshot = buildTrackingSnapshot(trackingRaw);
-      setDetail({
-        sale,
-        items,
-        shipments,
-        trackingSnapshot,
-        latestShipment
-      });
-    } catch {
+  const openDetail = useCallback(
+    async (id) => {
+      setDetailLoading(true);
       setDetail(null);
-    } finally {
-      setDetailLoading(false);
-    }
-  };
+      try {
+        const [saleRes, shRes] = await Promise.all([
+          fetch(`${API_BASE}/api/sales/admin/${id}`, { headers: authHeaders }),
+          fetch(`${API_BASE}/api/shipments/by-sale/${id}`, { headers: authHeaders })
+        ]);
+        const saleJson = await saleRes.json().catch(() => null);
+        const shJson = await shRes.json().catch(() => []);
+        const sale = saleJson && saleJson.sale ? saleJson.sale : saleJson;
+        const items = Array.isArray(saleJson?.items) ? saleJson.items : [];
+        const shipments = Array.isArray(shJson) ? shJson : [];
+        const latestShipment = shipments.length ? shipments[shipments.length - 1] : null;
+        let trackingRaw = null;
+        const trackOrderId = latestShipment?.shiprocket_order_id || latestShipment?.awb || '';
+        if (trackOrderId) {
+          try {
+            const trRes = await fetch(
+              `${API_BASE}/api/shiprocket/track/${encodeURIComponent(trackOrderId)}`
+            );
+            const trJson = await trRes.json().catch(() => null);
+            if (trRes.ok && trJson) trackingRaw = trJson;
+          } catch {
+            trackingRaw = null;
+          }
+        }
+        const trackingSnapshot = buildTrackingSnapshot(trackingRaw);
+        setDetail({
+          sale,
+          items,
+          shipments,
+          trackingSnapshot,
+          latestShipment
+        });
+      } catch {
+        setDetail(null);
+      } finally {
+        setDetailLoading(false);
+      }
+    },
+    [authHeaders]
+  );
 
   const fmt = (n) => `₹${Number(n || 0).toFixed(2)}`;
 
@@ -285,6 +327,28 @@ export default function Sales() {
   return (
     <div className="orders-screen">
       <Navbar />
+
+      {/* --- NEW: BRANCH SELECTOR BAR --- */}
+      <div style={{ padding: '16px 24px', backgroundColor: '#111', borderBottom: '1px solid #333', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <h3 style={{ margin: 0, color: 'gold' }}>Select Branch Context:</h3>
+        {loadingWarehouses ? (
+          <span style={{ color: '#aaa' }}>Loading branches...</span>
+        ) : (
+          <select 
+            style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: '1px solid gold', fontSize: '14px', minWidth: '250px' }}
+            value={selectedBranchId}
+            onChange={(e) => setSelectedBranchId(e.target.value)}
+          >
+            <option value="ALL">All Branches (Global View)</option>
+            {warehouses.map(w => (
+              <option key={w.id} value={w.id}>
+                {w.name} ({w.city})
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
+
       <div className="orders-layout">
         <div className="orders-header">
           <div className="orders-header-main">
@@ -391,13 +455,13 @@ export default function Sales() {
                 <thead>
                   <tr>
                     <th className="orders-table-head">Order</th>
+                    <th className="orders-table-head">Branch</th>
                     <th className="orders-table-head">Placed at</th>
                     <th className="orders-table-head">Status</th>
                     <th className="orders-table-head">Progress</th>
                     <th className="orders-table-head">Payment</th>
                     <th className="orders-table-head">Customer</th>
                     <th className="orders-table-head">Mobile</th>
-                    <th className="orders-table-head">Email</th>
                     <th className="orders-table-head align-right">Payable</th>
                     <th className="orders-table-head align-right" />
                   </tr>
@@ -411,6 +475,9 @@ export default function Sales() {
                       <tr key={s.id} className="orders-table-row">
                         <td className="orders-table-cell">
                           <span className="orders-order-id">#{s.id}</span>
+                        </td>
+                        <td className="orders-table-cell">
+                          <span className="orders-table-text-main">{s.branch_id || 'WEB'}</span>
                         </td>
                         <td className="orders-table-cell">
                           <span className="orders-table-text-soft">
@@ -465,11 +532,6 @@ export default function Sales() {
                         <td className="orders-table-cell">
                           <span className="orders-table-text-main">
                             {s.customer_mobile || '-'}
-                          </span>
-                        </td>
-                        <td className="orders-table-cell">
-                          <span className="orders-table-text-soft">
-                            {s.customer_email || '-'}
                           </span>
                         </td>
                         <td className="orders-table-cell align-right">

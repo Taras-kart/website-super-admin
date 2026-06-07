@@ -24,15 +24,18 @@ const NavbarAdmin = () => {
     setIsMobileNavOpen(false)
   }
 
+  // Combined Links: Regular Admin + Super Admin (Branch Admins)
   const navLinks = [
     { name: 'Products', path: '/' },
     { name: 'Transactions', path: '/transactions' },
     { name: 'Stocks', path: '/stocks' },
     { name: 'Sales', path: '/sales' },
+    { name: 'B2B Orders', path: '/b2b-orders' },  
     { name: 'Customers', path: '/customers' },
     { name: 'POS', path: '/pos' },
     { name: 'Import', path: '/import' },
-    { name: 'Homepage Images', path: '/homepage-images' },
+    { name: 'Homepage Images', path: '/homepage-images' }, 
+    { name: 'Cancellations', path: '/order-issues' },
     { name: 'Branch Admins', path: '/branch-admins' }
   ]
 

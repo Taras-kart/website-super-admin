@@ -51,6 +51,11 @@ const AddProduct = () => {
     const [showPopupProduct, setShowPopupProduct] = useState(false);
     const [newProduct, setNewProduct] = useState('');
 
+    // --- NEW: IDENTIFIER STATE ---
+    const [identifierMode, setIdentifierMode] = useState('ean'); // 'ean' or 'pattern'
+    const [eanCode, setEanCode] = useState('');
+    const [patternCode, setPatternCode] = useState('');
+
     const [originalPriceB2B, setOriginalPriceB2B] = useState('');
     const [discountB2B, setDiscountB2B] = useState('');
     const [finalPriceB2B, setFinalPriceB2B] = useState('');
@@ -153,6 +158,25 @@ const AddProduct = () => {
     const [popupType, setPopupType] = useState('');
 
     const handleAddProduct = async () => {
+        // --- NEW: VALIDATE IDENTIFIER ---
+        const ean = identifierMode === 'ean' ? eanCode.trim() : patternCode.trim();
+
+        if (identifierMode === 'ean') {
+            if (!/^[0-9]{12,14}$/.test(ean)) {
+                setPopupMessage('EAN code must be 12–14 digits.');
+                setPopupType('error');
+                setTimeout(() => { setPopupMessage(''); setPopupType(''); }, 3000);
+                return;
+            }
+        } else {
+            if (!ean) {
+                setPopupMessage('Pattern code cannot be empty.');
+                setPopupType('error');
+                setTimeout(() => { setPopupMessage(''); setPopupType(''); }, 3000);
+                return;
+            }
+        }
+
         if (
             !selectedCategory ||
             !brandInput ||
@@ -176,6 +200,7 @@ const AddProduct = () => {
                 product_name: productInput,
                 color: selectedColor,
                 size: selectedSize,
+                ean_code: ean, // ADDED EAN CODE HERE
                 original_price_b2b: parseFloat(originalPriceB2B),
                 discount_b2b: parseFloat(discountB2B),
                 final_price_b2b: parseFloat(finalPriceB2B),
@@ -199,6 +224,8 @@ const AddProduct = () => {
                 await res.json();
                 setPopupMessage('Product added successfully!');
                 setPopupType('success');
+                
+                // RESET ALL FIELDS
                 setSelectedCategory('');
                 setBrandInput('');
                 setProductInput('');
@@ -212,6 +239,10 @@ const AddProduct = () => {
                 setFinalPriceB2C('');
                 setTotalCount('');
                 setUploadedImage(null);
+                setEanCode('');
+                setPatternCode('');
+                setIdentifierMode('ean');
+
             } catch (error) {
                 console.error('Error:', error);
                 setPopupMessage('Failed to add product.');
@@ -406,6 +437,59 @@ const AddProduct = () => {
 
             <div className="admin-section4-final">
   <div className="section4-left-final">
+    
+    {/* --- NEW: BARCODE MODE TOGGLE & INPUT --- */}
+    <div style={{ display: 'flex', gap: '12px', marginBottom: '15px' }}>
+      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#fff', fontSize: '14px', fontWeight: 'bold' }}>
+        <input
+          type="radio"
+          name="identifierMode"
+          value="ean"
+          checked={identifierMode === 'ean'}
+          onChange={() => setIdentifierMode('ean')}
+        />
+        EAN Code
+      </label>
+      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#fff', fontSize: '14px', fontWeight: 'bold' }}>
+        <input
+          type="radio"
+          name="identifierMode"
+          value="pattern"
+          checked={identifierMode === 'pattern'}
+          onChange={() => setIdentifierMode('pattern')}
+        />
+        Pattern Code
+      </label>
+    </div>
+
+    <div style={{ marginBottom: '20px' }}>
+      {identifierMode === 'ean' ? (
+        <>
+          <div className="section4-heading-final">EAN Code</div>
+          <input
+            type="text"
+            className="brand-search"
+            placeholder="13 digit EAN code"
+            value={eanCode}
+            onChange={e => setEanCode(e.target.value.replace(/[^0-9]/g, '').slice(0, 13))}
+          />
+          <span style={{ fontSize: '12px', color: '#ccc', display: 'block', marginTop: '4px' }}>Must be exactly 13 digits</span>
+        </>
+      ) : (
+        <>
+          <div className="section4-heading-final">Pattern Code</div>
+          <input
+            type="text"
+            className="brand-search"
+            placeholder="Any pattern/style code e.g. CA01, DEFM, F909"
+            value={patternCode}
+            onChange={e => setPatternCode(e.target.value)}
+          />
+          <span style={{ fontSize: '12px', color: '#ccc', display: 'block', marginTop: '4px' }}>Any format — letters, numbers, no length restriction</span>
+        </>
+      )}
+    </div>
+
     <div className="section4-heading-final">Color</div>
     <div className="color-grid-final">
       {colors.map((color) => (

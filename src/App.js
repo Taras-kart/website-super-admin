@@ -13,6 +13,11 @@ import POS from './pages/POS'
 import AdminHomepageImages from './pages/AdminHomepageImages'
 import BranchAdmin from './pages/BranchAdmin'
 
+// --- NEW IMPORTS ADDED ---
+import B2BOrders from './pages/B2BOrders'
+import OrderIssues from './pages/OrderIssues'
+import ReturnReview from './pages/ReturnReview'
+
 function RequireAuth({ children }) {
   const { token } = useAuth()
   if (!token) return <Navigate to="/login" replace />
@@ -35,6 +40,12 @@ export default function App() {
             <Route path="/import" element={<RequireAuth><ImportStock /></RequireAuth>} />
             <Route path="/homepage-images" element={<RequireAuth><AdminHomepageImages /></RequireAuth>} />
             <Route path="/branch-admins" element={<RequireAuth><BranchAdmin /></RequireAuth>} />
+            
+            {/* --- NEW ROUTES ADDED --- */}
+            <Route path="/b2b-orders" element={<RequireAuth><B2BOrders /></RequireAuth>} />
+            <Route path="/order-issues" element={<RequireAuth><OrderIssues /></RequireAuth>} />
+            <Route path="/returns/:id" element={<RequireAuth><ReturnReview /></RequireAuth>} />
+            
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Router>
