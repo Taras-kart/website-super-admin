@@ -28,10 +28,10 @@ const BranchAdmin = () => {
     warehouseId: ""
   });
 
-  // --- FIX 1: Check all possible token keys ---
-  const token = useMemo(() => {
+const token = useMemo(() => {
     if (typeof window === "undefined") return "";
-    return localStorage.getItem("auth_token") || localStorage.getItem("admin_token") || localStorage.getItem("token") || "";
+    // Check in order of priority: Super Admin token, then standard Admin token
+    return localStorage.getItem("admin_token") || localStorage.getItem("auth_token") || localStorage.getItem("token") || "";
   }, []);
 
   const axiosInstance = useMemo(() => {
