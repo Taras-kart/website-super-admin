@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import './Transaction.css';
 import Navbar from './NavbarAdmin';
 import { useAuth } from './AdminAuth'; // Added useAuth
@@ -56,19 +56,14 @@ export default function Transaction() {
 const fetchWarehouses = async () => {
     setLoadingWarehouses(true);
     try {
-      const token = localStorage.getItem("auth_token") || localStorage.getItem("admin_token") || "";
       const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {}
+        headers: authHeaders
       });
-      
-      // If the backend fails (e.g. 500 error), res.ok will be false.
-      // Instead of letting it crash, we treat it as an empty list.
       if (!res.ok) {
         console.warn("Backend failed to fetch warehouses:", res.status);
-        setWarehouses([]); 
+        setWarehouses([]);
         return;
       }
-
       const data = await res.json();
       let arr = Array.isArray(data) ? data : (data?.data || data?.warehouses || []);
       setWarehouses(arr);
@@ -81,10 +76,9 @@ const fetchWarehouses = async () => {
   };
 
     fetchWarehouses();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [authHeaders]);
 
-  const fetchTx = async () => {
+  const fetchTx = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(`${API_BASE}/api/orders`, { headers: authHeaders });
@@ -95,12 +89,11 @@ const fetchWarehouses = async () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [authHeaders]);
 
   useEffect(() => {
     fetchTx();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchTx]);
 
   const rows = useMemo(
     () =>

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import axios from "axios";
 import "./BranchAdmin.css";
 import Navbar from "./NavbarAdmin";
-const API_BASE = process.env.REACT_APP_API_BASE_URL || "https://taras-kart-backend.vercel.app";
 const BranchAdmin = () => {
   const [branchAdmins, setBranchAdmins] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
@@ -67,38 +66,25 @@ const token = useMemo(() => {
     }
   }, [axiosInstance]);
 
-const fetchWarehouses = async () => {
+const fetchWarehouses = useCallback(async () => {
     setLoadingWarehouses(true);
     try {
-      const token = localStorage.getItem("auth_token") || localStorage.getItem("admin_token") || "";
-      const res = await fetch(`${API_BASE}/api/shiprocket/warehouses`, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {}
-      });
-      
-      // If the backend fails (e.g. 500 error), res.ok will be false.
-      // Instead of letting it crash, we treat it as an empty list.
-      if (!res.ok) {
-        console.warn("Backend failed to fetch warehouses:", res.status);
-        setWarehouses([]); 
-        return;
-      }
-
-      const data = await res.json();
+      const res = await axiosInstance.get("/api/shiprocket/warehouses");
+      const data = res.data;
       let arr = Array.isArray(data) ? data : (data?.data || data?.warehouses || []);
       setWarehouses(arr);
     } catch (err) {
-      console.error('Failed to load warehouses', err);
+      console.warn("Backend failed to fetch warehouses:", err?.response?.status);
       setWarehouses([]);
     } finally {
       setLoadingWarehouses(false);
     }
-  };
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchBranchAdmins();
     fetchWarehouses();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchBranchAdmins, fetchWarehouses]);
 
   const resetForm = () => {
     setForm({
