@@ -70,6 +70,17 @@ const fetchWarehouses = async () => {
     eanInputRef.current?.focus();
   }, []);
 
+  // Block function keys triggered by barcode scanner prefix/suffix characters
+  useEffect(() => {
+    const blockFKeys = (e) => {
+      if (['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12'].includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+    window.addEventListener('keydown', blockFKeys);
+    return () => window.removeEventListener('keydown', blockFKeys);
+  }, []);
+
   const headers = useMemo(
     () => ({
       'Content-Type': 'application/json',
