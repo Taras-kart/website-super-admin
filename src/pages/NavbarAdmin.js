@@ -36,7 +36,8 @@ const NavbarAdmin = () => {
     { name: 'Import', path: '/import' },
     { name: 'Homepage Images', path: '/homepage-images' }, 
     { name: 'Cancellations', path: '/order-issues' },
-    { name: 'Branch Admins', path: '/branch-admins' }
+    { name: 'Branch Admins', path: '/branch-admins' },
+    { name: 'Coin Settings', path: '/coin-settings' }
   ]
 
   return (
