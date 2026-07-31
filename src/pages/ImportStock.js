@@ -138,7 +138,7 @@ function isImagePath(p) {
 function extractIdentifierFromPath(path, mode) {
   const base = baseNameNoExt(path)
   if (mode === 'ean') {
-    const m = String(base).match(/(\d{12,14})/)
+    const m = String(base).match(/(\d{6,14})/)
     return m ? m[1] : ''
   }
   return String(base).trim()
