@@ -31,6 +31,7 @@ const NavbarAdmin = () => {
     { name: 'Stocks', path: '/stocks' },
     { name: 'Sales', path: '/sales' },
     { name: 'B2B Orders', path: '/b2b-orders' },  
+    { name: 'B2B Stock', path: '/b2b-stock' },
     { name: 'Customers', path: '/customers' },
     { name: 'POS', path: '/pos' },
     { name: 'Import', path: '/import' },

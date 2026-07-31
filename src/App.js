@@ -18,6 +18,7 @@ import B2BOrders from './pages/B2BOrders'
 import OrderIssues from './pages/OrderIssues'
 import ReturnReview from './pages/ReturnReview'
 import CoinsSettings from './pages/CoinsSettings'
+import B2BStock from './pages/B2BStock'
 
 function RequireAuth({ children }) {
   const { token } = useAuth()
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="/order-issues" element={<RequireAuth><OrderIssues /></RequireAuth>} />
             <Route path="/returns/:id" element={<RequireAuth><ReturnReview /></RequireAuth>} />
             <Route path="/coin-settings" element={<RequireAuth><CoinsSettings /></RequireAuth>} />
+            <Route path="/b2b-stock" element={<RequireAuth><B2BStock /></RequireAuth>} />
             
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
