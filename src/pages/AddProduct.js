@@ -70,6 +70,16 @@ const AddProduct = () => {
     const [selectedSize, setSelectedSize] = useState('');
     const [uploadedImage, setUploadedImage] = useState(null);
 
+    // Colours — now stateful so custom colours can be added.
+    // Custom colour text input — declared here, at the top level of the
+    // component alongside every other useState call. This is the ONLY
+    // correct place for it.
+    const [colors, setColors] = useState([
+        'Red', 'Blue', 'Green', 'Yellow', 'Black', 'White', 'Purple', 'Pink', 'Orange', 'Brown',
+        'Grey', 'Maroon', 'Navy', 'Olive', 'Teal', 'Cyan', 'Magenta', 'Beige', 'Lavender', 'Gold'
+    ]);
+    const [customColorInput, setCustomColorInput] = useState('');
+
     const handlePriceChangeB2B = (value) => {
         setOriginalPriceB2B(value);
         const price = parseFloat(value);
@@ -133,11 +143,6 @@ const AddProduct = () => {
             console.error('Image upload failed:', err);
         }
     };
-
-    const colors = [
-        'Red', 'Blue', 'Green', 'Yellow', 'Black', 'White', 'Purple', 'Pink', 'Orange', 'Brown',
-        'Grey', 'Maroon', 'Navy', 'Olive', 'Teal', 'Cyan', 'Magenta', 'Beige', 'Lavender', 'Gold'
-    ];
 
     const colorMap = {
         Red: '#FF0000', Blue: '#0000FF', Green: '#008000', Yellow: '#FFFF00',
@@ -224,7 +229,7 @@ const AddProduct = () => {
                 await res.json();
                 setPopupMessage('Product added successfully!');
                 setPopupType('success');
-                
+
                 // RESET ALL FIELDS
                 setSelectedCategory('');
                 setBrandInput('');
@@ -285,6 +290,15 @@ const AddProduct = () => {
         setNewBrand('');
         setShowPopupBrand(false);
         setShowDropdownBrand(false);
+    };
+
+    const handleAddCustomColor = () => {
+        const value = customColorInput.trim();
+        if (value && !colors.includes(value)) {
+            setColors([...colors, value]);
+        }
+        if (value) setSelectedColor(value);
+        setCustomColorInput('');
     };
 
     const handleProductSearch = (e) => {
@@ -436,184 +450,207 @@ const AddProduct = () => {
             )}
 
             <div className="admin-section4-final">
-  <div className="section4-left-final">
-    
-    {/* --- NEW: BARCODE MODE TOGGLE & INPUT --- */}
-    <div style={{ display: 'flex', gap: '12px', marginBottom: '15px' }}>
-      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#fff', fontSize: '14px', fontWeight: 'bold' }}>
-        <input
-          type="radio"
-          name="identifierMode"
-          value="ean"
-          checked={identifierMode === 'ean'}
-          onChange={() => setIdentifierMode('ean')}
-        />
-        EAN Code
-      </label>
-      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#fff', fontSize: '14px', fontWeight: 'bold' }}>
-        <input
-          type="radio"
-          name="identifierMode"
-          value="pattern"
-          checked={identifierMode === 'pattern'}
-          onChange={() => setIdentifierMode('pattern')}
-        />
-        Pattern Code
-      </label>
-    </div>
+                <div className="section4-left-final">
 
-    <div style={{ marginBottom: '20px' }}>
-      {identifierMode === 'ean' ? (
-        <>
-          <div className="section4-heading-final">EAN Code</div>
-          <input
-            type="text"
-            className="brand-search"
-            placeholder="13 digit EAN code"
-            value={eanCode}
-            onChange={e => setEanCode(e.target.value.replace(/[^0-9]/g, '').slice(0, 13))}
-          />
-          <span style={{ fontSize: '12px', color: '#ccc', display: 'block', marginTop: '4px' }}>Must be exactly 13 digits</span>
-        </>
-      ) : (
-        <>
-          <div className="section4-heading-final">Pattern Code</div>
-          <input
-            type="text"
-            className="brand-search"
-            placeholder="Any pattern/style code e.g. CA01, DEFM, F909"
-            value={patternCode}
-            onChange={e => setPatternCode(e.target.value)}
-          />
-          <span style={{ fontSize: '12px', color: '#ccc', display: 'block', marginTop: '4px' }}>Any format — letters, numbers, no length restriction</span>
-        </>
-      )}
-    </div>
+                    {/* --- NEW: BARCODE MODE TOGGLE & INPUT --- */}
+                    <div style={{ display: 'flex', gap: '12px', marginBottom: '15px' }}>
+                        <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#fff', fontSize: '14px', fontWeight: 'bold' }}>
+                            <input
+                                type="radio"
+                                name="identifierMode"
+                                value="ean"
+                                checked={identifierMode === 'ean'}
+                                onChange={() => setIdentifierMode('ean')}
+                            />
+                            EAN Code
+                        </label>
+                        <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#fff', fontSize: '14px', fontWeight: 'bold' }}>
+                            <input
+                                type="radio"
+                                name="identifierMode"
+                                value="pattern"
+                                checked={identifierMode === 'pattern'}
+                                onChange={() => setIdentifierMode('pattern')}
+                            />
+                            Pattern Code
+                        </label>
+                    </div>
 
-    <div className="section4-heading-final">Color</div>
-    <div className="color-grid-final">
-      {colors.map((color) => (
-        <div
-          className={`color-item-final ${selectedColor === color ? 'active-final' : ''}`}
-          key={color}
-          onClick={() => setSelectedColor(color)}
-        >
-          <div className="color-swatch-final" style={{ backgroundColor: colorMap[color] }}></div>
-          {color}
-        </div>
-      ))}
-    </div>
+                    <div style={{ marginBottom: '20px' }}>
+                        {identifierMode === 'ean' ? (
+                            <>
+                                <div className="section4-heading-final">EAN Code</div>
+                                <input
+                                    type="text"
+                                    className="brand-search"
+                                    placeholder="13 digit EAN code"
+                                    value={eanCode}
+                                    onChange={e => setEanCode(e.target.value.replace(/[^0-9]/g, '').slice(0, 13))}
+                                />
+                                <span style={{ fontSize: '12px', color: '#ccc', display: 'block', marginTop: '4px' }}>Must be exactly 13 digits</span>
+                            </>
+                        ) : (
+                            <>
+                                <div className="section4-heading-final">Pattern Code</div>
+                                <input
+                                    type="text"
+                                    className="brand-search"
+                                    placeholder="Any pattern/style code e.g. CA01, DEFM, F909"
+                                    value={patternCode}
+                                    onChange={e => setPatternCode(e.target.value)}
+                                />
+                                <span style={{ fontSize: '12px', color: '#ccc', display: 'block', marginTop: '4px' }}>Any format — letters, numbers, no length restriction</span>
+                            </>
+                        )}
+                    </div>
 
-    <div className="section4-heading-final">Size</div>
-    <div className="size-section-final">
-      <div className="sub-heading-final">Kids</div>
-      <div className="size-grid-final">
-        {kidsSizes.map((size) => (
-          <div
-            className={`size-box-final ${selectedSize === size ? 'active-final' : ''}`}
-            key={size}
-            onClick={() => setSelectedSize(size)}
-          >
-            {size}
-          </div>
-        ))}
-      </div>
-      <div className="sub-heading-final">Adults</div>
-      <div className="size-grid-final">
-        {adultSizes.map((size) => (
-          <div
-            className={`size-box-final ${selectedSize === size ? 'active-final' : ''}`}
-            key={size}
-            onClick={() => setSelectedSize(size)}
-          >
-            {size}
-          </div>
-        ))}
-      </div>
-    </div>
+                    {/* Color section — the ONLY Color section in this file */}
+                    <div className="section4-heading-final">Color</div>
+                    <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                        <input
+                            type="text"
+                            className="brand-search"
+                            placeholder="Type a colour name"
+                            value={customColorInput}
+                            onChange={e => setCustomColorInput(e.target.value)}
+                            onKeyDown={e => {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    handleAddCustomColor();
+                                }
+                            }}
+                        />
+                        <button
+                            type="button"
+                            className="add-new-brand-button"
+                            onClick={handleAddCustomColor}
+                        >
+                            Add
+                        </button>
+                    </div>
+                    <div className="color-grid-final">
+                        {colors.map((color) => (
+                            <div
+                                className={`color-item-final ${selectedColor === color ? 'active-final' : ''}`}
+                                key={color}
+                                onClick={() => setSelectedColor(color)}
+                            >
+                                <div className="color-swatch-final" style={{ backgroundColor: colorMap[color] || '#999999' }}></div>
+                                {color}
+                            </div>
+                        ))}
+                    </div>
 
-    <div className="price-inputs-final">
-      <div className="price-table-scope-final">
-        <table className="price-table-final">
-          <thead>
-            <tr>
-              <th></th>
-              <th>B2B</th>
-              <th>B2C</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Original Price</td>
-              <td>
-                <input
-                  type="number"
-                  value={originalPriceB2B}
-                  onChange={(e) => handlePriceChangeB2B(e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  value={originalPriceB2C}
-                  onChange={(e) => handlePriceChangeB2C(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Discount (%)</td>
-              <td>
-                <input
-                  type="number"
-                  value={discountB2B}
-                  onChange={(e) => handleDiscountChangeB2B(e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  value={discountB2C}
-                  onChange={(e) => handleDiscountChangeB2C(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Final Price</td>
-              <td>
-                <input type="number" value={finalPriceB2B} readOnly />
-              </td>
-              <td>
-                <input type="number" value={finalPriceB2C} readOnly />
-              </td>
-            </tr>
-            <tr>
-              <td>Total Count</td>
-              <td colSpan="2" className="centered-input-final">
-                <input
-                  type="number"
-                  value={totalCount}
-                  onChange={(e) => setTotalCount(e.target.value)}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+                    <div className="section4-heading-final">Size</div>
+                    <div className="size-section-final">
+                        <div className="sub-heading-final">Kids</div>
+                        <div className="size-grid-final">
+                            {kidsSizes.map((size) => (
+                                <div
+                                    className={`size-box-final ${selectedSize === size ? 'active-final' : ''}`}
+                                    key={size}
+                                    onClick={() => setSelectedSize(size)}
+                                >
+                                    {size}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="sub-heading-final">Adults</div>
+                        <div className="size-grid-final">
+                            {adultSizes.map((size) => (
+                                <div
+                                    className={`size-box-final ${selectedSize === size ? 'active-final' : ''}`}
+                                    key={size}
+                                    onClick={() => setSelectedSize(size)}
+                                >
+                                    {size}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
 
-    <div className="image-upload-container-final">
-      <label className="upload-btn-final">
-        Upload Image
-        <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleImageUpload} />
-      </label>
-      {uploadedImage && (
-        <img src={uploadedImage} alt="Uploaded" className="preview-image-final" />
-      )}
-    </div>
-  </div>
+                    <div className="price-inputs-final">
+                        <div className="price-table-scope-final">
+                            <table className="price-table-final">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>B2B</th>
+                                        <th>B2C</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Original Price</td>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                value={originalPriceB2B}
+                                                onChange={(e) => handlePriceChangeB2B(e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                value={originalPriceB2C}
+                                                onChange={(e) => handlePriceChangeB2C(e.target.value)}
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discount (%)</td>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                value={discountB2B}
+                                                onChange={(e) => handleDiscountChangeB2B(e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                value={discountB2C}
+                                                onChange={(e) => handleDiscountChangeB2C(e.target.value)}
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Final Price</td>
+                                        <td>
+                                            <input type="number" value={finalPriceB2B} readOnly />
+                                        </td>
+                                        <td>
+                                            <input type="number" value={finalPriceB2C} readOnly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Count</td>
+                                        <td colSpan="2" className="centered-input-final">
+                                            <input
+                                                type="number"
+                                                value={totalCount}
+                                                onChange={(e) => setTotalCount(e.target.value)}
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-  <div className="section4-right-final"></div>
-</div>
+                    <div className="image-upload-container-final">
+                        <label className="upload-btn-final">
+                            Upload Image
+                            <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleImageUpload} />
+                        </label>
+                        {uploadedImage && (
+                            <img src={uploadedImage} alt="Uploaded" className="preview-image-final" />
+                        )}
+                    </div>
+                </div>
+
+                <div className="section4-right-final"></div>
+            </div>
 
             <div className="admin-section5">
                 <button className="add-product-final-btn" onClick={handleAddProduct}>Add Product</button>
