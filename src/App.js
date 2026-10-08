@@ -2,8 +2,8 @@ import React,{lazy,Suspense} from 'react'
 import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
 import {AuthProvider,useAuth} from './pages/AdminAuth'
 import {LoadingProvider} from './pages/LoadingContext'
-import {SUPER_PORTAL} from './portalConfig'
 import {Dashboard,StockPage,ProductEditor,SalesPage,ManagementPage,MovementsPage,AuditPage,SettingsPage,ShippingPage} from './pages/Operations'
+const SUPER_PORTAL = true
 const Login=lazy(()=>import('./pages/LoginAdmin'))
 const ImportStock=lazy(()=>import('./pages/ImportStock'))
 const POS=lazy(()=>import('./pages/POS'))

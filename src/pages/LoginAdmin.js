@@ -4,7 +4,7 @@ import { apiPost } from './api'
 import { useAuth } from './AdminAuth'
 import { useLoading } from './LoadingContext'
 import './LoginAdmin.css'
-import {SUPER_PORTAL} from '../portalConfig'
+const SUPER_PORTAL = true
 
 export default function LoginAdmin() {
   const { login } = useAuth()
