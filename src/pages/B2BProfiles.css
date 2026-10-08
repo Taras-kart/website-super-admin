@@ -153,7 +153,7 @@
 }
 
 .popup-box-b2b {
-  background: linear-gradient(180deg, #0b0b0b, #050505);
+  background: linear-gradient(180deg, #edf1f5, #edf1f5);
   border: 1.5px solid var(--gold);
   border-radius: 16px;
   width: 430px;

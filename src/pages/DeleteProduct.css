@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 24px;
   padding: 24px;
-  background-color: #000;
+  background-color: #f8fafc;
 }
 
 .delete-toolbar {
@@ -13,7 +13,7 @@
   gap: 16px;
   align-items: center;
   justify-content: space-between;
-  background: #111;
+  background: #f8fafc;
   border: 1px solid gold;
   border-radius: 12px;
   padding: 16px;
@@ -31,7 +31,7 @@
   border-radius: 999px;
   border: 2px solid white;
   background: transparent;
-  color: white;
+  color: #263140;
   font-weight: bold;
   cursor: pointer;
   transition: .2s;
@@ -44,7 +44,7 @@
 
 .chip.active {
   border-color: gold;
-  background: black;
+  background: #f8fafc;
   color: gold;
 }
 
@@ -58,8 +58,8 @@
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
-  background: #0d0d0d;
-  color: white;
+  background: #f8fafc;
+  color: #263140;
   min-width: 280px;
   outline: none;
 }
@@ -68,8 +68,8 @@
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
-  background: #0d0d0d;
-  color: white;
+  background: #f8fafc;
+  color: #263140;
   outline: none;
 }
 
@@ -98,7 +98,7 @@
   padding: 10px 16px;
   background: none;
   border: 2px solid #ff6b6b;
-  color: #ff6b6b;
+  color: #263140;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
@@ -111,7 +111,7 @@
 }
 
 .delete-section2 {
-  background-color: #111;
+  background-color: #f8fafc;
   padding: 20px;
   border-radius: 12px;
   border: 1px solid gold;
@@ -133,7 +133,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  color: white;
+  color: #263140;
   min-width: 1200px;
 }
 
@@ -145,7 +145,7 @@ th, td {
 }
 
 th {
-  background-color: #222;
+  background-color: #f8fafc;
   color: gold;
   font-weight: bold;
 }
@@ -160,7 +160,7 @@ th {
 .delete-btn {
   padding: 8px 14px;
   background-color: red;
-  color: white;
+  color: #263140;
   font-weight: bold;
   border: none;
   border-radius: 6px;
@@ -179,7 +179,7 @@ th {
   top: 50%;
   left: 65%;
   transform: translate(-50%, -50%);
-  background-color: #111;
+  background-color: #f8fafc;
   color: gold;
   padding: 30px;
   border-radius: 12px;
@@ -222,7 +222,7 @@ th {
 
 .popup-actions button:last-child {
   background-color: #444;
-  color: white;
+  color: #263140;
 }
 
 .popup-actions button:last-child:hover {

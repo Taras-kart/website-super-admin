@@ -56,7 +56,7 @@ function refundStatusLabel(r) {
 
 export default function OrderIssues() {
   const navigate = useNavigate()
-  const { token, user } = useAuth()
+  const { token } = useAuth()
   
   // --- BRANCH SELECTOR STATE ---
   const [warehouses, setWarehouses] = useState([])

@@ -1,9 +1,9 @@
 :root {
-    --bg: #0b0b0b;
-    --card: #121212;
+    --bg: #f8fafc;
+    --card: #ffffff;
     --line: #202020;
-    --text: #ffffff;
-    --muted: #bfbfbf;
+    --text: #253046;
+    --muted: #657187;
     --gold: #ffd84d;
     --gold-2: #d4af37;
     --danger: #ff5c5c;
@@ -20,14 +20,14 @@ html,
 body {
     height: 100%;
     margin: 0;
-    background: black;
+    background: #f8fafc;
     color: var(--text);
     overflow-x: hidden;
 }
 
 .login-wrap-admin-admin-login {
     min-height: auto;
-    background: black;
+    background: #f8fafc;
     display: grid;
     place-items: center;
     padding: 24px;
@@ -95,7 +95,7 @@ body {
     display: block;
     width: 100%;
     max-width: 100%;
-    background: #0f0f0f;
+    background: #f8fafc;
     border: 1px solid var(--line);
     color: var(--text);
     padding: 12px 44px 12px 38px;
@@ -108,7 +108,7 @@ body {
 .login-input-admin-admin-login:focus {
     border-color: rgba(255, 216, 77, .65);
     box-shadow: 0 0 0 5px rgba(255, 216, 77, .10);
-    background: #101010;
+    background: #f8fafc;
 }
 
 /* Password toggle sits inside the field without causing overflow */
@@ -242,3 +242,4 @@ body {
         padding-right: max(24px, env(safe-area-inset-right));
     }
 }
+.login-card-admin-admin-login{background:#fff;box-shadow:0 14px 40px #20314a14;border-color:#e0e4eb}.login-title-admin-admin-login{color:#263248}.login-wrap-admin-admin-login{min-height:100vh}.login-subtitle-admin-admin-login{color:#657187}

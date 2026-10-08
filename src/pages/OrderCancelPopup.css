@@ -15,14 +15,14 @@
   max-width: 640px;
   max-height: 90vh;
   margin: 5vh 1.5rem;
-  background: radial-gradient(circle at top left, #101010, #050505);
+  background: radial-gradient(circle at top left, #edf1f5, #edf1f5);
   border-radius: 18px;
   border: 1px solid rgba(212, 175, 55, 0.32);
   box-shadow:
     0 28px 80px rgba(0, 0, 0, 0.95),
     0 0 0 1px rgba(255, 255, 255, 0.02);
   padding: 1.3rem 1.5rem 1.1rem;
-  color: #ffffff;
+  color: #263140;
   backdrop-filter: blur(22px);
   display: flex;
   flex-direction: column;
@@ -77,7 +77,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #f7e3a8;
+  color: #263140;
 }
 
 .ocp-chip-subtle {
@@ -104,7 +104,7 @@
 .ocp-close-btn {
   border: none;
   background: rgba(0, 0, 0, 0.4);
-  color: #ffffff;
+  color: #263140;
   font-size: 0.95rem;
   cursor: pointer;
   line-height: 1;
@@ -182,7 +182,7 @@
 .ocp-value-strong {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #f7e3a8;
+  color: #263140;
 }
 
 .ocp-summary-pill-row {
@@ -207,7 +207,7 @@
 
 .ocp-chip-payment {
   border-color: rgba(212, 175, 55, 0.9);
-  color: #f7e3a8;
+  color: #263140;
   background: radial-gradient(circle at top, rgba(212, 175, 55, 0.18), rgba(0, 0, 0, 0.9));
 }
 
@@ -219,7 +219,7 @@
 
 .ocp-chip-cancelled {
   border-color: #ff4d4d;
-  color: #ffb3b3;
+  color: #263140;
 }
 
 .ocp-summary-meta {
@@ -277,7 +277,7 @@
   text-transform: uppercase;
   letter-spacing: 0.11em;
   margin-bottom: 0.6rem;
-  color: #f7e3a8;
+  color: #263140;
 }
 
 .ocp-radio-group {
@@ -320,8 +320,8 @@
   max-height: 160px;
   border-radius: 12px;
   border: 1px solid #252525;
-  background: #050505;
-  color: #ffffff;
+  background: #f8fafc;
+  color: #263140;
   font-size: 0.85rem;
   padding: 0.7rem 0.8rem;
   outline: none;
@@ -336,7 +336,7 @@
 .ocp-textarea:focus {
   border-color: #d4af37;
   box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.45);
-  background: #070707;
+  background: #f8fafc;
 }
 
 .ocp-section-confirm {
@@ -417,7 +417,7 @@
 .ocp-btn-secondary {
   background: rgba(0, 0, 0, 0.4);
   border-color: #555555;
-  color: #ffffff;
+  color: #263140;
 }
 
 .ocp-btn-secondary:hover:not(:disabled) {
@@ -446,7 +446,7 @@
 
 .ocp-btn-primary-disabled,
 .ocp-btn-primary:disabled {
-  background: #2b2b2b;
+  background: #f8fafc;
   border-color: #2b2b2b;
   color: #777777;
   box-shadow: none;

@@ -1,6 +1,6 @@
 .navbar-final {
-  background-color: black;
-  color: white;
+  background-color: #f8fafc;
+  color: #263140;
   padding: 10px 30px;
   position: fixed;
   top: 0;
@@ -66,7 +66,7 @@ body {
   align-items: center;
   gap: 6px;
   position: relative;
-  color: white;
+  color: #263140;
   white-space: nowrap;
 }
 
@@ -86,7 +86,7 @@ body {
 .search-bar-final input {
   background: transparent;
   border: none;
-  color: white;
+  color: #263140;
   outline: none;
   font-size: 16px;
 }
@@ -102,7 +102,7 @@ body {
   gap: 6px;
   text-decoration: none;
   font-weight: 600;
-  color: white;
+  color: #263140;
 }
 
 .bottom-row-final {
@@ -117,7 +117,7 @@ body {
   right: 0;
   width: 280px;
   height: 100%;
-  background-color: black;
+  background-color: #f8fafc;
   padding: 20px;
   z-index: 2000;
   display: flex;
@@ -129,7 +129,7 @@ body {
 .close-btn-final {
   align-self: flex-end;
   font-size: 24px;
-  color: white;
+  color: #263140;
   cursor: pointer;
 }
 
@@ -168,7 +168,7 @@ body {
   background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
   background-size: 250%;
   background-position: left;
-  color: white;
+  color: #263140;
   position: relative;
   display: flex;
   align-items: center;
@@ -244,7 +244,7 @@ body {
     width: 100%;
     max-width: 280px;
     height: 100%;
-    background-color: black;
+    background-color: #f8fafc;
     padding: 40px;
     z-index: 2000;
     display: flex;
@@ -267,7 +267,7 @@ body {
 
   .mobile-drawer-final .nav-link-final {
     font-size: 18px;
-    color: white;
+    color: #263140;
   }
 
   .search-bar-final {
@@ -303,7 +303,7 @@ body {
     width: 100%;
     max-width: 220px;
     height: 100%;
-    background-color: black;
+    background-color: #f8fafc;
     padding: 40px;
     z-index: 2000;
     display: flex;
@@ -333,7 +333,7 @@ body {
     background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
     background-size: 250%;
     background-position: left;
-    color: white !important;
+    color: #263140 !important;
     text-shadow: 0 0 6px #ffd277;
     position: relative;
     display: flex;
@@ -349,7 +349,7 @@ body {
   .active-final span {
     z-index: 3;
     position: relative;
-    color: white;
+    color: #263140;
   }
 }
 
@@ -374,7 +374,7 @@ body {
   align-items: center;
   justify-content: center;
   transition: border-color 0.3s;
-  color: white;
+  color: #263140;
 }
 
 .icon-btn:hover {
@@ -383,7 +383,7 @@ body {
 
 .icon-default {
   font-size: 22px;
-  color: white;
+  color: #263140;
 }
 
 .icon-active {

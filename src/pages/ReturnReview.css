@@ -1,7 +1,7 @@
 .rr-screen {
   min-height: 100vh;
-  background: #000;
-  color: #fff;
+  background: #f8fafc;
+  color: #263140;
   display: flex;
   flex-direction: column;
 }
@@ -29,8 +29,8 @@
 .rr-back-btn {
   border-radius: 999px;
   border: 1px solid #ffd700;
-  background: #000;
-  color: #ffd700;
+  background: #f8fafc;
+  color: #263140;
   padding: 6px 12px;
   display: inline-flex;
   align-items: center;
@@ -41,7 +41,7 @@
 }
 
 .rr-back-btn:hover {
-  background: #111;
+  background: #f8fafc;
   transform: translateY(-1px);
 }
 
@@ -63,13 +63,13 @@
   margin: 0;
   font-size: 22px;
   font-weight: 600;
-  color: #ffd700;
+  color: #263140;
 }
 
 .rr-subtitle {
   margin: 4px 0 0;
   font-size: 13px;
-  color: #f5f5f5;
+  color: #263140;
 }
 
 .rr-header-tags {
@@ -88,25 +88,25 @@
 }
 
 .rr-pill-status {
-  background: #111;
-  color: #ffd700;
+  background: #f8fafc;
+  color: #263140;
 }
 
 .rr-pill-status-requested {
-  background: #111;
+  background: #f8fafc;
 }
 
 .rr-pill-status-approved {
-  background: #101000;
+  background: #f8fafc;
 }
 
 .rr-pill-status-rejected {
-  background: #1a0000;
+  background: #f8fafc;
 }
 
 .rr-pill-refund {
-  background: #050505;
-  color: #ffd700;
+  background: #f8fafc;
+  color: #263140;
 }
 
 .rr-pill-refund-not-started {
@@ -114,11 +114,11 @@
 }
 
 .rr-pill-refund-pending-refund {
-  background: #101000;
+  background: #f8fafc;
 }
 
 .rr-pill-refund-refunded {
-  background: #0f1300;
+  background: #f8fafc;
 }
 
 .rr-loader {
@@ -140,7 +140,7 @@
 
 .rr-loader-text {
   font-size: 14px;
-  color: #f0f0f0;
+  color: #263140;
 }
 
 .rr-empty {
@@ -148,7 +148,7 @@
   margin: 40px auto;
   padding: 24px 20px;
   border-radius: 16px;
-  background: radial-gradient(circle at top, #111 0, #000 55%);
+  background: radial-gradient(circle at top, #edf1f5 0, #edf1f5 55%);
   border: 1px solid #222;
   text-align: center;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
@@ -158,13 +158,13 @@
   margin: 0 0 6px;
   font-size: 20px;
   font-weight: 600;
-  color: #ffd700;
+  color: #263140;
 }
 
 .rr-empty-text {
   margin: 0 0 16px;
   font-size: 14px;
-  color: #f5f5f5;
+  color: #263140;
 }
 
 .rr-primary-btn {
@@ -194,19 +194,19 @@
 }
 
 .rr-primary-btn.ghost {
-  background: #000;
-  color: #ffd700;
+  background: #f8fafc;
+  color: #263140;
 }
 
 .rr-primary-btn.ghost:hover {
-  background: #111;
+  background: #f8fafc;
 }
 
 .rr-danger-btn {
   border-radius: 999px;
   border: 1px solid #ffd700;
-  background: #1a0000;
-  color: #ffd700;
+  background: #f8fafc;
+  color: #263140;
   padding: 8px 18px;
   font-size: 13px;
   font-weight: 500;
@@ -218,7 +218,7 @@
 }
 
 .rr-danger-btn:hover {
-  background: #260000;
+  background: #f8fafc;
   transform: translateY(-1px);
 }
 
@@ -231,7 +231,7 @@
 .rr-error {
   margin-top: 10px;
   font-size: 13px;
-  color: #ffd700;
+  color: #263140;
 }
 
 .rr-top-grid {
@@ -249,7 +249,7 @@
 
 .rr-card {
   border-radius: 16px;
-  background: radial-gradient(circle at top left, #111 0, #000 60%);
+  background: radial-gradient(circle at top left, #edf1f5 0, #edf1f5 60%);
   border: 1px solid #222;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65);
   padding: 16px 14px 18px;
@@ -266,12 +266,12 @@
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: #ffd700;
+  color: #263140;
 }
 
 .rr-card-caption {
   font-size: 12px;
-  color: #f0f0f0;
+  color: #263140;
 }
 
 .rr-summary-grid {
@@ -295,7 +295,7 @@
 
 .rr-value {
   font-size: 14px;
-  color: #ffffff;
+  color: #263140;
 }
 
 .rr-chip {
@@ -305,8 +305,8 @@
   border-radius: 999px;
   font-size: 11px;
   border: 1px solid #ffd700;
-  background: #101010;
-  color: #ffd700;
+  background: #f8fafc;
+  color: #263140;
 }
 
 .rr-section-block {
@@ -317,7 +317,7 @@
   margin-top: 6px;
   padding: 10px 10px;
   border-radius: 12px;
-  background: #050505;
+  background: #f8fafc;
   border: 1px solid #222;
   display: flex;
   flex-direction: column;
@@ -332,7 +332,7 @@
 
 .rr-box-text {
   font-size: 13px;
-  color: #f5f5f5;
+  color: #263140;
 }
 
 .rr-tag-mini {
@@ -340,7 +340,7 @@
   border-radius: 999px;
   border: 1px solid #333;
   font-size: 10px;
-  color: #ffd700;
+  color: #263140;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -367,17 +367,17 @@
 
 .rr-form-field label {
   font-size: 11px;
-  color: #f0f0f0;
+  color: #263140;
 }
 
 .rr-form-field input,
 .rr-form-field textarea {
   border-radius: 999px;
   border: 1px solid #333;
-  background: #050505;
+  background: #f8fafc;
   padding: 8px 12px;
   font-size: 13px;
-  color: #fff;
+  color: #263140;
   outline: none;
 }
 
@@ -389,7 +389,7 @@
 
 .rr-form-field input:disabled,
 .rr-form-field textarea:disabled {
-  background: #050505;
+  background: #f8fafc;
   color: #bbbbbb;
 }
 
@@ -400,7 +400,7 @@
 .rr-note {
   margin-top: 8px;
   font-size: 12px;
-  color: #f5f5f5;
+  color: #263140;
 }
 
 .rr-card-evidence {
@@ -411,9 +411,9 @@
   padding: 16px 10px;
   border-radius: 12px;
   border: 1px dashed #444;
-  background: #050505;
+  background: #f8fafc;
   font-size: 13px;
-  color: #f5f5f5;
+  color: #263140;
 }
 
 .rr-evidence-grid {
@@ -424,7 +424,7 @@
 
 .rr-evidence-item {
   border: none;
-  background: #050505;
+  background: #f8fafc;
   border-radius: 12px;
   padding: 6px;
   display: flex;
@@ -447,7 +447,7 @@
   height: 88px;
   border-radius: 10px;
   overflow: hidden;
-  background: #111;
+  background: #f8fafc;
 }
 
 .rr-evidence-thumb img {
@@ -459,7 +459,7 @@
 .rr-evidence-label {
   margin-top: 4px;
   font-size: 11px;
-  color: #ffd700;
+  color: #263140;
   text-align: center;
 }
 
@@ -484,7 +484,7 @@
 .rr-divider {
   height: 1px;
   width: 100%;
-  background: radial-gradient(circle at center, #ffd700 0, #ffd700 1px, #222 50%);
+  background: radial-gradient(circle at center, #ffd700 0, #ffd700 1px, #edf1f5 50%);
   opacity: 0.85;
   margin: 8px 0;
 }
@@ -501,8 +501,8 @@
   border-radius: 999px;
   border: 1px solid #ffd700;
   font-size: 11px;
-  color: #ffd700;
-  background: #080808;
+  color: #263140;
+  background: #f8fafc;
 }
 
 .rr-message {
@@ -513,15 +513,15 @@
 }
 
 .rr-message-ok {
-  background: #101000;
+  background: #f8fafc;
   border: 1px solid #ffd700;
-  color: #fff;
+  color: #263140;
 }
 
 .rr-message-error {
-  background: #1a0000;
+  background: #f8fafc;
   border: 1px solid #ffd700;
-  color: #ffd700;
+  color: #263140;
 }
 
 @keyframes rr-spin {

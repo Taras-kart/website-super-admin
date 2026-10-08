@@ -2,7 +2,7 @@
 /* Specific B2B Status Pills tailored for the dark theme */
 
 .b2b-status-b2b_pending {
-  color: #ffda79;
+  color: #263140;
   border-color: rgba(255, 218, 121, 0.4);
 }
 
@@ -22,7 +22,7 @@
 }
 
 .b2b-status-cancelled {
-  color: #ff9b9b;
+  color: #263140;
   border-color: rgba(255, 155, 155, 0.4);
 }
 
@@ -36,7 +36,7 @@
 
 /* Danger / Decline Button */
 .orders-btn-small.b2b-btn-danger {
-  color: #ff9b9b;
+  color: #263140;
   border-color: rgba(255, 155, 155, 0.4);
   background: radial-gradient(circle at top left, rgba(255, 155, 155, 0.1), transparent 60%), var(--orders-panel-soft-2);
 }

@@ -58,7 +58,7 @@
 }
 
 .b2c-table th {
-  background: #0a0a0a;
+  background: #f8fafc;
   color: var(--gold);
   border-bottom: 1px solid var(--gold);
   font-weight: 700;

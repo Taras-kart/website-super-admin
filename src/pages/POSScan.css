@@ -1,9 +1,9 @@
 :root {
-    --bg: #0b0b0b;
-    --card: #121212;
+    --bg: #f8fafc;
+    --card: #ffffff;
     --line: #1e1e1e;
-    --text: #ffffff;
-    --muted: #bfbfbf;
+    --text: #253046;
+    --muted: #657187;
     --gold: #ffd84d;
     --gold-2: #d4af37;
     --danger: #ff5c5c;
@@ -59,7 +59,7 @@
 .pos-select-pos-final,
 .pos-input-pos-final {
     width: 80%;
-    background: #0f0f0f;
+    background: #f8fafc;
     border: 1px solid var(--line);
     color: var(--text);
     padding: 10px 12px;
@@ -113,7 +113,7 @@
     border: 1px dashed rgba(255, 216, 77, 0.25);
     border-radius: 12px;
     padding: 10px;
-    background: #0f0f0f;
+    background: #f8fafc;
 }
 
 .pos-status-pos-final {

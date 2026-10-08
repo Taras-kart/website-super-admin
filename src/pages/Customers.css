@@ -31,8 +31,8 @@
 }
 
 .tab-btn.active {
-  background-color: #000;
-  color: #fff;
+  background-color: #f8fafc;
+  color: #263140;
   border-color: #000;
 }
 

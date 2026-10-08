@@ -1,9 +1,9 @@
 :root {
-    --bg: #0b0b0b;
-    --card: #121212;
+    --bg: #f8fafc;
+    --card: #ffffff;
     --line: #1f1f1f;
-    --text: #ffffff;
-    --muted: #bfbfbf;
+    --text: #253046;
+    --muted: #657187;
     --gold: #ffd84d;
     --gold2: #d4af37;
     --ok: #29d07e;
@@ -58,7 +58,7 @@ body {
 }
 
 .select-wrap {
-    background: #0f0f0f;
+    background: #f8fafc;
     border: 1px solid var(--line);
     padding: 10px;
     border-radius: 12px;
@@ -76,7 +76,7 @@ body {
     padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid var(--line);
-    background: #0d0d0d;
+    background: #f8fafc;
     color: var(--text);
     outline: none;
 }
@@ -114,7 +114,7 @@ body {
 }
 
 .import-filebox-admin {
-    background: #0f0f0f;
+    background: #f8fafc;
     border: 1px solid var(--line);
     padding: 10px;
     border-radius: 12px;
@@ -267,7 +267,7 @@ body {
 
 .unmatched-wrap {
     margin-top: 10px;
-    background: #0f0f0f;
+    background: #f8fafc;
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 10px;
@@ -347,7 +347,7 @@ body {
 
     .import-table-admin tbody tr {
         display: block;
-        background: #0f0f0f;
+        background: #f8fafc;
         border: 1px solid var(--line);
         border-radius: 12px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
@@ -442,7 +442,7 @@ body {
 
 /* Discount Section */
 .discount-block {
-  background: black;
+  background: #f8fafc;
   border: 1px solid gold;
   padding: 20px;
   border-radius: 8px;
@@ -468,9 +468,9 @@ body {
 }
 
 .discount-input {
-  background: black;
+  background: #f8fafc;
   border: 1px solid gold;
-  color: white;
+  color: #263140;
   padding: 10px;
   font-size: 15px;
   border-radius: 6px;
@@ -505,6 +505,6 @@ body {
 
 .import-msg-admin {
   margin-top: 10px;
-  color: white;
+  color: #263140;
   font-size: 14px;
 }

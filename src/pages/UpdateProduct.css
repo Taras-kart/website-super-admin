@@ -12,7 +12,7 @@
   gap: 16px;
   align-items: center;
   justify-content: space-between;
-  background: #111;
+  background: #f8fafc;
   border: 1px solid gold;
   border-radius: 12px;
   padding: 16px;
@@ -30,7 +30,7 @@
   border-radius: 999px;
   border: 2px solid white;
   background: transparent;
-  color: white;
+  color: #263140;
   font-weight: bold;
   cursor: pointer;
   transition: .2s;
@@ -43,7 +43,7 @@
 
 .chip.active {
   border-color: gold;
-  background: black;
+  background: #f8fafc;
   color: gold;
 }
 
@@ -57,8 +57,8 @@
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
-  background: #0d0d0d;
-  color: white;
+  background: #f8fafc;
+  color: #263140;
   min-width: 280px;
   outline: none;
 }
@@ -67,8 +67,8 @@
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
-  background: #0d0d0d;
-  color: white;
+  background: #f8fafc;
+  color: #263140;
   outline: none;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .update-section2 {
-  background-color: #111;
+  background-color: #f8fafc;
   padding: 20px;
   border-radius: 12px;
   border: 1px solid gold;
@@ -116,7 +116,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  color: white;
+  color: #263140;
   min-width: 1300px;
 }
 
@@ -129,7 +129,7 @@ td {
 }
 
 th {
-  background-color: #222;
+  background-color: #f8fafc;
   color: gold;
   font-weight: bold;
 }
@@ -138,7 +138,7 @@ td input {
   width: 100%;
   padding: 8px;
   background-color: transparent;
-  color: white;
+  color: #263140;
   font-size: 14px;
   outline: none;
   border: transparent;
@@ -183,7 +183,7 @@ td input {
 }
 
 .status-pill.dirty {
-  color: #ffae42;
+  color: #263140;
   border-color: #ffae42;
 }
 
@@ -214,7 +214,7 @@ td input {
   top: 50%;
   left: 65%;
   transform: translate(-50%, -50%);
-  background-color: #111;
+  background-color: #f8fafc;
   color: gold;
   padding: 30px;
   border-radius: 12px;
@@ -257,7 +257,7 @@ td input {
 
 .popup-actions button:last-child {
   background-color: #444;
-  color: white;
+  color: #263140;
 }
 
 .popup-actions button:last-child:hover {

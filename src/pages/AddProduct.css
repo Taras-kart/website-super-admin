@@ -9,7 +9,7 @@
 
 .admin-section1,
 .admin-section2 {
-  background-color: #000;
+  background-color: #f8fafc;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
@@ -32,7 +32,7 @@
   padding: 10px 20px;
   background: none;
   border: 2px solid white;
-  color: white;
+  color: #263140;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
@@ -56,7 +56,7 @@
   font-size: 16px;
   border: 2px solid gold;
   border-radius: 8px;
-  background-color: #111;
+  background-color: #f8fafc;
   color: gold;
   outline: none;
   margin-bottom: 10px;
@@ -67,7 +67,7 @@
 .brand-dropdown {
   max-height: 200px;
   overflow-y: auto;
-  background-color: #111;
+  background-color: #f8fafc;
   border: 1px solid gold;
   border-radius: 8px;
   padding: 10px;
@@ -79,8 +79,8 @@
 
 .brand-item {
   padding: 8px 12px;
-  color: white;
-  background-color: #222;
+  color: #263140;
+  background-color: #f8fafc;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -95,7 +95,7 @@
   margin-top: 10px;
   background: none;
   border: 2px solid white;
-  color: white;
+  color: #263140;
   font-weight: bold;
   border-radius: 10px;
   padding: 10px 20px;
@@ -122,7 +122,7 @@
 }
 
 .popup-box {
-  background-color: #111;
+  background-color: #f8fafc;
   padding: 30px;
   border-radius: 12px;
   width: 90%;
@@ -141,8 +141,8 @@
   padding: 10px;
   border: 2px solid gold;
   border-radius: 8px;
-  background-color: #000;
-  color: white;
+  background-color: #f8fafc;
+  color: #263140;
   font-size: 16px;
   margin-bottom: 20px;
 }
@@ -168,7 +168,7 @@
 
 .popup-actions button:last-child {
   background-color: #333;
-  color: white;
+  color: #263140;
 }
 
 .popup-actions button:last-child:hover {
@@ -190,7 +190,7 @@
 
 /* section3 */
 .admin-section3 {
-  background-color: #000;
+  background-color: #f8fafc;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
@@ -209,7 +209,7 @@
   font-size: 16px;
   border: 2px solid gold;
   border-radius: 8px;
-  background-color: #111;
+  background-color: #f8fafc;
   color: gold;
   outline: none;
   margin-bottom: 15px;
@@ -218,7 +218,7 @@
 .admin-section3 .brand-dropdown {
   max-height: 200px;
   overflow-y: auto;
-  background-color: #111;
+  background-color: #f8fafc;
   border: 1px solid gold;
   border-radius: 8px;
   padding: 10px;
@@ -229,8 +229,8 @@
 
 .admin-section3 .brand-item {
   padding: 8px 12px;
-  color: white;
-  background-color: #222;
+  color: #263140;
+  background-color: #f8fafc;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -245,7 +245,7 @@
   margin-top: 15px;
   background: none;
   border: 2px solid white;
-  color: white;
+  color: #263140;
   font-weight: bold;
   border-radius: 10px;
   padding: 10px 20px;
@@ -275,7 +275,7 @@
 
 .admin-section4-final {
   display: block;
-  background-color: #000;
+  background-color: #f8fafc;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
@@ -310,10 +310,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: #111;
+  background-color: #f8fafc;
   padding: 10px 12px;
   border-radius: 10px;
-  color: white;
+  color: #263140;
   font-size: 14px;
   cursor: pointer;
   transition: 0.2s ease;
@@ -322,7 +322,7 @@
 
 .color-item-final.active-final {
   border: 2px solid gold;
-  background-color: #222;
+  background-color: #f8fafc;
 }
 
 .color-swatch-final {
@@ -352,8 +352,8 @@
 
 .size-box-final {
   padding: 8px 12px;
-  background-color: #222;
-  color: white;
+  background-color: #f8fafc;
+  color: #263140;
   border: 1px solid gold;
   border-radius: 8px;
   font-size: 14px;
@@ -392,12 +392,12 @@
   margin: 12px 0 0 0;
   border-collapse: collapse;
   table-layout: fixed;
-  background: black;
+  background: #f8fafc;
 }
 
 .price-table-final thead {
   display: table-header-group;
-  background: black;
+  background: #f8fafc;
 }
 
 .price-table-final tbody {
@@ -415,7 +415,7 @@
   padding: 10px !important;
   text-align: left !important;
   color: gold !important;
-  background-color: black !important;
+  background-color: #f8fafc !important;
   word-wrap: break-word;
   overflow-wrap: anywhere;
 }
@@ -438,8 +438,8 @@
   padding: 8px !important;
   border: 1px solid gold !important;
   border-radius: 6px !important;
-  background: #111 !important;
-  color: white !important;
+  background: #f8fafc !important;
+  color: #263140 !important;
   outline: none !important;
 }
 
@@ -451,7 +451,7 @@
   width: 60% !important;
   margin: 0 auto !important;
   display: block !important;
-  color: white !important;
+  color: #263140 !important;
 }
 
 .image-upload-container-final {
@@ -512,7 +512,7 @@
 }
 
 .add-product-final-btn {
-  background-color: black;
+  background-color: #f8fafc;
   border: 2px solid gold;
   color: gold;
   padding: 14px 28px;
@@ -533,8 +533,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #111;
-  color: white;
+  background-color: #f8fafc;
+  color: #263140;
   padding: 20px 30px;
   border-radius: 12px;
   z-index: 1000;
@@ -551,5 +551,5 @@
 
 .popup-card.error {
   border: 2px solid #ff4444;
-  color: #ff4444;
+  color: #263140;
 }

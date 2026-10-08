@@ -3,16 +3,16 @@
   padding: 24px;
   max-width: 1280px;
   margin: 0 auto;
-  background: #000;
-  color: #fff;
+  background: #f8fafc;
+  color: #263140;
 }
 
 .home1-page-new-home {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #000;
-  color: #fff;
+  background: #f8fafc;
+  color: #263140;
   padding-bottom: 50px;
 }
 
@@ -58,7 +58,7 @@
 
 /* --- ADMIN UNIFORM CARDS --- */
 .admin-card-standard {
-  background: #111;
+  background: #f8fafc;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #333;
@@ -66,7 +66,7 @@
 }
 
 .admin-card-square {
-  background: #111;
+  background: #f8fafc;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #333;
@@ -87,7 +87,7 @@
   height: 440px;
   overflow: hidden;
   border-radius: 12px;
-  background: #111;
+  background: #f8fafc;
   border: 1px solid #333;
 }
 
@@ -116,7 +116,7 @@
 
 .cool4-tab {
   background: transparent;
-  color: #fff;
+  color: #263140;
   border: 1px solid #444;
   padding: 8px 16px;
   border-radius: 20px;

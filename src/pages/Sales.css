@@ -377,7 +377,7 @@
 }
 
 .orders-status-cancelled {
-  color: #ff9b9b;
+  color: #263140;
 }
 
 .orders-payment-chip {
@@ -526,7 +526,7 @@
 }
 
 .orders-modal {
-  background: #02030a;
+  background: #f8fafc;
   color: var(--orders-white);
   border-radius: 20px;
   box-shadow: 0 0 35px rgba(255, 211, 110, 0.14), 0 24px 70px rgba(0, 0, 0, 0.94);

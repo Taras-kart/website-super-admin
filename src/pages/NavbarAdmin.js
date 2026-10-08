@@ -1,102 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import './NavbarAdmin.css'
-
-const NavbarAdmin = () => {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
-  const location = useLocation()
-  const mobileNavRef = useRef(null)
-
-  useEffect(() => {
-    const handleOutsideClick = event => {
-      if (mobileNavRef.current && !mobileNavRef.current.contains(event.target) && !event.target.closest('.nav-toggle-final')) {
-        setIsMobileNavOpen(false)
-      }
-    }
-    if (isMobileNavOpen) {
-      document.addEventListener('click', handleOutsideClick)
-    }
-    return () => document.removeEventListener('click', handleOutsideClick)
-  }, [isMobileNavOpen])
-
-  const handleNavClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-    setIsMobileNavOpen(false)
-  }
-
-  // Combined Links: Regular Admin + Super Admin (Branch Admins)
-  const navLinks = [
-    { name: 'Products', path: '/' },
-    { name: 'Transactions', path: '/transactions' },
-    { name: 'Stocks', path: '/stocks' },
-    { name: 'Sales', path: '/sales' },
-    { name: 'B2B Orders', path: '/b2b-orders' },  
-    { name: 'B2B Stock', path: '/b2b-stock' },
-    { name: 'Customers', path: '/customers' },
-    { name: 'POS', path: '/pos' },
-    { name: 'Import', path: '/import' },
-    { name: 'Homepage Images', path: '/homepage-images' }, 
-    { name: 'Cancellations', path: '/order-issues' },
-    { name: 'Branch Admins', path: '/branch-admins' },
-    { name: 'Coin Settings', path: '/coin-settings' }
-  ]
-
-  return (
-    <nav className="navbar-final">
-      <div className="top-row-final">
-        <div className="logo-final">
-          <video autoPlay loop muted playsInline>
-            <source src="/images/logo.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="nav-toggle-final" onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}>
-          <div className="dot-grid-final">
-            {[...Array(9)].map((_, i) => (
-              <span key={i}></span>
-            ))}
-          </div>
-        </div>
-        <div className="nav-right-final desktop-tab-only-final">
-          <div className="nav-links-final">
-            {navLinks.map(({ name, path }) => (
-              <Link
-                key={name}
-                to={path}
-                onClick={handleNavClick}
-                className={`nav-link-final Btn ${location.pathname === path ? 'active-final' : ''}`}
-              >
-                <span>{name}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="bottom-row-final mobile-only-final">
-        <div className="search-bar-final Btn">
-          <input type="text" placeholder="search a product" />
-        </div>
-      </div>
-
-      {isMobileNavOpen && (
-        <div className="mobile-drawer-final" ref={mobileNavRef}>
-          <div className="close-btn-final" onClick={() => setIsMobileNavOpen(false)}></div>
-          <div className="nav-links-final">
-            {navLinks.map(({ name, path }) => (
-              <Link
-                key={name}
-                to={path}
-                onClick={handleNavClick}
-                className={`nav-link-final Btn ${location.pathname === path ? 'active-final' : ''}`}
-              >
-                {name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
-  )
+import React,{useEffect,useState} from 'react'
+import {NavLink,Link,useLocation} from 'react-router-dom'
+import {useAuth} from './AdminAuth'
+import {apiGet} from './api'
+import './Operations.css'
+export default function NavbarAdmin(){
+  const {user,logout,setBranch}=useAuth(),[branches,setBranches]=useState([]),[open,setOpen]=useState(false),location=useLocation()
+  const superAdmin=user?.role==='SUPER_ADMIN'
+  useEffect(()=>{apiGet('/manage/branches').then(setBranches).catch(()=>{})},[])
+  useEffect(()=>setOpen(false),[location.pathname])
+  const links=[['Overview','/'],['Stock','/stocks'],['Add product','/products'],['Excel & images','/import'],['Sales','/sales'],['Counter sale','/pos'],['Movements','/transactions'],...(superAdmin?[['Branches','/branches'],['Admins','/branch-admins'],['Categories','/categories'],['Customers','/customers'],['Homepage','/homepage-images'],['Order issues','/order-issues'],['B2B orders','/b2b-orders'],['B2B stock','/b2b-stock'],['Shipping','/shipping'],['Rewards','/coin-settings'],['Activity','/audit']]:[]),['Account','/settings']]
+  return <nav className="ops-nav"><div className="ops-nav-top"><Link to="/" className="ops-brand">ATTACH<small>{superAdmin?'SUPER ADMIN':'BRANCH ADMIN'}</small></Link><button className="ops-mobile-toggle" aria-expanded={open} onClick={()=>setOpen(!open)}>Menu</button><div className="ops-nav-controls">{superAdmin?<select aria-label="Select branch" value={user?.branch_id||''} onChange={e=>setBranch(e.target.value)}><option value="">All branches</option>{branches.map(row=><option key={row.id} value={row.id}>{row.name}{row.is_active?'':' (inactive)'}</option>)}</select>:<span>{branches.find(row=>Number(row.id)===Number(user?.branch_id))?.name||`Branch ${user?.branch_id||''}`}</span>}<span>{user?.username}</span><button onClick={logout}>Sign out</button></div></div><div className={`ops-nav-links ${open?'is-open':''}`}>{links.map(([name,path])=><NavLink key={path} to={path} end={path==='/'}>{name}</NavLink>)}</div></nav>
 }
-
-export default NavbarAdmin

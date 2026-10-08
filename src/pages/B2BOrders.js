@@ -12,7 +12,7 @@ const API_BASE_RAW =
 const API_BASE = API_BASE_RAW.replace(/\/+$/, '');
 
 export default function B2BOrders() {
-  const { token, user } = useAuth();
+  const { token } = useAuth();
   const [b2bSales, setB2bSales] = useState([]);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(null);

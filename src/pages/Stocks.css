@@ -2,7 +2,7 @@
   color: gold;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   padding: 24px;
-  background-color: #000;
+  background-color: #f8fafc;
   margin-top: 0;
 }
 
@@ -22,7 +22,7 @@
 
 .seg {
   display: inline-flex;
-  background: #0f0f0f;
+  background: #f8fafc;
   border: 1px solid rgba(255, 215, 0, 0.35);
   border-radius: 999px;
   padding: 4px;
@@ -73,7 +73,7 @@
 }
 
 .card {
-  background: #0d0d0d;
+  background: #f8fafc;
   border: 1px solid gold;
   border-radius: 12px;
   padding: 12px 14px;
@@ -128,7 +128,7 @@
 
 .chip.active {
   border-color: gold;
-  background: #050505;
+  background: #f8fafc;
   color: gold;
 }
 
@@ -150,8 +150,8 @@
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
-  background: #0d0d0d;
-  color: white;
+  background: #f8fafc;
+  color: #263140;
   outline: none;
   min-width: 260px;
 }
@@ -193,7 +193,7 @@
   display: flex;
   gap: 6px;
   align-items: center;
-  background: #0d0d0d;
+  background: #f8fafc;
   border: 1px solid gold;
   padding: 8px 10px;
   border-radius: 10px;
@@ -209,14 +209,14 @@
   padding: 6px 8px;
   border-radius: 8px;
   border: 1px solid gold;
-  background: #0d0d0d;
-  color: white;
+  background: #f8fafc;
+  color: #263140;
   outline: none;
 }
 
 .section-table {
   width: 100%;
-  background-color: #0d0d0d;
+  background-color: #f8fafc;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
@@ -240,7 +240,7 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  color: #f3f3f3;
+  color: #263140;
   table-layout: fixed;
   min-width: 1200px;
 }
@@ -248,7 +248,7 @@
 .stock-table thead th {
   position: sticky;
   top: 0;
-  background-color: #1a1a1a;
+  background-color: #f8fafc;
   color: gold;
   font-weight: 700;
   z-index: 2;
@@ -301,7 +301,7 @@
 }
 
 .status.low {
-  color: #ffbf00;
+  color: #263140;
 }
 
 .status.high {
@@ -309,7 +309,7 @@
 }
 
 .status.out {
-  color: #ff6b6b;
+  color: #263140;
 }
 
 tr.row-low td {

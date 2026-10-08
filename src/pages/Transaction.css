@@ -2,7 +2,7 @@
   color: gold;
   font-family: Arial, sans-serif;
   padding: 24px;
-  background-color: #000;
+  background-color: #f8fafc;
   margin-top: -20px;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .stat-card {
-  background: #111;
+  background: #f8fafc;
   border: 1px solid gold;
   border-radius: 12px;
   padding: 10px 12px;
@@ -63,7 +63,7 @@
   padding: 8px 14px;
   background: transparent;
   border: 2px solid white;
-  color: white;
+  color: #263140;
   border-radius: 999px;
   cursor: pointer;
   font-weight: bold;
@@ -77,12 +77,12 @@
 
 .chip.active {
   border-color: gold;
-  background: black;
+  background: #f8fafc;
   color: gold;
 }
 
 .transaction-filter {
-  background-color: #111;
+  background-color: #f8fafc;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
@@ -108,8 +108,8 @@
   padding: 10px;
   border-radius: 8px;
   border: 1px solid gold;
-  background-color: #222;
-  color: white;
+  background-color: #f8fafc;
+  color: #263140;
   outline: none;
 }
 
@@ -125,7 +125,7 @@
 }
 
 .transaction-table {
-  background-color: #111;
+  background-color: #f8fafc;
   padding: 20px;
   border-radius: 12px;
   border: 1px solid gold;
@@ -142,7 +142,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  color: white;
+  color: #263140;
   min-width: 900px;
 }
 
@@ -154,7 +154,7 @@ th, td {
 }
 
 th {
-  background-color: #222;
+  background-color: #f8fafc;
   color: gold;
   font-weight: bold;
 }
@@ -172,14 +172,14 @@ td {
 }
 
 .status-pill.ok { color: #4caf50; }
-.status-pill.warn { color: #ffbf00; }
+.status-pill.warn { color: #263140; }
 .status-pill.info { color: #1e90ff; }
-.status-pill.danger { color: #ff6b6b; }
+.status-pill.danger { color: #263140; }
 
 .delete-btn {
   padding: 8px 12px;
   background-color: red;
-  color: white;
+  color: #263140;
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -197,7 +197,7 @@ td {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #111;
+  background-color: #f8fafc;
   color: gold;
   padding: 22px;
   border-radius: 12px;
@@ -232,7 +232,7 @@ td {
 
 .popup-actions button:last-child {
   background-color: #444;
-  color: white;
+  color: #263140;
 }
 
 .popup-actions button:last-child:hover {

@@ -10,7 +10,7 @@ const API_BASE = (
 
 export default function CoinsSettings() {
   const { token } = useAuth()
-  const [settings, setSettings] = useState(null)
+  const [, setSettings] = useState(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState({ text: '', type: '' })

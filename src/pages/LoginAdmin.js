@@ -4,6 +4,7 @@ import { apiPost } from './api'
 import { useAuth } from './AdminAuth'
 import { useLoading } from './LoadingContext'
 import './LoginAdmin.css'
+import {SUPER_PORTAL} from '../portalConfig'
 
 export default function LoginAdmin() {
   const { login } = useAuth()
@@ -22,10 +23,11 @@ export default function LoginAdmin() {
     show()
     try {
       const resp = await apiPost('/api/auth-branch/login', { username, password })
+      if(SUPER_PORTAL && resp.user?.role !== 'SUPER_ADMIN') throw new Error('Use a super admin account for this portal')
       login(resp.token, resp.user)
       nav('/', { replace: true })
     } catch (e2) {
-      setErr('Invalid credentials')
+      setErr(e2.message || 'Unable to sign in')
     } finally {
       hide()
       setBusy(false)
@@ -36,7 +38,7 @@ export default function LoginAdmin() {
     <div className="login-wrap-admin-admin-login">
       <div className="login-card-admin-admin-login">
         <div className="login-header-admin-admin-login">
-          <div className="login-title-admin-admin-login">Super Admin Login</div>
+          <div className="login-title-admin-admin-login">{SUPER_PORTAL?'Super Admin Login':'Branch Admin Login'}</div>
           <div className="login-subtitle-admin-admin-login">Sign in to manage your super admin dashboard</div>
         </div>
         <form onSubmit={onSubmit} className="login-form-admin-admin-login">
@@ -78,13 +80,6 @@ export default function LoginAdmin() {
             </button>
           </div>
           {err ? <div className="login-error-admin-admin-login">{err}</div> : null}
-          <div className="login-actions-row-admin-admin-login">
-            <label className="login-remember-admin-admin-login">
-              <input type="checkbox" />
-              <span>Remember me</span>
-            </label>
-            <a className="login-alt-admin-admin-login" href="#">Forgot password?</a>
-          </div>
           <button className="login-button-admin-admin-login" type="submit" disabled={busy || !username || !password}>
             {busy ? 'Signing in...' : 'Sign in'}
           </button>
@@ -92,7 +87,7 @@ export default function LoginAdmin() {
           <button
             type="button"
             className="login-button-admin-admin-login login-button-ghost-admin-admin-login"
-            onClick={() => nav('/', { replace: true })}
+            onClick={() => window.location.assign(process.env.REACT_APP_STOREFRONT_URL || 'https://www.attach.co.in')}
           >
             Back to website
           </button>
