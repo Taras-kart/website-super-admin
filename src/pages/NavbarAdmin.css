@@ -1,4 +1,4 @@
-.navbar-final {
+.tsup-navbaradmin-navbar-final {
   background-color: #f8fafc;
   color: #263140;
   padding: 10px 30px;
@@ -14,39 +14,35 @@
   overflow-x: hidden;
 }
 
-body {
-  padding-top: 60px;
-}
-
-.top-row-final {
+.tsup-navbaradmin-top-row-final {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo-final img {
+.tsup-navbaradmin-logo-final img {
   height: 40px;
 }
 
-.nav-toggle-final {
+.tsup-navbaradmin-nav-toggle-final {
   display: none;
   cursor: pointer;
 }
 
-.dot-grid-final {
+.tsup-navbaradmin-dot-grid-final {
   display: grid;
   grid-template-columns: repeat(3, 6px);
   grid-gap: 4px;
 }
 
-.dot-grid-final span {
+.tsup-navbaradmin-dot-grid-final span {
   width: 6px;
   height: 6px;
   background-color: white;
   border-radius: 50%;
 }
 
-.nav-right-final {
+.tsup-navbaradmin-nav-right-final {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -54,12 +50,12 @@ body {
   overflow-x: auto;
 }
 
-.nav-links-final {
+.tsup-navbaradmin-nav-links-final {
   display: flex;
   gap: 30px;
 }
 
-.nav-link-final {
+.tsup-navbaradmin-nav-link-final {
   text-decoration: none;
   font-weight: 600;
   display: flex;
@@ -70,7 +66,7 @@ body {
   white-space: nowrap;
 }
 
-.search-bar-final {
+.tsup-navbaradmin-search-bar-final {
   display: flex;
   align-items: center;
   padding: 5px 10px;
@@ -78,12 +74,12 @@ body {
   border: 2px solid gold;
 }
 
-.search-icon-final {
-  color: gold;
+.tsup-navbaradmin-search-icon-final {
+  color: #42536a;
   margin-right: 8px;
 }
 
-.search-bar-final input {
+.tsup-navbaradmin-search-bar-final input {
   background: transparent;
   border: none;
   color: #263140;
@@ -91,12 +87,12 @@ body {
   font-size: 16px;
 }
 
-.icon-buttons-final {
+.tsup-navbaradmin-icon-buttons-final {
   display: flex;
   gap: 30px;
 }
 
-.icon-buttons-final a {
+.tsup-navbaradmin-icon-buttons-final a {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -105,13 +101,13 @@ body {
   color: #263140;
 }
 
-.bottom-row-final {
+.tsup-navbaradmin-bottom-row-final {
   margin-top: 10px;
   display: none;
   justify-content: center;
 }
 
-.mobile-drawer-final {
+.tsup-navbaradmin-mobile-drawer-final {
   position: fixed;
   top: 0;
   right: 0;
@@ -123,49 +119,49 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-left: 1px solid #333;
+  border-left: 1px solid #dce3ec;
 }
 
-.close-btn-final {
+.tsup-navbaradmin-close-btn-final {
   align-self: flex-end;
   font-size: 24px;
   color: #263140;
   cursor: pointer;
 }
 
-.desktop-tab-only-final {
+.tsup-navbaradmin-desktop-tab-only-final {
   display: flex;
 }
 
-.mobile-only-final {
+.tsup-navbaradmin-mobile-only-final {
   display: none;
 }
 
-.active-final span {
+.tsup-navbaradmin-active-final span {
   z-index: 3;
   position: relative;
-  color: gold;
+  color: #42536a;
 }
 
-.logo-final video {
+.tsup-navbaradmin-logo-final video {
   height: 60px;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(255, 210, 119, 0.15);
   object-fit: cover;
 }
 
-.active-final svg {
+.tsup-navbaradmin-active-final svg {
   fill: white !important; 
 }
 
 
-.active-final {
+.tsup-navbaradmin-active-final {
   width: auto;
   padding: 0px 14px;
   height: 33px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+  background: #f4f7fb;
   background-size: 250%;
   background-position: left;
   color: #263140;
@@ -179,7 +175,7 @@ body {
   z-index: 2;
 }
 
-.active-final::before {
+.tsup-navbaradmin-active-final::before {
   position: absolute;
   content: '';
   width: 97%;
@@ -191,53 +187,53 @@ body {
   z-index: 1;
 }
 
-.active-final:hover {
+.tsup-navbaradmin-active-final:hover {
   background-position: right;
   transition-duration: 1s;
 }
 
-.active-final:hover::before {
+.tsup-navbaradmin-active-final:hover::before {
   background-position: right;
   transition-duration: 1s;
 }
 
-.active-final:active {
+.tsup-navbaradmin-active-final:active {
   transform: scale(0.95);
 }
 
 @media (max-width: 1200px) {
-  .nav-right-final {
+  .tsup-navbaradmin-nav-right-final {
     gap: 10px;
   }
 }
 
 @media (max-width: 1024px) {
-  .nav-right-final {
+  .tsup-navbaradmin-nav-right-final {
     gap: 10px;
   }
 }
 
 @media (max-width: 768px) {
-  .nav-right-final {
+  .tsup-navbaradmin-nav-right-final {
     display: none;
   }
 
-  .nav-toggle-final {
+  .tsup-navbaradmin-nav-toggle-final {
     display: block;
   }
 
-  .bottom-row-final {
+  .tsup-navbaradmin-bottom-row-final {
     display: flex;
     justify-content: center;
   }
 
-  .mobile-only-final {
+  .tsup-navbaradmin-mobile-only-final {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  .mobile-drawer-final {
+  .tsup-navbaradmin-mobile-drawer-final {
     position: fixed;
     top: 0;
     right: 0;
@@ -250,53 +246,53 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border-left: 1px solid #333;
+    border-left: 1px solid #dce3ec;
   }
 
-  .mobile-drawer-final .nav-links-final {
+  .tsup-navbaradmin-mobile-drawer-final .tsup-navbaradmin-nav-links-final {
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
 
-  .mobile-drawer-final .icon-buttons-final {
+  .tsup-navbaradmin-mobile-drawer-final .tsup-navbaradmin-icon-buttons-final {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
-  .mobile-drawer-final .nav-link-final {
+  .tsup-navbaradmin-mobile-drawer-final .tsup-navbaradmin-nav-link-final {
     font-size: 18px;
     color: #263140;
   }
 
-  .search-bar-final {
+  .tsup-navbaradmin-search-bar-final {
     width: 80%;
     margin: 10px auto;
   }
 }
 
 @media (max-width: 500px) {
-  .search-bar-final input {
+  .tsup-navbaradmin-search-bar-final input {
     font-size: 14px;
   }
 
-  .navbar-final {
+  .tsup-navbaradmin-navbar-final {
     padding: 10px;
   }
 
-  .mobile-drawer-final {
+  .tsup-navbaradmin-mobile-drawer-final {
     width: 100%;
   }
 
-  .search-bar-final {
+  .tsup-navbaradmin-search-bar-final {
     width: 80%;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 400px) {
-  .mobile-drawer-final {
+  .tsup-navbaradmin-mobile-drawer-final {
     position: fixed;
     top: 0;
     right: 0;
@@ -309,28 +305,28 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border-left: 1px solid #333;
+    border-left: 1px solid #dce3ec;
   }
 
-  .search-bar-final input {
+  .tsup-navbaradmin-search-bar-final input {
     font-size: 13px;
   }
 
-  .nav-link-final {
+  .tsup-navbaradmin-nav-link-final {
     font-size: 14px;
   }
 
-  .icon-buttons-final {
+  .tsup-navbaradmin-icon-buttons-final {
     flex-direction: column;
     gap: 10px;
   }
 
-  .active-final {
+  .tsup-navbaradmin-active-final {
     width: 50%;
     height: 40px;
     border: none;
     border-radius: 10px;
-    background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+    background: #f4f7fb;
     background-size: 250%;
     background-position: left;
     color: #263140 !important;
@@ -346,14 +342,14 @@ body {
     z-index: 2;
   }
 
-  .active-final span {
+  .tsup-navbaradmin-active-final span {
     z-index: 3;
     position: relative;
     color: #263140;
   }
 }
 
-.red-dot {
+.tsup-navbaradmin-red-dot {
   position: absolute;
   top: 0;
   right: 0;
@@ -362,11 +358,11 @@ body {
   background-color: red;
   border-radius: 50%;
 }
-.nav-link-final {
+.tsup-navbaradmin-nav-link-final {
   position: relative;
 }
 
-.icon-btn {
+.tsup-navbaradmin-icon-btn {
   position: relative;
   padding: 0px;
   margin: 0 8px;
@@ -377,21 +373,21 @@ body {
   color: #263140;
 }
 
-.icon-btn:hover {
+.tsup-navbaradmin-icon-btn:hover {
   border-color: gold;
 }
 
-.icon-default {
+.tsup-navbaradmin-icon-default {
   font-size: 22px;
   color: #263140;
 }
 
-.icon-active {
+.tsup-navbaradmin-icon-active {
   font-size: 22px;
-  color: gold;
+  color: #42536a;
 }
 
-.red-dot {
+.tsup-navbaradmin-red-dot {
   position: absolute;
   top:-5%;
   right: -10%;

@@ -1,15 +1,15 @@
-.admin-homepage {
+.tsup-homepage-admin-homepage {
   background-color: #f9f9f9;
   font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
-.admin-body {
+.tsup-homepage-admin-body {
   display: flex;
   height: calc(100vh - 70px);
 }
 
-.admin-sidebar {
+.tsup-homepage-admin-sidebar {
   width: 24%;
   background-color: #f8fafc;
   display: flex;
@@ -24,7 +24,7 @@
   overflow: hidden;
 }
 
-.sidebar-button {
+.tsup-homepage-sidebar-button {
   background: none;
   border: 2px solid white;
   color: #263140;
@@ -38,20 +38,20 @@
   text-align: center;
 }
 
-.sidebar-button:hover {
+.tsup-homepage-sidebar-button:hover {
   border-color: gold;
-  color: gold;
+  color: #42536a;
 }
 
-.sidebar-button.active {
+.tsup-homepage-sidebar-button.tsup-homepage-active {
   width: 80%;
   padding: 12px 15px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+  background: #f4f7fb;
   background-size: 250%;
   background-position: left;
-  color: gold;
+  color: #42536a;
   position: relative;
   display: flex;
   align-items: center;
@@ -62,13 +62,13 @@
   z-index: 2;
 }
 
-.sidebar-button.active span {
+.tsup-homepage-sidebar-button.tsup-homepage-active span {
   position: relative;
   z-index: 2;
-  color: gold !important;
+  color: #42536a !important;
 }
 
-.sidebar-button.active::before {
+.tsup-homepage-sidebar-button.tsup-homepage-active::before {
   position: absolute;
   content: '';
   width: 97%;
@@ -80,21 +80,21 @@
   z-index: 1;
 }
 
-.sidebar-button.active:hover {
+.tsup-homepage-sidebar-button.tsup-homepage-active:hover {
   background-position: right;
   transition-duration: 1s;
 }
 
-.sidebar-button.active:hover::before {
+.tsup-homepage-sidebar-button.tsup-homepage-active:hover::before {
   background-position: right;
   transition-duration: 1s;
 }
 
-.sidebar-button.active:active {
+.tsup-homepage-sidebar-button.tsup-homepage-active:active {
   transform: scale(0.95);
 }
 
-.admin-main {
+.tsup-homepage-admin-main {
   width: 75%;
   padding: 30px;
   overflow-y: auto;
@@ -104,16 +104,16 @@
   height: calc(100vh - 70px);
 }
 
-.admin-main::-webkit-scrollbar {
+.tsup-homepage-admin-main::-webkit-scrollbar {
   display: none;
 }
 
 @media (max-width: 1024px) {
-  .admin-body {
+  .tsup-homepage-admin-body {
     flex-direction: column;
   }
 
-  .admin-sidebar {
+  .tsup-homepage-admin-sidebar {
     position: relative;
     width: 100%;
     flex-direction: row;
@@ -124,11 +124,11 @@
     top: 0;
   }
 
-  .sidebar-button {
+  .tsup-homepage-sidebar-button {
     width: auto;
   }
 
-  .admin-main {
+  .tsup-homepage-admin-main {
     margin-left: 0;
     width: 100%;
     height: calc(100vh - 70px - 100px);
@@ -136,35 +136,35 @@
 }
 
 @media (max-width: 768px) {
-  .sidebar-button {
+  .tsup-homepage-sidebar-button {
     font-size: 14px;
     padding: 10px 12px;
   }
 
-  .admin-main {
+  .tsup-homepage-admin-main {
     padding: 20px;
   }
 }
 
 @media (max-width: 500px) {
-  .sidebar-button {
+  .tsup-homepage-sidebar-button {
     font-size: 13px;
     padding: 8px 10px;
   }
 
-  .admin-sidebar {
+  .tsup-homepage-admin-sidebar {
     flex-wrap: wrap;
     gap: 10px;
   }
 }
 
 @media (max-width: 400px) {
-  .sidebar-button {
+  .tsup-homepage-sidebar-button {
     font-size: 12px;
     padding: 6px 8px;
   }
 
-  .admin-sidebar {
+  .tsup-homepage-admin-sidebar {
     justify-content: center;
     gap: 8px;
   }

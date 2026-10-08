@@ -1,16 +1,16 @@
-.oi-screen {
-  min-height: 100vh;
+.tsup-orderissues-oi-screen {
+  min-height: auto;
   background: #f8fafc;
   color: #263140;
 }
 
-.oi-layout {
+.tsup-orderissues-oi-layout {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 2.5rem;
 }
 
-.oi-header {
+.tsup-orderissues-oi-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -18,32 +18,32 @@
   margin-bottom: 1.5rem;
 }
 
-.oi-header-main {
+.tsup-orderissues-oi-header-main {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
 
-.oi-title {
+.tsup-orderissues-oi-title {
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #d4af37;
+  color: #42536a;
 }
 
-.oi-subtitle {
+.tsup-orderissues-oi-subtitle {
   font-size: 0.9rem;
   opacity: 0.85;
 }
 
-.oi-header-actions {
+.tsup-orderissues-oi-header-actions {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-.oi-refresh-btn {
+.tsup-orderissues-oi-refresh-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -51,38 +51,38 @@
   padding: 0.4rem 1rem;
   border: 1px solid rgba(212, 175, 55, 0.6);
   background: transparent;
-  color: #d4af37;
+  color: #42536a;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   cursor: pointer;
 }
 
-.oi-refresh-btn:hover {
+.tsup-orderissues-oi-refresh-btn:hover {
   background: rgba(212, 175, 55, 0.08);
 }
 
-.oi-refresh-dot {
+.tsup-orderissues-oi-refresh-dot {
   width: 8px;
   height: 8px;
   border-radius: 999px;
   background: #d4af37;
 }
 
-.oi-tabs {
+.tsup-orderissues-oi-tabs {
   display: inline-flex;
   border-radius: 999px;
-  border: 1px solid #252525;
+  border: 1px solid #dce3ec;
   padding: 0.15rem;
   background: #f8fafc;
   margin-bottom: 1.25rem;
 }
 
-.oi-tab {
+.tsup-orderissues-oi-tab {
   border: none;
   border-radius: 999px;
   background: transparent;
-  color: #bbbbbb;
+  color: #42536a;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -90,20 +90,20 @@
   cursor: pointer;
 }
 
-.oi-tab-active {
+.tsup-orderissues-oi-tab-active {
   background: #d4af37;
   color: #000000;
 }
 
-.oi-summary {
+.tsup-orderissues-oi-summary {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.9rem;
   margin-bottom: 1.25rem;
 }
 
-.oi-summary-card {
-  background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.2), #edf1f5);
+.tsup-orderissues-oi-summary-card {
+  background: #f4f7fb;
   border-radius: 14px;
   border: 1px solid rgba(212, 175, 55, 0.25);
   padding: 0.85rem 0.9rem;
@@ -112,77 +112,77 @@
   gap: 0.25rem;
 }
 
-.oi-summary-label {
+.tsup-orderissues-oi-summary-label {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   opacity: 0.85;
 }
 
-.oi-summary-value {
+.tsup-orderissues-oi-summary-value {
   font-size: 1.25rem;
   font-weight: 600;
 }
 
-.oi-summary-note {
+.tsup-orderissues-oi-summary-note {
   font-size: 0.78rem;
   opacity: 0.8;
 }
 
-.oi-filters {
+.tsup-orderissues-oi-filters {
   margin-bottom: 1.25rem;
   padding: 0.9rem 1rem;
   background: #f8fafc;
   border-radius: 14px;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #dce3ec;
   display: grid;
   grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
   gap: 0.9rem;
   align-items: flex-end;
 }
 
-.oi-filter-group {
+.tsup-orderissues-oi-filter-group {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
-.oi-filter-label {
+.tsup-orderissues-oi-filter-label {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   opacity: 0.8;
 }
 
-.oi-filter-select {
+.tsup-orderissues-oi-filter-select {
   background: #f8fafc;
   border-radius: 999px;
-  border: 1px solid #2b2b2b;
+  border: 1px solid #dce3ec;
   color: #263140;
   font-size: 0.85rem;
   padding: 0.45rem 0.7rem;
   outline: none;
 }
 
-.oi-filter-select:focus {
+.tsup-orderissues-oi-filter-select:focus {
   border-color: #d4af37;
 }
 
-.oi-filter-search {
+.tsup-orderissues-oi-filter-search {
   grid-column: span 1;
 }
 
-.oi-filter-search-wrap {
+.tsup-orderissues-oi-filter-search-wrap {
   display: flex;
   align-items: center;
   gap: 0.35rem;
   padding: 0.4rem 0.7rem;
   border-radius: 999px;
   background: #f8fafc;
-  border: 1px solid #2b2b2b;
+  border: 1px solid #dce3ec;
 }
 
-.oi-filter-search-icon {
+.tsup-orderissues-oi-filter-search-icon {
   width: 14px;
   height: 14px;
   border-radius: 999px;
@@ -190,19 +190,19 @@
   position: relative;
 }
 
-.oi-filter-search-icon::after {
+.tsup-orderissues-oi-filter-search-icon::after {
   content: '';
   position: absolute;
   width: 7px;
   height: 2px;
   border-radius: 999px;
-  background: #777777;
+  background: #ffffff;
   transform: rotate(45deg);
   right: -4px;
   bottom: -1px;
 }
 
-.oi-filter-input {
+.tsup-orderissues-oi-filter-input {
   flex: 1;
   border: none;
   outline: none;
@@ -211,24 +211,24 @@
   font-size: 0.85rem;
 }
 
-.oi-filter-input::placeholder {
+.tsup-orderissues-oi-filter-input::placeholder {
   color: #777777;
 }
 
-.oi-filter-helper {
+.tsup-orderissues-oi-filter-helper {
   grid-column: span 2;
   font-size: 0.78rem;
   opacity: 0.85;
 }
 
-.oi-table-card {
+.tsup-orderissues-oi-table-card {
   background: #f8fafc;
   border-radius: 14px;
-  border: 1px solid #161616;
+  border: 1px solid #dce3ec;
   padding: 0.75rem 0.75rem 1rem;
 }
 
-.oi-loader {
+.tsup-orderissues-oi-loader {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -236,7 +236,7 @@
   padding: 2.5rem 1rem;
 }
 
-.oi-spinner {
+.tsup-orderissues-oi-spinner {
   width: 26px;
   height: 26px;
   border-radius: 999px;
@@ -245,7 +245,7 @@
   animation: oi-spin 0.9s linear infinite;
 }
 
-.oi-loader-text {
+.tsup-orderissues-oi-loader-text {
   font-size: 0.85rem;
   opacity: 0.9;
 }
@@ -256,16 +256,16 @@
   }
 }
 
-.oi-empty {
+.tsup-orderissues-oi-empty {
   padding: 2.2rem 1.2rem;
   text-align: center;
 }
 
-.oi-empty-inline {
+.tsup-orderissues-oi-empty-inline {
   padding: 1.5rem 1.2rem 0.5rem;
 }
 
-.oi-empty-icon {
+.tsup-orderissues-oi-empty-icon {
   width: 40px;
   height: 40px;
   margin: 0 auto 0.75rem;
@@ -273,75 +273,75 @@
   border: 1px dashed rgba(212, 175, 55, 0.5);
 }
 
-.oi-empty-title {
+.tsup-orderissues-oi-empty-title {
   font-size: 1rem;
   margin-bottom: 0.25rem;
 }
 
-.oi-empty-text {
+.tsup-orderissues-oi-empty-text {
   font-size: 0.85rem;
   opacity: 0.8;
 }
 
-.oi-table-scroller {
+.tsup-orderissues-oi-table-scroller {
   overflow-x: auto;
 }
 
-.oi-table {
+.tsup-orderissues-oi-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.85rem;
 }
 
-.oi-th {
+.tsup-orderissues-oi-th {
   text-align: left;
   padding: 0.55rem 0.6rem;
   font-weight: 500;
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.11em;
-  color: #999999;
-  border-bottom: 1px solid #191919;
+  color: #42536a;
+  border-bottom: 1px solid #dce3ec;
   white-space: nowrap;
 }
 
-.oi-tr:nth-child(even) {
+.tsup-orderissues-oi-tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.01);
 }
 
-.oi-td {
+.tsup-orderissues-oi-td {
   padding: 0.55rem 0.6rem;
-  border-bottom: 1px solid #111111;
+  border-bottom: 1px solid #dce3ec;
   vertical-align: top;
 }
 
-.oi-pill-id {
+.tsup-orderissues-oi-pill-id {
   display: inline-flex;
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
-  border: 1px solid #2b2b2b;
+  border: 1px solid #dce3ec;
   font-size: 0.78rem;
 }
 
-.oi-muted {
+.tsup-orderissues-oi-muted {
   color: #888888;
   font-size: 0.82rem;
 }
 
-.oi-strong {
+.tsup-orderissues-oi-strong {
   font-weight: 500;
 }
 
-.oi-text {
+.tsup-orderissues-oi-text {
   font-size: 0.85rem;
 }
 
-.oi-amount {
+.tsup-orderissues-oi-amount {
   font-weight: 500;
-  color: #d4af37;
+  color: #42536a;
 }
 
-.oi-chip {
+.tsup-orderissues-oi-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -350,49 +350,49 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.11em;
-  border: 1px solid #2b2b2b;
+  border: 1px solid #dce3ec;
 }
 
-.oi-chip-cod {
+.tsup-orderissues-oi-chip-cod {
   border-color: #ffb347;
   color: #263140;
 }
 
-.oi-chip-prepaid {
+.tsup-orderissues-oi-chip-prepaid {
   border-color: #57d89c;
-  color: #57d89c;
+  color: #42536a;
 }
 
-.oi-chip-other {
+.tsup-orderissues-oi-chip-other {
   border-color: #888888;
-  color: #cccccc;
+  color: #42536a;
 }
 
-.oi-notes {
+.tsup-orderissues-oi-notes {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
 }
 
-.oi-notes-origin {
+.tsup-orderissues-oi-notes-origin {
   font-size: 0.78rem;
-  color: #d4af37;
+  color: #42536a;
 }
 
-.oi-notes-reason {
+.tsup-orderissues-oi-notes-reason {
   font-size: 0.8rem;
-  color: #dddddd;
+  color: #42536a;
 }
 
-.oi-open-card {
+.tsup-orderissues-oi-open-card {
   margin-top: 1.35rem;
   padding: 0.85rem 0.75rem 1rem;
   background: #f8fafc;
   border-radius: 14px;
-  border: 1px solid #202020;
+  border: 1px solid #dce3ec;
 }
 
-.oi-open-header {
+.tsup-orderissues-oi-open-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -400,25 +400,25 @@
   margin-bottom: 0.7rem;
 }
 
-.oi-open-title {
+.tsup-orderissues-oi-open-title {
   font-size: 1.05rem;
   font-weight: 500;
-  color: #d4af37;
+  color: #42536a;
 }
 
-.oi-open-text {
+.tsup-orderissues-oi-open-text {
   font-size: 0.85rem;
   opacity: 0.9;
 }
 
-.oi-open-status {
+.tsup-orderissues-oi-open-status {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #cccccc;
+  color: #42536a;
 }
 
-.oi-cancel-btn {
+.tsup-orderissues-oi-cancel-btn {
   border-radius: 999px;
   padding: 0.35rem 0.9rem;
   font-size: 0.78rem;
@@ -430,79 +430,79 @@
   cursor: pointer;
 }
 
-.oi-cancel-btn:hover {
+.tsup-orderissues-oi-cancel-btn:hover {
   background: rgba(255, 102, 102, 0.1);
 }
 
-.oi-cancel-btn:disabled {
-  border-color: #555555;
+.tsup-orderissues-oi-cancel-btn:disabled {
+  border-color: #dce3ec;
   color: #777777;
   background: #f8fafc;
   cursor: not-allowed;
 }
 
-.oi-placeholder-card {
+.tsup-orderissues-oi-placeholder-card {
   margin-top: 1rem;
   padding: 1.2rem 1.1rem 1.4rem;
   background: #f8fafc;
   border-radius: 14px;
-  border: 1px solid #181818;
+  border: 1px solid #dce3ec;
 }
 
-.oi-placeholder-title {
+.tsup-orderissues-oi-placeholder-title {
   font-size: 1.1rem;
   margin-bottom: 0.4rem;
-  color: #d4af37;
+  color: #42536a;
 }
 
-.oi-placeholder-text {
+.tsup-orderissues-oi-placeholder-text {
   font-size: 0.88rem;
   opacity: 0.9;
   margin-bottom: 0.25rem;
 }
 
 @media (max-width: 960px) {
-  .oi-summary {
+  .tsup-orderissues-oi-summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .oi-filters {
+  .tsup-orderissues-oi-filters {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .oi-filter-helper {
+  .tsup-orderissues-oi-filter-helper {
     grid-column: span 1;
   }
 
-  .oi-header {
+  .tsup-orderissues-oi-header {
     flex-direction: column;
     align-items: flex-start;
   }
 }
 
 @media (max-width: 640px) {
-  .oi-layout {
+  .tsup-orderissues-oi-layout {
     padding: 1.2rem 0.85rem 2.2rem;
   }
 
-  .oi-summary {
+  .tsup-orderissues-oi-summary {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .oi-title {
+  .tsup-orderissues-oi-title {
     font-size: 1.25rem;
   }
 
-  .oi-table-card {
+  .tsup-orderissues-oi-table-card {
     padding: 0.6rem 0.35rem 0.9rem;
   }
 
-  .oi-th,
-  .oi-td {
+  .tsup-orderissues-oi-th,
+  .tsup-orderissues-oi-td {
     padding: 0.45rem 0.4rem;
   }
 
-  .oi-open-card {
+  .tsup-orderissues-oi-open-card {
     padding: 0.7rem 0.35rem 0.9rem;
   }
 }

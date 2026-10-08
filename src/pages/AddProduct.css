@@ -1,5 +1,5 @@
-.add-product-page {
-  color: gold;
+.tsup-addproduct-add-product-page {
+  color: #42536a;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -7,28 +7,28 @@
   padding: 30px;
 }
 
-.admin-section1,
-.admin-section2 {
+.tsup-addproduct-admin-section1,
+.tsup-addproduct-admin-section2 {
   background-color: #f8fafc;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
 }
 
-.admin-section1 h2,
-.admin-section2 h2 {
+.tsup-addproduct-admin-section1 h2,
+.tsup-addproduct-admin-section2 h2 {
   font-size: 22px;
   margin-bottom: 20px;
-  color: gold;
+  color: #42536a;
 }
 
-.category-buttons {
+.tsup-addproduct-category-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
 
-.category-buttons button {
+.tsup-addproduct-category-buttons button {
   padding: 10px 20px;
   background: none;
   border: 2px solid white;
@@ -39,32 +39,32 @@
   transition: all 0.3s ease;
 }
 
-.category-buttons button:hover {
+.tsup-addproduct-category-buttons button:hover {
   border-color: gold;
-  color: gold;
+  color: #42536a;
 }
 
-.category-buttons button.active {
-  color: gold;
+.tsup-addproduct-category-buttons button.tsup-addproduct-active {
+  color: #42536a;
   border: 1.5px solid gold;
   box-shadow: 0 0 10px #ffd277;
 }
 
-.brand-search {
+.tsup-addproduct-brand-search {
   width: 97%;
   padding: 10px 10px;
   font-size: 16px;
   border: 2px solid gold;
   border-radius: 8px;
   background-color: #f8fafc;
-  color: gold;
+  color: #42536a;
   outline: none;
   margin-bottom: 10px;
   align-self: flex-start;
   margin-right: 10px;
 }
 
-.brand-dropdown {
+.tsup-addproduct-brand-dropdown {
   max-height: 200px;
   overflow-y: auto;
   background-color: #f8fafc;
@@ -77,7 +77,7 @@
   margin-bottom: 10px;
 }
 
-.brand-item {
+.tsup-addproduct-brand-item {
   padding: 8px 12px;
   color: #263140;
   background-color: #f8fafc;
@@ -86,12 +86,12 @@
   transition: background 0.2s ease;
 }
 
-.brand-item:hover {
-  background-color: #333;
-  color: gold;
+.tsup-addproduct-brand-item:hover {
+  background-color: #ffffff;
+  color: #42536a;
 }
 
-.add-new-brand-button {
+.tsup-addproduct-add-new-brand-button {
   margin-top: 10px;
   background: none;
   border: 2px solid white;
@@ -103,12 +103,12 @@
   transition: all 0.3s ease;
 }
 
-.add-new-brand-button:hover {
+.tsup-addproduct-add-new-brand-button:hover {
   border-color: gold;
-  color: gold;
+  color: #42536a;
 }
 
-.popup-overlay {
+.tsup-addproduct-popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -121,22 +121,22 @@
   z-index: 999;
 }
 
-.popup-box {
+.tsup-addproduct-popup-box {
   background-color: #f8fafc;
   padding: 30px;
   border-radius: 12px;
   width: 90%;
   max-width: 400px;
-  color: gold;
+  color: #42536a;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
-.popup-box h3 {
+.tsup-addproduct-popup-box h3 {
   margin-bottom: 20px;
   font-size: 20px;
 }
 
-.popup-box input {
+.tsup-addproduct-popup-box input {
   width: 100%;
   padding: 10px;
   border: 2px solid gold;
@@ -147,12 +147,12 @@
   margin-bottom: 20px;
 }
 
-.popup-actions {
+.tsup-addproduct-popup-actions {
   display: flex;
   justify-content: space-between;
 }
 
-.popup-actions button {
+.tsup-addproduct-popup-actions button {
   padding: 10px 20px;
   font-weight: bold;
   border: none;
@@ -161,35 +161,20 @@
   transition: 0.3s;
 }
 
-.popup-actions button:first-child {
+.tsup-addproduct-popup-actions button:first-child {
   background-color: gold;
   color: black;
 }
 
-.popup-actions button:last-child {
-  background-color: #333;
+.tsup-addproduct-popup-actions button:last-child {
+  background-color: #ffffff;
   color: #263140;
 }
 
-.popup-actions button:last-child:hover {
-  background-color: #555;
+.tsup-addproduct-popup-actions button:last-child:hover {
+  background-color: #ffffff;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* section3 */
-.admin-section3 {
+.tsup-addproduct-admin-section3 {
   background-color: #f8fafc;
   padding: 25px;
   border-radius: 12px;
@@ -197,25 +182,25 @@
   margin-top: 20px;
 }
 
-.admin-section3 h2 {
+.tsup-addproduct-admin-section3 h2 {
   font-size: 22px;
   margin-bottom: 20px;
-  color: gold;
+  color: #42536a;
 }
 
-.admin-section3 .brand-search {
+.tsup-addproduct-admin-section3 .tsup-addproduct-brand-search {
   width: 97%;
   padding: 10px;
   font-size: 16px;
   border: 2px solid gold;
   border-radius: 8px;
   background-color: #f8fafc;
-  color: gold;
+  color: #42536a;
   outline: none;
   margin-bottom: 15px;
 }
 
-.admin-section3 .brand-dropdown {
+.tsup-addproduct-admin-section3 .tsup-addproduct-brand-dropdown {
   max-height: 200px;
   overflow-y: auto;
   background-color: #f8fafc;
@@ -227,7 +212,7 @@
   gap: 8px;
 }
 
-.admin-section3 .brand-item {
+.tsup-addproduct-admin-section3 .tsup-addproduct-brand-item {
   padding: 8px 12px;
   color: #263140;
   background-color: #f8fafc;
@@ -236,12 +221,12 @@
   transition: background 0.2s ease;
 }
 
-.admin-section3 .brand-item:hover {
-  background-color: #333;
-  color: gold;
+.tsup-addproduct-admin-section3 .tsup-addproduct-brand-item:hover {
+  background-color: #ffffff;
+  color: #42536a;
 }
 
-.admin-section3 .add-new-brand-button {
+.tsup-addproduct-admin-section3 .tsup-addproduct-add-new-brand-button {
   margin-top: 15px;
   background: none;
   border: 2px solid white;
@@ -253,9 +238,9 @@
   transition: all 0.3s ease;
 }
 
-.admin-section3 .add-new-brand-button:hover {
+.tsup-addproduct-admin-section3 .tsup-addproduct-add-new-brand-button:hover {
   border-color: gold;
-  color: gold;
+  color: #42536a;
 }
 
 
@@ -273,7 +258,7 @@
 
 
 
-.admin-section4-final {
+.tsup-addproduct-admin-section4-final {
   display: block;
   background-color: #f8fafc;
   padding: 25px;
@@ -282,31 +267,31 @@
   border: 1px solid gold;
 }
 
-.section4-left-final {
+.tsup-addproduct-section4-left-final {
   width: 100%;
   overflow: hidden;
 }
 
-.section4-right-final {
+.tsup-addproduct-section4-right-final {
   display: none;
 }
 
-.section4-heading-final {
+.tsup-addproduct-section4-heading-final {
   font-size: 22px;
   margin-bottom: 10px;
   padding-bottom: 5px;
   border-bottom: 2px solid gold;
-  color: gold;
+  color: #42536a;
 }
 
-.color-grid-final {
+.tsup-addproduct-color-grid-final {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 12px;
   margin-bottom: 24px;
 }
 
-.color-item-final {
+.tsup-addproduct-color-item-final {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -320,37 +305,37 @@
   border: 2px solid transparent;
 }
 
-.color-item-final.active-final {
+.tsup-addproduct-color-item-final.tsup-addproduct-active-final {
   border: 2px solid gold;
   background-color: #f8fafc;
 }
 
-.color-swatch-final {
+.tsup-addproduct-color-swatch-final {
   width: 20px;
   height: 20px;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
 
-.size-section-final {
+.tsup-addproduct-size-section-final {
   margin-bottom: 24px;
 }
 
-.sub-heading-final {
-  color: gold;
+.tsup-addproduct-sub-heading-final {
+  color: #42536a;
   font-size: 18px;
   margin: 10px 0;
   border-bottom: 1px dashed gold;
   padding-bottom: 4px;
 }
 
-.size-grid-final {
+.tsup-addproduct-size-grid-final {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.size-box-final {
+.tsup-addproduct-size-box-final {
   padding: 8px 12px;
   background-color: #f8fafc;
   color: #263140;
@@ -361,31 +346,31 @@
   transition: 0.2s ease;
 }
 
-.size-box-final.active-final {
+.tsup-addproduct-size-box-final.tsup-addproduct-active-final {
   background-color: gold;
   color: black;
 }
 
-.price-inputs-final {
+.tsup-addproduct-price-inputs-final {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.price-table-scope-final * {
+.tsup-addproduct-price-table-scope-final * {
   box-sizing: border-box;
 }
 
-.price-table-scope-final table,
-.price-table-scope-final thead,
-.price-table-scope-final tbody,
-.price-table-scope-final tr,
-.price-table-scope-final th,
-.price-table-scope-final td {
+.tsup-addproduct-price-table-scope-final table,
+.tsup-addproduct-price-table-scope-final thead,
+.tsup-addproduct-price-table-scope-final tbody,
+.tsup-addproduct-price-table-scope-final tr,
+.tsup-addproduct-price-table-scope-final th,
+.tsup-addproduct-price-table-scope-final td {
   all: revert;
 }
 
-.price-table-final {
+.tsup-addproduct-price-table-final {
   display: table;
   width: 100%;
   max-width: 760px;
@@ -395,45 +380,45 @@
   background: #f8fafc;
 }
 
-.price-table-final thead {
+.tsup-addproduct-price-table-final thead {
   display: table-header-group;
   background: #f8fafc;
 }
 
-.price-table-final tbody {
+.tsup-addproduct-price-table-final tbody {
   display: table-row-group;
 }
 
-.price-table-final tr {
+.tsup-addproduct-price-table-final tr {
   display: table-row;
 }
 
-.price-table-final th,
-.price-table-final td {
+.tsup-addproduct-price-table-final th,
+.tsup-addproduct-price-table-final td {
   display: table-cell;
   border: 1px solid gold !important;
   padding: 10px !important;
   text-align: left !important;
-  color: gold !important;
+  color: #42536a !important;
   background-color: #f8fafc !important;
   word-wrap: break-word;
   overflow-wrap: anywhere;
 }
 
-.price-table-final th {
-  color: gold !important;
+.tsup-addproduct-price-table-final th {
+  color: #42536a !important;
 }
 
-.price-table-final td:first-child {
+.tsup-addproduct-price-table-final td:first-child {
   width: 40%;
 }
 
-.price-table-final td:nth-child(2),
-.price-table-final td:nth-child(3) {
+.tsup-addproduct-price-table-final td:nth-child(2),
+.tsup-addproduct-price-table-final td:nth-child(3) {
   width: 30%;
 }
 
-.price-table-final input {
+.tsup-addproduct-price-table-final input {
   width: 100% !important;
   padding: 8px !important;
   border: 1px solid gold !important;
@@ -443,18 +428,18 @@
   outline: none !important;
 }
 
-.centered-input-final {
+.tsup-addproduct-centered-input-final {
   text-align: center;
 }
 
-.centered-input-final input {
+.tsup-addproduct-centered-input-final input {
   width: 60% !important;
   margin: 0 auto !important;
   display: block !important;
   color: #263140 !important;
 }
 
-.image-upload-container-final {
+.tsup-addproduct-image-upload-container-final {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -464,11 +449,11 @@
   border-top: 1px dashed gold;
 }
 
-.upload-btn-final {
+.tsup-addproduct-upload-btn-final {
   padding: 12px 20px;
   background: none;
   border: 2px solid gold;
-  color: gold;
+  color: #42536a;
   border-radius: 10px;
   font-size: 16px;
   font-weight: bold;
@@ -477,44 +462,27 @@
   margin-bottom: 16px;
 }
 
-.upload-btn-final:hover {
+.tsup-addproduct-upload-btn-final:hover {
   background-color: gold;
   color: black;
 }
 
-.preview-image-final {
+.tsup-addproduct-preview-image-final {
   max-width: 760px;
   width: 100%;
   height: auto;
   border: 2px solid gold;
   border-radius: 12px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* section 5 */
-.admin-section5 {
+.tsup-addproduct-admin-section5 {
   text-align: center;
   margin-top: 30px;
 }
 
-.add-product-final-btn {
+.tsup-addproduct-add-product-final-btn {
   background-color: #f8fafc;
   border: 2px solid gold;
-  color: gold;
+  color: #42536a;
   padding: 14px 28px;
   font-size: 18px;
   border-radius: 10px;
@@ -523,12 +491,12 @@
   transition: all 0.3s ease;
 }
 
-.add-product-final-btn:hover {
+.tsup-addproduct-add-product-final-btn:hover {
   background-color: gold;
   color: black;
 }
 
-.popup-card {
+.tsup-addproduct-popup-card {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -544,12 +512,12 @@
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
 }
 
-.popup-card.success {
+.tsup-addproduct-popup-card.tsup-addproduct-success {
   border: 2px solid #00cc66;
-  color: #00cc66;
+  color: #42536a;
 }
 
-.popup-card.error {
-  border: 2px solid #ff4444;
+.tsup-addproduct-popup-card.tsup-addproduct-error {
+  border: 2px solid #dce3ec;
   color: #263140;
 }

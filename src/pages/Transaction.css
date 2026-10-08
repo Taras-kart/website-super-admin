@@ -1,34 +1,34 @@
-.transaction-page {
-  color: gold;
+.tsup-transaction-transaction-page {
+  color: #42536a;
   font-family: Arial, sans-serif;
   padding: 24px;
   background-color: #f8fafc;
   margin-top: -20px;
 }
 
-.transaction-header {
+.tsup-transaction-transaction-header {
   text-align: center;
   margin-bottom: 16px;
 }
 
-.transaction-header h2 {
+.tsup-transaction-transaction-header h2 {
   font-size: 28px;
   margin-bottom: 6px;
 }
 
-.transaction-header p {
+.tsup-transaction-transaction-header p {
   font-size: 14px;
-  color: #d9d9d9;
+  color: #42536a;
 }
 
-.stats-row {
+.tsup-transaction-stats-row {
   display: grid;
   grid-template-columns: repeat(5, minmax(140px, 1fr));
   gap: 12px;
   margin-top: 14px;
 }
 
-.stat-card {
+.tsup-transaction-stat-card {
   background: #f8fafc;
   border: 1px solid gold;
   border-radius: 12px;
@@ -36,30 +36,30 @@
   text-align: left;
 }
 
-.stat-card.accent { border-color: #4caf50; }
-.stat-card.warn { border-color: #ffbf00; }
-.stat-card.info { border-color: #1e90ff; }
-.stat-card.danger { border-color: #ff6b6b; }
+.tsup-transaction-stat-card.tsup-transaction-accent { border-color: #4caf50; }
+.tsup-transaction-stat-card.tsup-transaction-warn { border-color: #ffbf00; }
+.tsup-transaction-stat-card.tsup-transaction-info { border-color: #1e90ff; }
+.tsup-transaction-stat-card.tsup-transaction-danger { border-color: #ff6b6b; }
 
-.stat-title {
+.tsup-transaction-stat-title {
   font-size: 12px;
-  color: #cccccc;
+  color: #42536a;
   margin-bottom: 4px;
 }
 
-.stat-value {
+.tsup-transaction-stat-value {
   font-size: 20px;
   font-weight: bold;
 }
 
-.chip-bar {
+.tsup-transaction-chip-bar {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   margin: 10px 0 16px;
 }
 
-.chip {
+.tsup-transaction-chip {
   padding: 8px 14px;
   background: transparent;
   border: 2px solid white;
@@ -70,18 +70,18 @@
   transition: .2s;
 }
 
-.chip:hover {
+.tsup-transaction-chip:hover {
   border-color: gold;
-  color: gold;
+  color: #42536a;
 }
 
-.chip.active {
+.tsup-transaction-chip.tsup-transaction-active {
   border-color: gold;
   background: #f8fafc;
-  color: gold;
+  color: #42536a;
 }
 
-.transaction-filter {
+.tsup-transaction-transaction-filter {
   background-color: #f8fafc;
   padding: 16px;
   border-radius: 12px;
@@ -89,22 +89,22 @@
   margin-bottom: 16px;
 }
 
-.transaction-filter h3 {
+.tsup-transaction-transaction-filter h3 {
   font-size: 20px;
   margin-bottom: 10px;
   border-bottom: 2px solid gold;
   padding-bottom: 6px;
 }
 
-.filter-grid {
+.tsup-transaction-filter-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 10px;
 }
 
-.filter-grid input,
-.filter-grid select,
-.filter-grid button {
+.tsup-transaction-filter-grid input,
+.tsup-transaction-filter-grid select,
+.tsup-transaction-filter-grid button {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid gold;
@@ -113,18 +113,18 @@
   outline: none;
 }
 
-.filter-grid button {
+.tsup-transaction-filter-grid button {
   background-color: gold;
   color: black;
   cursor: pointer;
   font-weight: bold;
 }
 
-.filter-grid button:hover {
+.tsup-transaction-filter-grid button:hover {
   opacity: .9;
 }
 
-.transaction-table {
+.tsup-transaction-transaction-table {
   background-color: #f8fafc;
   padding: 20px;
   border-radius: 12px;
@@ -132,38 +132,14 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-.transaction-table h3 {
+.tsup-transaction-transaction-table h3 {
   font-size: 20px;
   margin-bottom: 12px;
   border-bottom: 2px solid gold;
   padding-bottom: 6px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  color: #263140;
-  min-width: 900px;
-}
-
-th, td {
-  padding: 10px;
-  border: 1px solid gold;
-  text-align: center;
-  vertical-align: middle;
-}
-
-th {
-  background-color: #f8fafc;
-  color: gold;
-  font-weight: bold;
-}
-
-td {
-  background-color: #333;
-}
-
-.status-pill {
+.tsup-transaction-status-pill {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -171,12 +147,12 @@ td {
   border: 1px solid currentColor;
 }
 
-.status-pill.ok { color: #4caf50; }
-.status-pill.warn { color: #263140; }
-.status-pill.info { color: #1e90ff; }
-.status-pill.danger { color: #263140; }
+.tsup-transaction-status-pill.tsup-transaction-ok { color: #42536a; }
+.tsup-transaction-status-pill.tsup-transaction-warn { color: #263140; }
+.tsup-transaction-status-pill.tsup-transaction-info { color: #1e90ff; }
+.tsup-transaction-status-pill.tsup-transaction-danger { color: #263140; }
 
-.delete-btn {
+.tsup-transaction-delete-btn {
   padding: 8px 12px;
   background-color: red;
   color: #263140;
@@ -187,18 +163,18 @@ td {
   transition: .2s;
 }
 
-.delete-btn:hover {
+.tsup-transaction-delete-btn:hover {
   background-color: darkred;
 }
 
-.popup-card,
-.popup-confirm-box {
+.tsup-transaction-popup-card,
+.tsup-transaction-popup-confirm-box {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #f8fafc;
-  color: gold;
+  color: #42536a;
   padding: 22px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
@@ -207,15 +183,15 @@ td {
   font-size: 16px;
 }
 
-.centered-popup { width: 360px; }
+.tsup-transaction-centered-popup { width: 360px; }
 
-.popup-actions {
+.tsup-transaction-popup-actions {
   margin-top: 14px;
   display: flex;
   justify-content: space-around;
 }
 
-.popup-actions button {
+.tsup-transaction-popup-actions button {
   padding: 10px 16px;
   font-weight: bold;
   border: none;
@@ -225,16 +201,16 @@ td {
   transition: .2s;
 }
 
-.popup-actions button:first-child {
+.tsup-transaction-popup-actions button:first-child {
   background-color: gold;
   color: black;
 }
 
-.popup-actions button:last-child {
-  background-color: #444;
+.tsup-transaction-popup-actions button:last-child {
+  background-color: #ffffff;
   color: #263140;
 }
 
-.popup-actions button:last-child:hover {
-  background-color: #666;
+.tsup-transaction-popup-actions button:last-child:hover {
+  background-color: #ffffff;
 }

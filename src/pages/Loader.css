@@ -1,11 +1,11 @@
-:root {
-  --bg: #f8fafc;
-  --text: #253046;
-  --gold: #ffd84d;
-  --gold-2: #d4af37;
+.tsup-app {
+  --tsup-loader-bg: #f8fafc;
+  --tsup-loader-text: #253046;
+  --tsup-loader-gold: #42536a;
+  --tsup-loader-gold-2: #42536a;
 }
 
-.loader-overlay-gbw {
+.tsup-loader-loader-overlay-gbw {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.6);
@@ -15,7 +15,7 @@
   backdrop-filter: blur(2px);
 }
 
-.loader-gbw {
+.tsup-loader-loader-gbw {
   width: fit-content;
   height: fit-content;
   display: flex;
@@ -23,7 +23,7 @@
   justify-content: center;
 }
 
-.truckWrapper-gbw {
+.tsup-loader-truckWrapper-gbw {
   width: 200px;
   height: 100px;
   display: flex;
@@ -34,7 +34,7 @@
   overflow-x: hidden;
 }
 
-.truckBody-gbw {
+.tsup-loader-truckBody-gbw {
   width: 130px;
   height: fit-content;
   margin-bottom: 6px;
@@ -47,7 +47,7 @@
   100% { transform: translateY(0) }
 }
 
-.truckTires-gbw {
+.tsup-loader-truckTires-gbw {
   width: 130px;
   height: fit-content;
   display: flex;
@@ -58,9 +58,9 @@
   bottom: 0;
 }
 
-.truckTires-gbw .tiresvg-gbw { width: 24px }
+.tsup-loader-truckTires-gbw .tsup-loader-tiresvg-gbw { width: 24px }
 
-.road-gbw {
+.tsup-loader-road-gbw {
   width: 100%;
   height: 1.5px;
   background-color: #f8fafc;
@@ -70,7 +70,7 @@
   border-radius: 3px;
 }
 
-.road-gbw::before {
+.tsup-loader-road-gbw::before {
   content: "";
   position: absolute;
   width: 20px;
@@ -82,7 +82,7 @@
   border-left: 10px solid #ffffff;
 }
 
-.road-gbw::after {
+.tsup-loader-road-gbw::after {
   content: "";
   position: absolute;
   width: 10px;
@@ -94,7 +94,7 @@
   border-left: 4px solid #ffffff;
 }
 
-.lampPost-gbw {
+.tsup-loader-lampPost-gbw {
   position: absolute;
   bottom: 0;
   right: -90%;

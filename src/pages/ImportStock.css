@@ -1,196 +1,191 @@
-:root {
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --line: #1f1f1f;
-    --text: #253046;
-    --muted: #657187;
-    --gold: #ffd84d;
-    --gold2: #d4af37;
-    --ok: #29d07e;
-    --warn: #ffb020;
-    --err: #ff5c5c;
+.tsup-app {
+    --tsup-importstock-bg: #f8fafc;
+    --tsup-importstock-card: #ffffff;
+    --tsup-importstock-line: #dce3ec;
+    --tsup-importstock-text: #253046;
+    --tsup-importstock-muted: #657187;
+    --tsup-importstock-gold: #42536a;
+    --tsup-importstock-gold2: #42536a;
+    --tsup-importstock-ok: #42536a;
+    --tsup-importstock-warn: #42536a;
+    --tsup-importstock-err: #ff5c5c;
 }
 
-html,
-body {
-    overflow-x: hidden;
-}
-
-.import-page-admin {
-    min-height: 100vh;
-    background: radial-gradient(800px 400px at 50% -10%, rgba(255, 216, 77, 0.09), transparent), var(--bg);
-    color: var(--text);
+.tsup-importstock-import-page-admin {
+    min-height: auto;
+    background: #f4f7fb;
+    color: var(--tsup-importstock-text);
     padding: clamp(10px, 2vw, 18px);
 }
 
-.import-wrap-admin {
+.tsup-importstock-import-wrap-admin {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
     gap: clamp(10px, 2vw, 16px);
 }
 
-.import-card-admin {
+.tsup-importstock-import-card-admin {
     margin-top: 6px;
-    background: linear-gradient(180deg, rgba(255, 216, 77, 0.06), rgba(255, 216, 77, 0));
+    background: #f4f7fb;
     border: 1px solid rgba(255, 216, 77, 0.18);
     border-radius: 14px;
     padding: clamp(12px, 2vw, 18px);
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
-.import-title-admin {
+.tsup-importstock-import-title-admin {
     font-size: clamp(16px, 2.2vw, 20px);
-    font-weight: 800;
-    color: var(--gold);
+    font-weight: 700;
+    color: var(--tsup-importstock-gold);
 }
 
-.import-subtitle-admin {
+.tsup-importstock-import-subtitle-admin {
     font-size: clamp(12px, 1.8vw, 13px);
-    color: var(--muted);
+    color: var(--tsup-importstock-muted);
     margin-top: 4px;
 }
 
-.import-form-admin {
+.tsup-importstock-import-form-admin {
     margin-top: 12px;
     display: grid;
     gap: clamp(12px, 2vw, 18px);
 }
 
-.select-wrap {
+.tsup-importstock-select-wrap {
     background: #f8fafc;
-    border: 1px solid var(--line);
+    border: 1px solid var(--tsup-importstock-line);
     padding: 10px;
     border-radius: 12px;
     display: grid;
     gap: 6px;
 }
 
-.label {
+.tsup-importstock-label {
     font-size: 12px;
-    color: var(--muted);
+    color: var(--tsup-importstock-muted);
 }
 
-.audience-select {
+.tsup-importstock-audience-select {
     width: 100%;
     padding: 10px 12px;
     border-radius: 10px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--tsup-importstock-line);
     background: #f8fafc;
-    color: var(--text);
+    color: var(--tsup-importstock-text);
     outline: none;
 }
 
-.audience-select.invalid {
+.tsup-importstock-audience-select.tsup-importstock-invalid {
     border-color: rgba(255, 176, 32, 0.7);
     box-shadow: 0 0 0 2px rgba(255, 176, 32, 0.15) inset;
 }
 
-.inline-info {
+.tsup-importstock-inline-info {
     display: flex;
     gap: 8px;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.pill-mini {
+.tsup-importstock-pill-mini {
     display: inline-block;
     padding: 4px 8px;
     border-radius: 999px;
     font-size: 11.5px;
     color: #111;
-    background: var(--gold);
+    background: var(--tsup-importstock-gold);
     white-space: nowrap;
 }
 
-.pill-mini.ok {
-    background: var(--ok);
+.tsup-importstock-pill-mini.tsup-importstock-ok {
+    background: var(--tsup-importstock-ok);
     color: #111;
 }
 
-.pill-mini.warn {
-    background: var(--warn);
+.tsup-importstock-pill-mini.tsup-importstock-warn {
+    background: var(--tsup-importstock-warn);
     color: #111;
 }
 
-.import-filebox-admin {
+.tsup-importstock-import-filebox-admin {
     background: #f8fafc;
-    border: 1px solid var(--line);
+    border: 1px solid var(--tsup-importstock-line);
     padding: 10px;
     border-radius: 12px;
     display: grid;
     gap: 8px;
 }
 
-.import-filebox-admin input[type="file"] {
+.tsup-importstock-import-filebox-admin input[type="file"] {
     width: 100%;
 }
 
-.import-filehint-admin {
-    color: var(--muted);
+.tsup-importstock-import-filehint-admin {
+    color: var(--tsup-importstock-muted);
     font-size: 11.5px;
     overflow-wrap: anywhere;
 }
 
-.import-btn-admin {
+.tsup-importstock-import-btn-admin {
     width: 100%;
-    background: linear-gradient(180deg, var(--gold), var(--gold2));
+    background: #f4f7fb;
     color: #111;
     border: none;
     padding: 12px 14px;
     border-radius: 12px;
-    font-weight: 800;
+    font-weight: 700;
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(255, 216, 77, .22);
     transition: transform .15s ease;
 }
 
-.import-btn-admin:active {
+.tsup-importstock-import-btn-admin:active {
     transform: translateY(1px);
 }
 
-.import-btn-admin:disabled {
+.tsup-importstock-import-btn-admin:disabled {
     opacity: .7;
     cursor: not-allowed;
 }
 
-.import-msg-admin {
-    color: var(--gold);
+.tsup-importstock-import-msg-admin {
+    color: var(--tsup-importstock-gold);
     font-size: 13px;
 }
 
-.import-actions-admin {
+.tsup-importstock-import-actions-admin {
     margin-top: 8px;
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
 }
 
-.import-ghost-btn-admin {
+.tsup-importstock-import-ghost-btn-admin {
     flex: 0 0 auto;
     background: transparent;
-    border: 1px solid var(--line);
-    color: var(--text);
+    border: 1px solid var(--tsup-importstock-line);
+    color: var(--tsup-importstock-text);
     padding: 10px 12px;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.import-tablewrap-admin {
+.tsup-importstock-import-tablewrap-admin {
     margin-top: 10px;
     overflow: auto;
     border-radius: 12px;
 }
 
-.import-table-admin {
+.tsup-importstock-import-table-admin {
     width: 100%;
     border-collapse: collapse;
     font-size: clamp(12.5px, 1.8vw, 14px);
 }
 
-.import-table-admin th,
-.import-table-admin td {
-    border-bottom: 1px solid var(--line);
+.tsup-importstock-import-table-admin th,
+.tsup-importstock-import-table-admin td {
+    border-bottom: 1px solid var(--tsup-importstock-line);
     padding: 10px 8px;
     text-align: left;
     vertical-align: top;
@@ -198,89 +193,89 @@ body {
     overflow-wrap: anywhere;
 }
 
-.pill-admin {
+.tsup-importstock-pill-admin {
     display: inline-block;
     padding: 4px 8px;
     border-radius: 999px;
     font-size: 11.5px;
     color: #111;
-    background: var(--gold);
+    background: var(--tsup-importstock-gold);
     width: fit-content;
     white-space: nowrap;
 }
 
-.pill-admin.pending {
-    background: var(--warn);
+.tsup-importstock-pill-admin.tsup-importstock-pending {
+    background: var(--tsup-importstock-warn);
     color: #111;
 }
 
-.pill-admin.processing {
-    background: var(--gold);
+.tsup-importstock-pill-admin.tsup-importstock-processing {
+    background: var(--tsup-importstock-gold);
     color: #111;
 }
 
-.pill-admin.complete,
-.pill-admin.completed {
-    background: var(--ok);
+.tsup-importstock-pill-admin.tsup-importstock-complete,
+.tsup-importstock-pill-admin.tsup-importstock-completed {
+    background: var(--tsup-importstock-ok);
     color: #111;
 }
 
-.pill-admin.partial {
+.tsup-importstock-pill-admin.tsup-importstock-partial {
     background: #6aa4ff;
     color: #111;
 }
 
-.pill-admin.error {
-    background: var(--err);
+.tsup-importstock-pill-admin.tsup-importstock-error {
+    background: var(--tsup-importstock-err);
     color: #111;
 }
 
-.import-empty-admin {
+.tsup-importstock-import-empty-admin {
     text-align: center;
-    color: var(--muted);
+    color: var(--tsup-importstock-muted);
     padding: 16px;
 }
 
-.import-note-admin {
+.tsup-importstock-import-note-admin {
     margin-top: 10px;
     font-size: 12px;
-    color: var(--muted);
+    color: var(--tsup-importstock-muted);
 }
 
-.excel-block {
+.tsup-importstock-excel-block {
     display: grid;
     gap: 12px;
 }
 
-.zip-block {
+.tsup-importstock-zip-block {
     display: grid;
     gap: 8px;
 }
 
-.image-stats {
+.tsup-importstock-image-stats {
     display: flex;
     gap: 12px;
     margin-top: 6px;
-    color: var(--muted);
+    color: var(--tsup-importstock-muted);
     font-size: 12px;
 }
 
-.unmatched-wrap {
+.tsup-importstock-unmatched-wrap {
     margin-top: 10px;
     background: #f8fafc;
-    border: 1px solid var(--line);
+    border: 1px solid var(--tsup-importstock-line);
     border-radius: 12px;
     padding: 10px;
 }
 
-.unmatched-title {
+.tsup-importstock-unmatched-title {
     font-size: 13px;
-    color: var(--gold);
+    color: var(--tsup-importstock-gold);
     font-weight: 700;
     margin-bottom: 6px;
 }
 
-.unmatched-list {
+.tsup-importstock-unmatched-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -290,23 +285,23 @@ body {
     overflow: auto;
 }
 
-.unmatched-list li {
+.tsup-importstock-unmatched-list li {
     display: grid;
     grid-template-columns: 160px 1fr;
     gap: 8px;
     align-items: center;
-    border-bottom: 1px dashed var(--line);
+    border-bottom: 1px dashed var(--tsup-importstock-line);
     padding-bottom: 6px;
 }
 
-.unmatched-ean {
+.tsup-importstock-unmatched-ean {
     font-weight: 700;
-    color: var(--text);
+    color: var(--tsup-importstock-text);
     font-size: 12.5px;
 }
 
-.unmatched-file {
-    color: var(--muted);
+.tsup-importstock-unmatched-file {
+    color: var(--tsup-importstock-muted);
     font-size: 12px;
     overflow-wrap: anywhere;
 }
@@ -314,25 +309,25 @@ body {
 @media (max-width: 900px) {}
 
 @media (max-width: 600px) {
-    .import-card-admin {
+    .tsup-importstock-import-card-admin {
         border-radius: 12px;
     }
 
-    .import-title-admin {
+    .tsup-importstock-import-title-admin {
         font-size: 15px;
     }
 
-    .import-tablewrap-admin {
+    .tsup-importstock-import-tablewrap-admin {
         border: none;
     }
 
-    .import-table-admin {
+    .tsup-importstock-import-table-admin {
         border-collapse: separate;
         border-spacing: 0 10px;
         font-size: 13px;
     }
 
-    .import-table-admin thead {
+    .tsup-importstock-import-table-admin thead {
         position: absolute;
         height: 0;
         width: 0;
@@ -341,60 +336,60 @@ body {
         white-space: nowrap;
     }
 
-    .import-table-admin tbody {
+    .tsup-importstock-import-table-admin tbody {
         display: block;
     }
 
-    .import-table-admin tbody tr {
+    .tsup-importstock-import-table-admin tbody tr {
         display: block;
         background: #f8fafc;
-        border: 1px solid var(--line);
+        border: 1px solid var(--tsup-importstock-line);
         border-radius: 12px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
         overflow: hidden;
         margin: 0 2px;
     }
 
-    .import-table-admin td {
+    .tsup-importstock-import-table-admin td {
         display: grid;
         grid-template-columns: 128px 1fr;
         gap: 8px;
         padding: 12px;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid var(--tsup-importstock-line);
     }
 
-    .import-table-admin td:last-child {
+    .tsup-importstock-import-table-admin td:last-child {
         border-bottom: 0;
     }
 
-    .import-table-admin td::before {
+    .tsup-importstock-import-table-admin td::before {
         content: attr(data-label);
-        color: var(--muted);
+        color: var(--tsup-importstock-muted);
         font-size: 12px;
         line-height: 1.2;
     }
 
-    .import-table-admin td>* {
+    .tsup-importstock-import-table-admin td>* {
         min-width: 0;
     }
 
-    .import-table-admin td span,
-    .import-table-admin td div {
+    .tsup-importstock-import-table-admin td span,
+    .tsup-importstock-import-table-admin td div {
         overflow-wrap: anywhere;
     }
 
-    .pill-admin {
+    .tsup-importstock-pill-admin {
         font-size: 11px;
         padding: 3px 7px;
     }
 }
 
 @media (min-width: 768px) {
-    .import-title-admin {
+    .tsup-importstock-import-title-admin {
         font-size: 18px;
     }
 
-    .import-table-admin thead {
+    .tsup-importstock-import-table-admin thead {
         position: static;
         height: auto;
         width: auto;
@@ -402,11 +397,11 @@ body {
         display: table-header-group;
     }
 
-    .import-table-admin tbody {
+    .tsup-importstock-import-table-admin tbody {
         display: table-row-group;
     }
 
-    .import-table-admin tbody tr {
+    .tsup-importstock-import-table-admin tbody tr {
         display: table-row;
         background: transparent;
         border: 0;
@@ -414,34 +409,31 @@ body {
         box-shadow: none;
     }
 
-    .import-table-admin td {
+    .tsup-importstock-import-table-admin td {
         display: table-cell;
         padding: 10px 8px;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid var(--tsup-importstock-line);
     }
 
-    .import-table-admin td::before {
+    .tsup-importstock-import-table-admin td::before {
         content: none;
     }
 
-    .import-ghost-btn-admin {
+    .tsup-importstock-import-ghost-btn-admin {
         width: auto;
     }
 }
 
 @media (min-width: 1024px) {
-    .import-wrap-admin {
+    .tsup-importstock-import-wrap-admin {
         gap: 16px;
     }
 
-    .import-table-admin {
+    .tsup-importstock-import-table-admin {
         font-size: 14px;
     }
 }
-
-
-/* Discount Section */
-.discount-block {
+.tsup-importstock-discount-block {
   background: #f8fafc;
   border: 1px solid gold;
   padding: 20px;
@@ -449,25 +441,25 @@ body {
   margin-top: 20px;
 }
 
-.discount-row {
+.tsup-importstock-discount-row {
   display: flex;
   gap: 20px;
   margin-bottom: 15px;
 }
 
-.discount-field {
+.tsup-importstock-discount-field {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.discount-field .label {
-  color: gold;
+.tsup-importstock-discount-field .tsup-importstock-label {
+  color: #42536a;
   font-size: 14px;
   margin-bottom: 6px;
 }
 
-.discount-input {
+.tsup-importstock-discount-input {
   background: #f8fafc;
   border: 1px solid gold;
   color: #263140;
@@ -477,11 +469,11 @@ body {
   outline: none;
 }
 
-.discount-input:focus {
+.tsup-importstock-discount-input:focus {
   border-color: white;
 }
 
-.import-btn-admin {
+.tsup-importstock-import-btn-admin {
   background: gold;
   color: black;
   font-weight: bold;
@@ -492,18 +484,18 @@ body {
   transition: 0.2s ease;
 }
 
-.import-btn-admin:disabled {
-  background: #333;
+.tsup-importstock-import-btn-admin:disabled {
+  background: #ffffff;
   color: #777;
   cursor: not-allowed;
 }
 
-.import-btn-admin:hover:not(:disabled) {
+.tsup-importstock-import-btn-admin:hover:not(:disabled) {
   background: white;
   color: black;
 }
 
-.import-msg-admin {
+.tsup-importstock-import-msg-admin {
   margin-top: 10px;
   color: #263140;
   font-size: 14px;

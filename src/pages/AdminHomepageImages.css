@@ -1,5 +1,4 @@
-/* --- ADMIN PAGE CORE STYLES --- */
-.admin-homepage-wrapper {
+.tsup-adminhomepageimages-admin-homepage-wrapper {
   padding: 24px;
   max-width: 1280px;
   margin: 0 auto;
@@ -7,91 +6,85 @@
   color: #263140;
 }
 
-.home1-page-new-home {
+.tsup-adminhomepageimages-home1-page-new-home {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: auto;
   background: #f8fafc;
   color: #263140;
   padding-bottom: 50px;
 }
 
-.admin-section {
+.tsup-adminhomepageimages-admin-section {
   max-width: 1280px;
   margin: 0 auto 50px auto;
   padding: 0 16px;
 }
 
-.admin-section-title {
+.tsup-adminhomepageimages-admin-section-title {
   font-size: 24px;
-  color: #d4af37;
+  color: #42536a;
   margin-bottom: 20px;
   font-weight: 600;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #dce3ec;
   padding-bottom: 10px;
 }
-
-/* --- ADMIN UNIFORM GRIDS --- */
-.admin-grid-3 {
+.tsup-adminhomepageimages-admin-grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
-.admin-grid-4 {
+.tsup-adminhomepageimages-admin-grid-4 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
 }
 
-.admin-grid-5 {
+.tsup-adminhomepageimages-admin-grid-5 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
-.admin-grid-6 {
+.tsup-adminhomepageimages-admin-grid-6 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
 }
-
-/* --- ADMIN UNIFORM CARDS --- */
-.admin-card-standard {
+.tsup-adminhomepageimages-admin-card-standard {
   background: #f8fafc;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #333;
-  aspect-ratio: 4/5; /* Standard portrait card */
+  border: 1px solid #dce3ec;
+  aspect-ratio: 4/5;
 }
 
-.admin-card-square {
+.tsup-adminhomepageimages-admin-card-square {
   background: #f8fafc;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #333;
-  aspect-ratio: 1/1; /* Square box */
+  border: 1px solid #dce3ec;
+  aspect-ratio: 1/1;
 }
 
-.admin-card-circle {
+.tsup-adminhomepageimages-admin-card-circle {
   background: transparent;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid #fff;
-  aspect-ratio: 1/1; /* Perfect circle */
+  aspect-ratio: 1/1;
 }
-
-/* --- BANNERS --- */
-.home1-hero-frame-new-home, .home1-hero-frame-new-home-2 {
+.tsup-adminhomepageimages-home1-hero-frame-new-home, .tsup-adminhomepageimages-home1-hero-frame-new-home-2 {
   width: 100%;
   height: 440px;
   overflow: hidden;
   border-radius: 12px;
   background: #f8fafc;
-  border: 1px solid #333;
+  border: 1px solid #dce3ec;
 }
 
-.main-hero-slide, .home1-hero-slide-new-home-2 {
+.tsup-adminhomepageimages-main-hero-slide, .tsup-adminhomepageimages-home1-hero-slide-new-home-2 {
   width: 100%;
   height: 100%;
   display: flex;
@@ -99,14 +92,12 @@
   justify-content: center;
 }
 
-.main-hero-slide img, .home1-hero-slide-new-home-2 img {
+.tsup-adminhomepageimages-main-hero-slide img, .tsup-adminhomepageimages-home1-hero-slide-new-home-2 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-/* --- TABS --- */
-.cool4-tabs {
+.tsup-adminhomepageimages-cool4-tabs {
   display: flex;
   justify-content: flex-start;
   gap: 12px;
@@ -114,10 +105,10 @@
   flex-wrap: wrap;
 }
 
-.cool4-tab {
+.tsup-adminhomepageimages-cool4-tab {
   background: transparent;
   color: #263140;
-  border: 1px solid #444;
+  border: 1px solid #dce3ec;
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
@@ -125,21 +116,19 @@
   transition: all 0.3s ease;
 }
 
-.cool4-tab.is-active {
+.tsup-adminhomepageimages-cool4-tab.tsup-adminhomepageimages-is-active {
   background: #d4af37;
   color: #000;
   border-color: #d4af37;
 }
-
-/* --- RESPONSIVE --- */
 @media (max-width: 1100px) {
-  .home1-hero-frame-new-home, .home1-hero-frame-new-home-2 {
+  .tsup-adminhomepageimages-home1-hero-frame-new-home, .tsup-adminhomepageimages-home1-hero-frame-new-home-2 {
     height: 320px;
   }
 }
 
 @media (max-width: 768px) {
-  .home1-hero-frame-new-home, .home1-hero-frame-new-home-2 {
+  .tsup-adminhomepageimages-home1-hero-frame-new-home, .tsup-adminhomepageimages-home1-hero-frame-new-home-2 {
     height: 260px;
   }
 }

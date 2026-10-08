@@ -1,5 +1,5 @@
-.delete-product-page {
-  color: gold;
+.tsup-deleteproduct-delete-product-page {
+  color: #42536a;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   background-color: #f8fafc;
 }
 
-.delete-toolbar {
+.tsup-deleteproduct-delete-toolbar {
   display: flex;
   gap: 16px;
   align-items: center;
@@ -20,13 +20,13 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-.filters {
+.tsup-deleteproduct-filters {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.chip {
+.tsup-deleteproduct-chip {
   padding: 8px 14px;
   border-radius: 999px;
   border: 2px solid white;
@@ -37,24 +37,24 @@
   transition: .2s;
 }
 
-.chip:hover {
+.tsup-deleteproduct-chip:hover {
   border-color: gold;
-  color: gold;
+  color: #42536a;
 }
 
-.chip.active {
+.tsup-deleteproduct-chip.tsup-deleteproduct-active {
   border-color: gold;
   background: #f8fafc;
-  color: gold;
+  color: #42536a;
 }
 
-.tools {
+.tsup-deleteproduct-tools {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.search-input {
+.tsup-deleteproduct-search-input {
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
@@ -64,7 +64,7 @@
   outline: none;
 }
 
-.sort-select {
+.tsup-deleteproduct-sort-select {
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
@@ -73,28 +73,28 @@
   outline: none;
 }
 
-.refresh-btn {
+.tsup-deleteproduct-refresh-btn {
   padding: 10px 16px;
   background: none;
   border: 2px solid gold;
-  color: gold;
+  color: #42536a;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
   transition: .2s;
 }
 
-.refresh-btn:disabled {
+.tsup-deleteproduct-refresh-btn:disabled {
   opacity: .6;
   cursor: not-allowed;
 }
 
-.refresh-btn:hover:not(:disabled) {
+.tsup-deleteproduct-refresh-btn:hover:not(:disabled) {
   background: gold;
   color: black;
 }
 
-.danger-btn {
+.tsup-deleteproduct-danger-btn {
   padding: 10px 16px;
   background: none;
   border: 2px solid #ff6b6b;
@@ -105,12 +105,12 @@
   transition: .2s;
 }
 
-.danger-btn:hover {
-  background: #ff6b6b;
+.tsup-deleteproduct-danger-btn:hover {
+  background: #ffffff;
   color: black;
 }
 
-.delete-section2 {
+.tsup-deleteproduct-delete-section2 {
   background-color: #f8fafc;
   padding: 20px;
   border-radius: 12px;
@@ -118,46 +118,26 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-.delete-section2 h2 {
+.tsup-deleteproduct-delete-section2 h2 {
   font-size: 20px;
   margin-bottom: 12px;
   border-bottom: 2px solid gold;
   padding-bottom: 6px;
 }
 
-.table-scroll-wrapper {
+.tsup-deleteproduct-table-scroll-wrapper {
   width: 100%;
   overflow-x: auto;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  color: #263140;
-  min-width: 1200px;
-}
-
-th, td {
-  padding: 0px;
-  border: 1px solid gold;
-  text-align: center;
-  vertical-align: middle;
-}
-
-th {
-  background-color: #f8fafc;
-  color: gold;
-  font-weight: bold;
-}
-
-.table-image {
+.tsup-deleteproduct-table-image {
   width: 60px;
   height: auto;
   border-radius: 6px;
   margin: 8px auto;
 }
 
-.delete-btn {
+.tsup-deleteproduct-delete-btn {
   padding: 8px 14px;
   background-color: red;
   color: #263140;
@@ -169,18 +149,18 @@ th {
   transition: .2s;
 }
 
-.delete-btn:hover {
+.tsup-deleteproduct-delete-btn:hover {
   background-color: darkred;
 }
 
-.popup-card,
-.popup-confirm-box {
+.tsup-deleteproduct-popup-card,
+.tsup-deleteproduct-popup-confirm-box {
   position: fixed;
   top: 50%;
   left: 65%;
   transform: translate(-50%, -50%);
   background-color: #f8fafc;
-  color: gold;
+  color: #42536a;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
@@ -191,21 +171,21 @@ th {
   font-size: 16px;
 }
 
-.popup-card.success {
+.tsup-deleteproduct-popup-card.tsup-deleteproduct-success {
   border: 1px solid #9acd32;
 }
 
-.popup-card.error {
+.tsup-deleteproduct-popup-card.tsup-deleteproduct-error {
   border: 1px solid #ff6b6b;
 }
 
-.popup-actions {
+.tsup-deleteproduct-popup-actions {
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
 }
 
-.popup-actions button {
+.tsup-deleteproduct-popup-actions button {
   padding: 10px 20px;
   font-weight: bold;
   border: none;
@@ -215,16 +195,16 @@ th {
   transition: .2s;
 }
 
-.popup-actions button:first-child {
+.tsup-deleteproduct-popup-actions button:first-child {
   background-color: gold;
   color: black;
 }
 
-.popup-actions button:last-child {
-  background-color: #444;
+.tsup-deleteproduct-popup-actions button:last-child {
+  background-color: #ffffff;
   color: #263140;
 }
 
-.popup-actions button:last-child:hover {
-  background-color: #666;
+.tsup-deleteproduct-popup-actions button:last-child:hover {
+  background-color: #ffffff;
 }

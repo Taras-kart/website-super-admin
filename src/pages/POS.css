@@ -1,104 +1,104 @@
-:root {
-    --gold: #ffd36e;
-    --black: #000;
-    --white: #fff;
-    --muted: #657187;
-    --panel: #0b0b0b;
-    --panel2: #111;
-    --border: rgba(255, 255, 255, 0.15);
+.tsup-app {
+    --tsup-pos-gold: #42536a;
+    --tsup-pos-black: #000;
+    --tsup-pos-white: #42536a;
+    --tsup-pos-muted: #657187;
+    --tsup-pos-panel: #ffffff;
+    --tsup-pos-panel2: #ffffff;
+    --tsup-pos-border: rgba(255, 255, 255, 0.15);
 }
 
-.pos-page {
-    min-height: 100vh;
-    background: var(--black);
-    color: var(--white);
+.tsup-pos-pos-page {
+    min-height: auto;
+    background: var(--tsup-pos-black);
+    color: var(--tsup-pos-white);
 }
 
-.pos-container {
+.tsup-pos-pos-container {
     max-width: 1080px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.pos-header {
+.tsup-pos-pos-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
 }
 
-.pos-title {
+.tsup-pos-pos-title {
     font-size: 28px;
-    font-weight: 800;
-    color: var(--gold);
+    font-weight: 700;
+    color: var(--tsup-pos-gold);
 }
 
-.pos-sub {
+.tsup-pos-pos-sub {
     display: flex;
     gap: 12px;
-    color: var(--muted);
+    color: var(--tsup-pos-muted);
     font-size: 14px;
 }
 
-.scan-row {
+.tsup-pos-scan-row {
     display: grid;
     grid-template-columns: 1fr 140px;
     gap: 10px;
     margin-bottom: 16px;
 }
 
-.scan-row input {
+.tsup-pos-scan-row input {
     height: 46px;
-    background: var(--panel2);
-    color: var(--white);
-    border: 1px solid var(--border);
+    background: var(--tsup-pos-panel2);
+    color: var(--tsup-pos-white);
+    border: 1px solid var(--tsup-pos-border);
     border-radius: 10px;
     padding: 0 14px;
     font-size: 16px;
 }
 
-.scan-row input:focus {
+.tsup-pos-scan-row input:focus {
     outline: none;
-    border-color: var(--gold);
+    border-color: var(--tsup-pos-gold);
     box-shadow: 0 0 0 3px rgba(255, 211, 110, 0.15);
 }
 
-.btn {
-    border: 1px solid var(--border);
+.tsup-pos-btn {
+    border: 1px solid var(--tsup-pos-border);
     background: transparent;
-    color: var(--white);
+    color: var(--tsup-pos-white);
     padding: 10px 16px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: 700;
 }
 
-.btn.small {
+.tsup-pos-btn.tsup-pos-small {
     padding: 6px 10px;
     font-size: 12px;
 }
 
-.btn.ghost {
+.tsup-pos-btn.tsup-pos-ghost {
     background: transparent;
-    border-color: var(--gold);
-    color: var(--gold);
+    border-color: var(--tsup-pos-gold);
+    color: var(--tsup-pos-gold);
 }
 
-.btn.gold {
-    background: var(--gold);
-    color: var(--black);
-    border-color: var(--gold);
+.tsup-pos-btn.tsup-pos-gold {
+    background: var(--tsup-pos-gold);
+    color: var(--tsup-pos-black);
+    border-color: var(--tsup-pos-gold);
 }
 
-.cart {
-    border: 1px solid var(--border);
+.tsup-pos-cart {
+    border: 1px solid var(--tsup-pos-border);
     border-radius: 14px;
     overflow: hidden;
-    background: var(--panel);
+    background: var(--tsup-pos-panel);
 }
 
-.cart-head,
-.cart-row {
+.tsup-pos-cart-head,
+.tsup-pos-cart-row {
     display: grid;
     grid-template-columns: 96px 1fr 120px 150px 140px;
     gap: 12px;
@@ -106,23 +106,23 @@
     padding: 10px 12px;
 }
 
-.cart-head {
+.tsup-pos-cart-head {
     background: #f8fafc;
     font-weight: 700;
-    color: var(--white);
+    color: var(--tsup-pos-white);
 }
 
-.cart-empty {
+.tsup-pos-cart-empty {
     padding: 28px;
     text-align: center;
-    color: var(--muted);
+    color: var(--tsup-pos-muted);
 }
 
-.thumb {
+.tsup-pos-thumb {
     width: 84px;
     height: 84px;
     border-radius: 10px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--tsup-pos-border);
     overflow: hidden;
     background: #f8fafc;
     display: flex;
@@ -130,56 +130,56 @@
     justify-content: center;
 }
 
-.thumb img {
+.tsup-pos-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.thumb-ph {
+.tsup-pos-thumb-ph {
     width: 60%;
     height: 60%;
-    background: linear-gradient(90deg, #edf1f5, #edf1f5, #edf1f5);
+    background: #f4f7fb;
     border-radius: 8px;
 }
 
-.info .name {
+.tsup-pos-info .tsup-pos-name {
     font-weight: 700;
 }
 
-.meta {
+.tsup-pos-meta {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     margin-top: 4px;
-    color: #e6e6e6;
+    color: #42536a;
     font-size: 12px;
 }
 
-.right {
+.tsup-pos-right {
     text-align: right;
 }
 
-.center {
+.tsup-pos-center {
     text-align: center;
 }
 
-.qty {
+.tsup-pos-qty {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
 }
 
-.qty-box {
+.tsup-pos-qty-box {
     min-width: 44px;
     padding: 6px 10px;
-    border: 1px dashed var(--border);
+    border: 1px dashed var(--tsup-pos-border);
     border-radius: 10px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
-.footer-bar {
+.tsup-pos-footer-bar {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 12px;
@@ -187,32 +187,32 @@
     margin-top: 14px;
 }
 
-.summary {
+.tsup-pos-summary {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.pill {
-    border: 1px solid var(--border);
+.tsup-pos-pill {
+    border: 1px solid var(--tsup-pos-border);
     padding: 8px 12px;
     border-radius: 999px;
-    background: var(--panel2);
+    background: var(--tsup-pos-panel2);
 }
 
-.pill.total {
-    border-color: var(--gold);
-    color: var(--black);
-    background: var(--gold);
-    font-weight: 800;
+.tsup-pos-pill.tsup-pos-total {
+    border-color: var(--tsup-pos-gold);
+    color: var(--tsup-pos-black);
+    background: var(--tsup-pos-gold);
+    font-weight: 700;
 }
 
-.actions {
+.tsup-pos-actions {
     display: flex;
     gap: 8px;
 }
 
-.modal-overlay {
+.tsup-pos-modal-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
@@ -223,38 +223,38 @@
     z-index: 50;
 }
 
-.modal {
+.tsup-pos-modal {
     width: 100%;
     max-width: 420px;
-    background: var(--panel2);
-    border: 1px solid var(--border);
+    background: var(--tsup-pos-panel2);
+    border: 1px solid var(--tsup-pos-border);
     border-radius: 14px;
     padding: 18px;
     box-shadow: 0 0 30px rgba(255, 211, 110, 0.12);
 }
 
-.modal.success {
-    border-color: var(--gold);
+.tsup-pos-modal.tsup-pos-success {
+    border-color: var(--tsup-pos-gold);
 }
 
-.modal-title {
+.tsup-pos-modal-title {
     font-size: 18px;
-    font-weight: 800;
-    color: var(--gold);
+    font-weight: 700;
+    color: var(--tsup-pos-gold);
     margin-bottom: 12px;
 }
 
-.payment-grid {
+.tsup-pos-payment-grid {
     display: flex;
     gap: 10px;
     margin: 6px 0 10px;
 }
 
-.pay-chip {
+.tsup-pos-pay-chip {
     flex: 1;
     background: #f8fafc;
-    color: var(--white);
-    border: 1px solid var(--border);
+    color: var(--tsup-pos-white);
+    border: 1px solid var(--tsup-pos-border);
     border-radius: 10px;
     padding: 10px 12px;
     cursor: pointer;
@@ -262,54 +262,54 @@
     text-align: center;
 }
 
-.pay-chip.active {
-    border-color: var(--gold);
-    background: var(--gold);
-    color: var(--black);
+.tsup-pos-pay-chip.tsup-pos-active {
+    border-color: var(--tsup-pos-gold);
+    background: var(--tsup-pos-gold);
+    color: var(--tsup-pos-black);
 }
 
-.pay-input {
+.tsup-pos-pay-input {
     width: 100%;
     height: 42px;
     background: #f8fafc;
-    color: var(--white);
-    border: 1px solid var(--border);
+    color: var(--tsup-pos-white);
+    border: 1px solid var(--tsup-pos-border);
     border-radius: 10px;
     padding: 0 12px;
     margin-bottom: 12px;
 }
 
-.pay-input:focus {
+.tsup-pos-pay-input:focus {
     outline: none;
-    border-color: var(--gold);
+    border-color: var(--tsup-pos-gold);
     box-shadow: 0 0 0 3px rgba(255, 211, 110, 0.15);
 }
 
-.modal-actions {
+.tsup-pos-modal-actions {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
 }
 
-.success-text {
+.tsup-pos-success-text {
     margin: 6px 0 12px;
-    color: var(--white);
+    color: var(--tsup-pos-white);
 }
 
-.error-text {
+.tsup-pos-error-text {
     color: #263140;
     margin-top: 10px;
     font-size: 13px;
 }
 
-.pos-toast {
+.tsup-pos-pos-toast {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     background: #f8fafc;
-    color: var(--gold);
-    border: 1px solid var(--gold);
+    color: var(--tsup-pos-gold);
+    border: 1px solid var(--tsup-pos-gold);
     padding: 10px 16px;
     border-radius: 10px;
     animation: fadeInOut 1.8s ease forwards;

@@ -1,17 +1,17 @@
-.category-page {
-  min-height: 100vh;
+.tsup-categorymanagement-category-page {
+  min-height: auto;
   box-sizing: border-box;
-  padding: 92px 16px 36px;
+  padding: 16px 16px 36px;
   background: #f7f7f7;
   color: #111;
 }
 
-.category-container {
+.tsup-categorymanagement-category-container {
   width: min(1040px, 100%);
   margin: 0 auto;
 }
 
-.category-card {
+.tsup-categorymanagement-category-card {
   border: 1px solid #e2e2e2;
   border-radius: 14px;
   background: #fff;
@@ -19,19 +19,19 @@
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
 }
 
-.category-header,
-.category-selected,
-.category-actions,
-.category-modal-header,
-.category-modal-actions,
-.category-toast,
-.category-selected-meta,
-.category-checkbox {
+.tsup-categorymanagement-category-header,
+.tsup-categorymanagement-category-selected,
+.tsup-categorymanagement-category-actions,
+.tsup-categorymanagement-category-modal-header,
+.tsup-categorymanagement-category-modal-actions,
+.tsup-categorymanagement-category-toast,
+.tsup-categorymanagement-category-selected-meta,
+.tsup-categorymanagement-category-checkbox {
   display: flex;
   align-items: center;
 }
 
-.category-header {
+.tsup-categorymanagement-category-header {
   justify-content: space-between;
   gap: 14px;
   margin-bottom: 20px;
@@ -39,37 +39,37 @@
   border-bottom: 1px solid #ededed;
 }
 
-.category-header h1,
-.category-modal-header h2 {
+.tsup-categorymanagement-category-header h1,
+.tsup-categorymanagement-category-modal-header h2 {
   margin: 0;
   font-weight: 700;
 }
 
-.category-header h1 {
+.tsup-categorymanagement-category-header h1 {
   font-size: 21px;
 }
 
-.category-dropdown-grid {
+.tsup-categorymanagement-category-dropdown-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(240px, 1fr));
   gap: 15px;
 }
 
-.category-field,
-.category-form label {
+.tsup-categorymanagement-category-field,
+.tsup-categorymanagement-category-form label {
   display: grid;
   gap: 7px;
 }
 
-.category-field > span,
-.category-form label > span {
+.tsup-categorymanagement-category-field > span,
+.tsup-categorymanagement-category-form label > span {
   color: #333;
   font-size: 12px;
   font-weight: 600;
 }
 
-.category-field select,
-.category-form input {
+.tsup-categorymanagement-category-field select,
+.tsup-categorymanagement-category-form input {
   width: 100%;
   height: 43px;
   box-sizing: border-box;
@@ -83,18 +83,18 @@
   outline: none;
 }
 
-.category-field select:focus,
-.category-form input:focus {
+.tsup-categorymanagement-category-field select:focus,
+.tsup-categorymanagement-category-form input:focus {
   border-color: #e1b900;
   box-shadow: 0 0 0 3px rgba(255, 208, 0, 0.18);
 }
 
-.category-form input:disabled {
+.tsup-categorymanagement-category-form input:disabled {
   background: #f2f2f2;
   color: #666;
 }
 
-.category-selected {
+.tsup-categorymanagement-category-selected {
   justify-content: space-between;
   gap: 16px;
   margin-top: 18px;
@@ -104,16 +104,16 @@
   padding: 12px 14px;
 }
 
-.category-selected > div:first-child {
+.tsup-categorymanagement-category-selected > div:first-child {
   min-width: 0;
 }
 
-.category-selected span,
-.category-selected strong {
+.tsup-categorymanagement-category-selected span,
+.tsup-categorymanagement-category-selected strong {
   display: block;
 }
 
-.category-selected > div:first-child span {
+.tsup-categorymanagement-category-selected > div:first-child span {
   margin-bottom: 4px;
   color: #777;
   font-size: 9px;
@@ -122,7 +122,7 @@
   text-transform: uppercase;
 }
 
-.category-selected strong {
+.tsup-categorymanagement-category-selected strong {
   overflow: hidden;
   font-size: 13px;
   font-weight: 600;
@@ -130,19 +130,19 @@
   white-space: nowrap;
 }
 
-.category-selected-meta,
-.category-actions,
-.category-modal-actions,
-.category-checkbox,
-.category-toast {
+.tsup-categorymanagement-category-selected-meta,
+.tsup-categorymanagement-category-actions,
+.tsup-categorymanagement-category-modal-actions,
+.tsup-categorymanagement-category-checkbox,
+.tsup-categorymanagement-category-toast {
   gap: 9px;
 }
 
-.category-selected-meta {
+.tsup-categorymanagement-category-selected-meta {
   white-space: nowrap;
 }
 
-.category-selected-meta span {
+.tsup-categorymanagement-category-selected-meta span {
   border-radius: 999px;
   background: #ececec;
   color: #555;
@@ -151,47 +151,47 @@
   font-weight: 600;
 }
 
-.category-selected-meta span.active {
+.tsup-categorymanagement-category-selected-meta span.tsup-categorymanagement-active {
   background: #e6f7eb;
   color: #176a37;
 }
 
-.category-selected-meta span.inactive {
+.tsup-categorymanagement-category-selected-meta span.tsup-categorymanagement-inactive {
   background: #eee;
   color: #666;
 }
 
-.category-actions,
-.category-modal-actions {
+.tsup-categorymanagement-category-actions,
+.tsup-categorymanagement-category-modal-actions {
   justify-content: flex-end;
 }
 
-.category-actions {
+.tsup-categorymanagement-category-actions {
   margin-top: 18px;
 }
 
-.category-refresh,
-.category-add,
-.category-update,
-.category-delete,
-.category-restore,
-.category-cancel,
-.category-save,
-.category-confirm-delete,
-.category-modal-header button {
+.tsup-categorymanagement-category-refresh,
+.tsup-categorymanagement-category-add,
+.tsup-categorymanagement-category-update,
+.tsup-categorymanagement-category-delete,
+.tsup-categorymanagement-category-restore,
+.tsup-categorymanagement-category-cancel,
+.tsup-categorymanagement-category-save,
+.tsup-categorymanagement-category-confirm-delete,
+.tsup-categorymanagement-category-modal-header button {
   border: 0;
   font: inherit;
   cursor: pointer;
 }
 
-.category-refresh,
-.category-add,
-.category-update,
-.category-delete,
-.category-restore,
-.category-cancel,
-.category-save,
-.category-confirm-delete {
+.tsup-categorymanagement-category-refresh,
+.tsup-categorymanagement-category-add,
+.tsup-categorymanagement-category-update,
+.tsup-categorymanagement-category-delete,
+.tsup-categorymanagement-category-restore,
+.tsup-categorymanagement-category-cancel,
+.tsup-categorymanagement-category-save,
+.tsup-categorymanagement-category-confirm-delete {
   min-height: 38px;
   border-radius: 8px;
   padding: 0 15px;
@@ -199,44 +199,44 @@
   font-weight: 600;
 }
 
-.category-refresh,
-.category-update,
-.category-cancel {
+.tsup-categorymanagement-category-refresh,
+.tsup-categorymanagement-category-update,
+.tsup-categorymanagement-category-cancel {
   border: 1px solid #d2d2d2;
   background: #fff;
   color: #222;
 }
 
-.category-add,
-.category-save {
+.tsup-categorymanagement-category-add,
+.tsup-categorymanagement-category-save {
   background: #ffd000;
   color: #000;
 }
 
-.category-delete,
-.category-confirm-delete {
-  background: #c93434;
+.tsup-categorymanagement-category-delete,
+.tsup-categorymanagement-category-confirm-delete {
+  background: #ffffff;
   color: #263140;
 }
 
-.category-restore {
+.tsup-categorymanagement-category-restore {
   background: #f8fafc;
   color: #263140;
 }
 
-.category-refresh:disabled,
-.category-add:disabled,
-.category-update:disabled,
-.category-delete:disabled,
-.category-restore:disabled,
-.category-cancel:disabled,
-.category-save:disabled,
-.category-confirm-delete:disabled {
+.tsup-categorymanagement-category-refresh:disabled,
+.tsup-categorymanagement-category-add:disabled,
+.tsup-categorymanagement-category-update:disabled,
+.tsup-categorymanagement-category-delete:disabled,
+.tsup-categorymanagement-category-restore:disabled,
+.tsup-categorymanagement-category-cancel:disabled,
+.tsup-categorymanagement-category-save:disabled,
+.tsup-categorymanagement-category-confirm-delete:disabled {
   cursor: not-allowed;
   opacity: 0.48;
 }
 
-.category-toast {
+.tsup-categorymanagement-category-toast {
   position: fixed;
   top: 86px;
   right: 16px;
@@ -250,15 +250,15 @@
   font-weight: 600;
 }
 
-.category-toast.success {
+.tsup-categorymanagement-category-toast.tsup-categorymanagement-success {
   background: #f8fafc;
 }
 
-.category-toast.error {
-  background: #b82e2e;
+.tsup-categorymanagement-category-toast.tsup-categorymanagement-error {
+  background: #ffffff;
 }
 
-.category-toast button {
+.tsup-categorymanagement-category-toast button {
   border: 0;
   background: transparent;
   color: #263140;
@@ -266,7 +266,7 @@
   cursor: pointer;
 }
 
-.category-modal-overlay {
+.tsup-categorymanagement-category-modal-overlay {
   position: fixed;
   z-index: 9999;
   inset: 0;
@@ -277,7 +277,7 @@
   padding: 18px;
 }
 
-.category-modal {
+.tsup-categorymanagement-category-modal {
   width: min(510px, 100%);
   max-height: calc(100vh - 36px);
   overflow-y: auto;
@@ -286,68 +286,68 @@
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
-.category-modal-header {
+.tsup-categorymanagement-category-modal-header {
   min-height: 52px;
   justify-content: space-between;
   padding: 0 18px;
   border-bottom: 1px solid #e5e5e5;
 }
 
-.category-modal-header h2 {
+.tsup-categorymanagement-category-modal-header h2 {
   font-size: 17px;
 }
 
-.category-modal-header button {
+.tsup-categorymanagement-category-modal-header button {
   background: transparent;
   color: #555;
   font-size: 24px;
 }
 
-.category-form,
-.category-confirm {
+.tsup-categorymanagement-category-form,
+.tsup-categorymanagement-category-confirm {
   display: grid;
   gap: 15px;
   padding: 18px;
 }
 
-.category-impact {
+.tsup-categorymanagement-category-impact {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 9px;
 }
 
-.category-impact div {
+.tsup-categorymanagement-category-impact div {
   border: 1px solid #e1e1e1;
   border-radius: 8px;
   background: #f8f8f8;
   padding: 11px;
 }
 
-.category-impact span,
-.category-impact strong {
+.tsup-categorymanagement-category-impact span,
+.tsup-categorymanagement-category-impact strong {
   display: block;
 }
 
-.category-impact span {
+.tsup-categorymanagement-category-impact span {
   margin-bottom: 4px;
   color: #777;
   font-size: 10px;
   font-weight: 600;
 }
 
-.category-impact strong {
+.tsup-categorymanagement-category-impact strong {
   font-size: 18px;
   font-weight: 700;
 }
 
-.category-confirm p {
+.tsup-categorymanagement-category-confirm p {
   margin: 0;
   color: #444;
   font-size: 13px;
   line-height: 1.5;
 }
 
-.category-warning {
+.tsup-categorymanagement-category-warning {
   border: 1px solid #edc18e;
   border-radius: 8px;
   background: #fff5e8;
@@ -357,7 +357,7 @@
   line-height: 1.45;
 }
 
-.category-checkbox {
+.tsup-categorymanagement-category-checkbox {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 11px;
@@ -366,13 +366,13 @@
   font-weight: 600;
 }
 
-.category-checkbox input {
+.tsup-categorymanagement-category-checkbox input {
   width: 16px;
   height: 16px;
   accent-color: #ffd000;
 }
 
-.category-loading {
+.tsup-categorymanagement-category-loading {
   padding: 42px 18px;
   color: #777;
   text-align: center;
@@ -380,54 +380,54 @@
 }
 
 @media (max-width: 700px) {
-  .category-page {
-    padding: 78px 7px 24px;
+  .tsup-categorymanagement-category-page {
+    padding: 16px 7px 24px;
   }
 
-  .category-card {
+  .tsup-categorymanagement-category-card {
     padding: 14px;
   }
 
-  .category-dropdown-grid {
+  .tsup-categorymanagement-category-dropdown-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  .category-selected {
+  .tsup-categorymanagement-category-selected {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .category-selected-meta {
+  .tsup-categorymanagement-category-selected-meta {
     flex-wrap: wrap;
   }
 
-  .category-actions {
+  .tsup-categorymanagement-category-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 
-  .category-add {
+  .tsup-categorymanagement-category-add {
     grid-column: 1 / -1;
   }
 
-  .category-actions button {
+  .tsup-categorymanagement-category-actions button {
     width: 100%;
   }
 
-  .category-toast {
+  .tsup-categorymanagement-category-toast {
     top: 76px;
     right: 7px;
     left: 7px;
     max-width: none;
   }
 
-  .category-modal-overlay {
+  .tsup-categorymanagement-category-modal-overlay {
     align-items: end;
     padding: 0;
   }
 
-  .category-modal {
+  .tsup-categorymanagement-category-modal {
     width: 100%;
     max-height: 90vh;
     border-radius: 14px 14px 0 0;

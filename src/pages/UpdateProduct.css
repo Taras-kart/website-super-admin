@@ -1,5 +1,5 @@
-.update-product-page {
-  color: gold;
+.tsup-updateproduct-update-product-page {
+  color: #42536a;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   padding: 24px;
 }
 
-.update-toolbar {
+.tsup-updateproduct-update-toolbar {
   display: flex;
   gap: 16px;
   align-items: center;
@@ -19,13 +19,13 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-.filters {
+.tsup-updateproduct-filters {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.chip {
+.tsup-updateproduct-chip {
   padding: 8px 14px;
   border-radius: 999px;
   border: 2px solid white;
@@ -36,24 +36,24 @@
   transition: .2s;
 }
 
-.chip:hover {
+.tsup-updateproduct-chip:hover {
   border-color: gold;
-  color: gold;
+  color: #42536a;
 }
 
-.chip.active {
+.tsup-updateproduct-chip.tsup-updateproduct-active {
   border-color: gold;
   background: #f8fafc;
-  color: gold;
+  color: #42536a;
 }
 
-.tools {
+.tsup-updateproduct-tools {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.search-input {
+.tsup-updateproduct-search-input {
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
@@ -63,7 +63,7 @@
   outline: none;
 }
 
-.sort-select {
+.tsup-updateproduct-sort-select {
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid gold;
@@ -72,28 +72,28 @@
   outline: none;
 }
 
-.refresh-btn {
+.tsup-updateproduct-refresh-btn {
   padding: 10px 16px;
   background: none;
   border: 2px solid gold;
-  color: gold;
+  color: #42536a;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
   transition: .2s;
 }
 
-.refresh-btn:disabled {
+.tsup-updateproduct-refresh-btn:disabled {
   opacity: .6;
   cursor: not-allowed;
 }
 
-.refresh-btn:hover:not(:disabled) {
+.tsup-updateproduct-refresh-btn:hover:not(:disabled) {
   background: gold;
   color: black;
 }
 
-.update-section2 {
+.tsup-updateproduct-update-section2 {
   background-color: #f8fafc;
   padding: 20px;
   border-radius: 12px;
@@ -101,61 +101,30 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-.update-section2 h2 {
+.tsup-updateproduct-update-section2 h2 {
   font-size: 20px;
   margin-bottom: 12px;
   border-bottom: 2px solid gold;
   padding-bottom: 6px;
 }
 
-.table-scroll-wrapper {
+.tsup-updateproduct-table-scroll-wrapper {
   width: 100%;
   overflow-x: auto;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  color: #263140;
-  min-width: 1300px;
-}
-
-th,
-td {
-  padding: 0px;
-  border: 1px solid gold;
-  text-align: center;
-  vertical-align: middle;
-}
-
-th {
-  background-color: #f8fafc;
-  color: gold;
-  font-weight: bold;
-}
-
-td input {
-  width: 100%;
-  padding: 8px;
-  background-color: transparent;
-  color: #263140;
-  font-size: 14px;
-  outline: none;
-  border: transparent;
-}
-
-.table-image {
+.tsup-updateproduct-table-image {
   width: 60px;
   height: auto;
   border-radius: 6px;
   margin-bottom: 8px;
 }
 
-.image-upload-btn {
+.tsup-updateproduct-image-upload-btn {
   display: inline-block;
   background: none;
   border: 2px solid gold;
-  color: gold;
+  color: #42536a;
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 14px;
@@ -163,12 +132,12 @@ td input {
   transition: .2s;
 }
 
-.image-upload-btn:hover {
+.tsup-updateproduct-image-upload-btn:hover {
   background-color: gold;
   color: black;
 }
 
-.status-pill {
+.tsup-updateproduct-status-pill {
   display: inline-block;
   padding: 6px 10px;
   border-radius: 999px;
@@ -177,21 +146,21 @@ td input {
   border: 1px solid;
 }
 
-.status-pill.clean {
-  color: #9acd32;
+.tsup-updateproduct-status-pill.tsup-updateproduct-clean {
+  color: #42536a;
   border-color: #9acd32;
 }
 
-.status-pill.dirty {
+.tsup-updateproduct-status-pill.tsup-updateproduct-dirty {
   color: #263140;
   border-color: #ffae42;
 }
 
-.update-section3 {
+.tsup-updateproduct-update-section3 {
   text-align: center;
 }
 
-.update-product-btn {
+.tsup-updateproduct-update-product-btn {
   padding: 14px 30px;
   background: none;
   border: 2px solid gold;
@@ -203,19 +172,19 @@ td input {
   transition: .2s;
 }
 
-.update-product-btn:hover {
+.tsup-updateproduct-update-product-btn:hover {
   background-color: gold;
   color: black;
 }
 
-.popup-card,
-.popup-confirm-box {
+.tsup-updateproduct-popup-card,
+.tsup-updateproduct-popup-confirm-box {
   position: fixed;
   top: 50%;
   left: 65%;
   transform: translate(-50%, -50%);
   background-color: #f8fafc;
-  color: gold;
+  color: #42536a;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
@@ -226,21 +195,21 @@ td input {
   font-size: 16px;
 }
 
-.popup-card.success {
+.tsup-updateproduct-popup-card.tsup-updateproduct-success {
   border: 1px solid #9acd32;
 }
 
-.popup-card.error {
+.tsup-updateproduct-popup-card.tsup-updateproduct-error {
   border: 1px solid #ff6b6b;
 }
 
-.popup-actions {
+.tsup-updateproduct-popup-actions {
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
 }
 
-.popup-actions button {
+.tsup-updateproduct-popup-actions button {
   padding: 10px 20px;
   font-weight: bold;
   border: none;
@@ -250,16 +219,16 @@ td input {
   transition: .2s;
 }
 
-.popup-actions button:first-child {
+.tsup-updateproduct-popup-actions button:first-child {
   background-color: gold;
   color: black;
 }
 
-.popup-actions button:last-child {
-  background-color: #444;
+.tsup-updateproduct-popup-actions button:last-child {
+  background-color: #ffffff;
   color: #263140;
 }
 
-.popup-actions button:last-child:hover {
-  background-color: #666;
+.tsup-updateproduct-popup-actions button:last-child:hover {
+  background-color: #ffffff;
 }

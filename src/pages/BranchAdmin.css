@@ -1,13 +1,13 @@
-.branch-admin-page {
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #edf1f5 0, #edf1f5 50%, #edf1f5 100%);
+.tsup-branchadmin-branch-admin-page {
+  min-height: auto;
+  background: #f4f7fb;
   color: #263140;
   padding: 24px;
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.ba-header {
+.tsup-branchadmin-ba-header {
   display: flex;
   justify-content: space-between;
   gap: 24px;
@@ -15,7 +15,7 @@
   margin-bottom: 24px;
 }
 
-.ba-title {
+.tsup-branchadmin-ba-title {
   font-size: 24px;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -24,7 +24,7 @@
   margin: 0 0 8px 0;
 }
 
-.ba-subtitle {
+.tsup-branchadmin-ba-subtitle {
   margin: 0;
   color: #263140;
   font-size: 13px;
@@ -32,13 +32,13 @@
   opacity: 0.9;
 }
 
-.ba-header-actions {
+.tsup-branchadmin-ba-header-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.ba-stat-card {
+.tsup-branchadmin-ba-stat-card {
   background: rgba(255, 255, 255, 0.04);
   border-radius: 10px;
   padding: 10px 14px;
@@ -48,26 +48,26 @@
   min-width: 120px;
 }
 
-.ba-stat-card-muted {
+.tsup-branchadmin-ba-stat-card-muted {
   border-style: dashed;
   border-color: rgba(255, 255, 255, 0.18);
 }
 
-.ba-stat-label {
+.tsup-branchadmin-ba-stat-label {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.ba-stat-value {
+.tsup-branchadmin-ba-stat-value {
   font-size: 18px;
   font-weight: 700;
   margin-top: 4px;
   color: #263140;
 }
 
-.ba-button {
+.tsup-branchadmin-ba-button {
   border: none;
   outline: none;
   cursor: pointer;
@@ -83,79 +83,79 @@
   border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.ba-button:hover:not(:disabled) {
+.tsup-branchadmin-ba-button:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.12);
   transform: translateY(-1px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
 }
 
-.ba-button:active:not(:disabled) {
+.tsup-branchadmin-ba-button:active:not(:disabled) {
   transform: translateY(0);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
-.ba-button:disabled {
+.tsup-branchadmin-ba-button:disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-.ba-button-gold {
-  background: linear-gradient(135deg, #f5d36d, #d4af37);
+.tsup-branchadmin-ba-button-gold {
+  background: #f4f7fb;
   color: #000000;
   border-color: #f5d36d;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
 }
 
-.ba-button-gold:hover:not(:disabled) {
-  background: linear-gradient(135deg, #ffe590, #f3c94f);
+.tsup-branchadmin-ba-button-gold:hover:not(:disabled) {
+  background: #f4f7fb;
 }
 
-.ba-button-small {
+.tsup-branchadmin-ba-button-small {
   padding: 7px 12px;
   font-size: 11px;
 }
 
-.ba-button-outline {
+.tsup-branchadmin-ba-button-outline {
   background: transparent;
   border-color: rgba(255, 255, 255, 0.5);
   color: #263140;
 }
 
-.ba-message-row {
+.tsup-branchadmin-ba-message-row {
   display: flex;
   gap: 12px;
   margin-bottom: 16px;
   flex-wrap: wrap;
 }
 
-.ba-alert {
+.tsup-branchadmin-ba-alert {
   padding: 10px 14px;
   border-radius: 8px;
   font-size: 12px;
   border: 1px solid;
 }
 
-.ba-alert-error {
+.tsup-branchadmin-ba-alert-error {
   background: rgba(0, 0, 0, 0.7);
   border-color: #f5d36d;
   color: #263140;
 }
 
-.ba-alert-success {
+.tsup-branchadmin-ba-alert-success {
   background: rgba(245, 211, 109, 0.06);
   border-color: #f5d36d;
   color: #263140;
 }
 
-.ba-content {
+.tsup-branchadmin-ba-content {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
   gap: 20px;
   align-items: flex-start;
 }
 
-.ba-card {
-  background: radial-gradient(circle at top left, rgba(245, 211, 109, 0.16), rgba(0, 0, 0, 0.85));
+.tsup-branchadmin-ba-card {
+  background: #f4f7fb;
   border-radius: 18px;
   padding: 18px 18px 16px;
   border: 1px solid rgba(245, 211, 109, 0.4);
@@ -163,15 +163,15 @@
   backdrop-filter: blur(10px);
 }
 
-.ba-card-left {
+.tsup-branchadmin-ba-card-left {
   min-height: 260px;
 }
 
-.ba-card-right {
+.tsup-branchadmin-ba-card-right {
   min-height: 260px;
 }
 
-.ba-card-header {
+.tsup-branchadmin-ba-card-header {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -179,24 +179,24 @@
   margin-bottom: 14px;
 }
 
-.ba-card-header-row {
+.tsup-branchadmin-ba-card-header-row {
   align-items: center;
 }
 
-.ba-card-title {
+.tsup-branchadmin-ba-card-title {
   font-size: 17px;
   font-weight: 600;
   margin: 0 0 4px 0;
   color: #263140;
 }
 
-.ba-card-subtitle {
+.tsup-branchadmin-ba-card-subtitle {
   margin: 0;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
 }
 
-.ba-tag {
+.tsup-branchadmin-ba-tag {
   font-size: 11px;
   padding: 4px 10px;
   border-radius: 999px;
@@ -207,13 +207,13 @@
   white-space: nowrap;
 }
 
-.ba-card-controls {
+.tsup-branchadmin-ba-card-controls {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.ba-input {
+.tsup-branchadmin-ba-input {
   background: rgba(0, 0, 0, 0.75);
   border-radius: 999px;
   border: 1px solid rgba(245, 211, 109, 0.5);
@@ -224,16 +224,16 @@
   min-width: 120px;
 }
 
-.ba-input::placeholder {
+.tsup-branchadmin-ba-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.ba-input:focus {
+.tsup-branchadmin-ba-input:focus {
   border-color: #f5d36d;
   box-shadow: 0 0 0 1px rgba(245, 211, 109, 0.5);
 }
 
-.ba-table-wrapper {
+.tsup-branchadmin-ba-table-wrapper {
   max-height: 420px;
   overflow: auto;
   border-radius: 12px;
@@ -241,21 +241,21 @@
   background: rgba(0, 0, 0, 0.75);
 }
 
-.ba-table {
+.tsup-branchadmin-ba-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 12px;
 }
 
-.ba-table th,
-.ba-table td {
+.tsup-branchadmin-ba-table th,
+.tsup-branchadmin-ba-table td {
   padding: 9px 10px;
   text-align: left;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   vertical-align: middle;
 }
 
-.ba-table th {
+.tsup-branchadmin-ba-table th {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -266,35 +266,35 @@
   z-index: 1;
 }
 
-.ba-table tr:last-child td {
+.tsup-branchadmin-ba-table tr:last-child td {
   border-bottom: none;
 }
 
-.ba-table-compact th,
-.ba-table-compact td {
+.tsup-branchadmin-ba-table-compact th,
+.tsup-branchadmin-ba-table-compact td {
   padding: 7px 8px;
 }
 
-.ba-row-inactive {
+.tsup-branchadmin-ba-row-inactive {
   opacity: 0.6;
 }
 
-.ba-cell-main {
+.tsup-branchadmin-ba-cell-main {
   display: flex;
   flex-direction: column;
 }
 
-.ba-cell-primary {
+.tsup-branchadmin-ba-cell-primary {
   font-weight: 500;
   color: #263140;
 }
 
-.ba-cell-secondary {
+.tsup-branchadmin-ba-cell-secondary {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.ba-status {
+.tsup-branchadmin-ba-status {
   display: inline-flex;
   align-items: center;
   padding: 3px 10px;
@@ -304,38 +304,38 @@
   letter-spacing: 0.07em;
 }
 
-.ba-status-active {
+.tsup-branchadmin-ba-status-active {
   background: rgba(245, 211, 109, 0.15);
   color: #263140;
   border: 1px solid rgba(245, 211, 109, 0.7);
 }
 
-.ba-status-inactive {
+.tsup-branchadmin-ba-status-inactive {
   background: rgba(0, 0, 0, 0.85);
   color: rgba(255, 255, 255, 0.75);
   border: 1px dashed rgba(255, 255, 255, 0.4);
 }
 
-.ba-actions-col {
+.tsup-branchadmin-ba-actions-col {
   text-align: right;
   white-space: nowrap;
 }
 
-.ba-loading,
-.ba-empty {
+.tsup-branchadmin-ba-loading,
+.tsup-branchadmin-ba-empty {
   padding: 20px 10px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
 }
 
-.ba-empty {
+.tsup-branchadmin-ba-empty {
   text-align: center;
   border-radius: 10px;
   border: 1px dashed rgba(255, 255, 255, 0.3);
   background: rgba(0, 0, 0, 0.75);
 }
 
-.ba-modal-backdrop {
+.tsup-branchadmin-ba-modal-backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
@@ -345,8 +345,8 @@
   z-index: 60;
 }
 
-.ba-modal {
-  background: radial-gradient(circle at top, rgba(245, 211, 109, 0.22), #edf1f5);
+.tsup-branchadmin-ba-modal {
+  background: #f4f7fb;
   border-radius: 18px;
   border: 1px solid rgba(245, 211, 109, 0.7);
   width: 100%;
@@ -354,7 +354,7 @@
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
 }
 
-.ba-modal-header {
+.tsup-branchadmin-ba-modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -362,14 +362,14 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.ba-modal-title {
+.tsup-branchadmin-ba-modal-title {
   margin: 0;
   font-size: 17px;
   font-weight: 600;
   color: #263140;
 }
 
-.ba-modal-close {
+.tsup-branchadmin-ba-modal-close {
   background: transparent;
   border: none;
   color: #263140;
@@ -379,38 +379,38 @@
   line-height: 1;
 }
 
-.ba-modal-body {
+.tsup-branchadmin-ba-modal-body {
   padding: 14px 18px 16px;
 }
 
-.ba-form-grid {
+.tsup-branchadmin-ba-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px 16px;
   margin-bottom: 12px;
 }
 
-.ba-form-group {
+.tsup-branchadmin-ba-form-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.ba-form-group-inline {
+.tsup-branchadmin-ba-form-group-inline {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-top: 4px;
 }
 
-.ba-label {
+.tsup-branchadmin-ba-label {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.ba-label-hint {
+.tsup-branchadmin-ba-label-hint {
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
@@ -419,31 +419,31 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-.ba-helper-text {
+.tsup-branchadmin-ba-helper-text {
   font-size: 10px;
   color: rgba(255, 255, 255, 0.68);
   margin-top: 3px;
 }
 
-.ba-modal-footer {
+.tsup-branchadmin-ba-modal-footer {
   margin-top: 18px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
-.ba-switch {
+.tsup-branchadmin-ba-switch {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
 }
 
-.ba-switch input {
+.tsup-branchadmin-ba-switch input {
   display: none;
 }
 
-.ba-switch-slider {
+.tsup-branchadmin-ba-switch-slider {
   width: 34px;
   height: 18px;
   border-radius: 999px;
@@ -452,7 +452,7 @@
   transition: background 0.15s ease;
 }
 
-.ba-switch-slider::before {
+.tsup-branchadmin-ba-switch-slider::before {
   content: "";
   position: absolute;
   width: 14px;
@@ -464,47 +464,47 @@
   transition: transform 0.15s ease;
 }
 
-.ba-switch input:checked + .ba-switch-slider {
+.tsup-branchadmin-ba-switch input:checked + .tsup-branchadmin-ba-switch-slider {
   background: #f5d36d;
 }
 
-.ba-switch input:checked + .ba-switch-slider::before {
+.tsup-branchadmin-ba-switch input:checked + .tsup-branchadmin-ba-switch-slider::before {
   transform: translateX(16px);
 }
 
-.ba-switch-label {
+.tsup-branchadmin-ba-switch-label {
   font-size: 12px;
   color: #263140;
 }
 
 @media (max-width: 1024px) {
-  .ba-content {
+  .tsup-branchadmin-ba-content {
     grid-template-columns: minmax(0, 1fr);
   }
-  .ba-card {
+  .tsup-branchadmin-ba-card {
     min-height: auto;
   }
 }
 
 @media (max-width: 768px) {
-  .branch-admin-page {
+  .tsup-branchadmin-branch-admin-page {
     padding: 16px;
   }
-  .ba-header {
+  .tsup-branchadmin-ba-header {
     flex-direction: column;
     align-items: stretch;
   }
-  .ba-header-actions {
+  .tsup-branchadmin-ba-header-actions {
     justify-content: flex-start;
     flex-wrap: wrap;
   }
-  .ba-content {
+  .tsup-branchadmin-ba-content {
     gap: 16px;
   }
-  .ba-modal {
+  .tsup-branchadmin-ba-modal {
     margin: 0 12px;
   }
-  .ba-form-grid {
+  .tsup-branchadmin-ba-form-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 }

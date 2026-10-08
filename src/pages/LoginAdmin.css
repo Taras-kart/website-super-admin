@@ -1,46 +1,26 @@
-:root {
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --line: #202020;
-    --text: #253046;
-    --muted: #657187;
-    --gold: #ffd84d;
-    --gold-2: #d4af37;
-    --danger: #ff5c5c;
+.tsup-app {
+    --tsup-loginadmin-bg: #f8fafc;
+    --tsup-loginadmin-card: #ffffff;
+    --tsup-loginadmin-line: #dce3ec;
+    --tsup-loginadmin-text: #253046;
+    --tsup-loginadmin-muted: #657187;
+    --tsup-loginadmin-gold: #42536a;
+    --tsup-loginadmin-gold-2: #42536a;
+    --tsup-loginadmin-danger: #ff5c5c;
 }
 
-/* Reset + layout safety */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
-    margin: 0;
-    background: #f8fafc;
-    color: var(--text);
-    overflow-x: hidden;
-}
-
-.login-wrap-admin-admin-login {
+.tsup-loginadmin-login-wrap-admin-admin-login {
     min-height: auto;
     background: #f8fafc;
     display: grid;
     place-items: center;
     padding: 24px;
-    color: var(--text);
+    color: var(--tsup-loginadmin-text);
 }
-
-/* Card */
-.login-card-admin-admin-login {
+.tsup-loginadmin-login-card-admin-admin-login {
     width: min(460px, calc(100vw - 32px));
     background:
-        linear-gradient(180deg, rgba(255, 216, 77, 0.06), rgba(255, 216, 77, 0)) border-box,
-        linear-gradient(180deg, rgba(255, 216, 77, 0.18), rgba(255, 216, 77, 0.04)) padding-box,
-        var(--card);
+        #f4f7fb;
     border: 1px solid rgba(255, 216, 77, 0.18);
     border-radius: 20px;
     padding: 24px;
@@ -48,77 +28,66 @@ body {
     backdrop-filter: blur(2px);
     overflow: hidden;
 }
-
-/* Header */
-.login-header-admin-admin-login {
+.tsup-loginadmin-login-header-admin-admin-login {
     display: grid;
     gap: 6px;
     margin-bottom: 18px;
 }
 
-.login-title-admin-admin-login {
-    font-weight: 900;
+.tsup-loginadmin-login-title-admin-admin-login {
+    font-weight: 700;
     font-size: 22px;
-    color: var(--gold);
+    color: var(--tsup-loginadmin-gold);
     letter-spacing: .2px;
 }
 
-.login-subtitle-admin-admin-login {
-    color: var(--muted);
+.tsup-loginadmin-login-subtitle-admin-admin-login {
+    color: var(--tsup-loginadmin-muted);
     font-size: 13px;
 }
-
-/* Form */
-.login-form-admin-admin-login {
+.tsup-loginadmin-login-form-admin-admin-login {
     display: grid;
     gap: 14px;
     width: 100%;
 }
-
-/* Field wrapper ensures icon + button sit inside without affecting width */
-.login-field-admin-admin-login {
+.tsup-loginadmin-login-field-admin-admin-login {
     position: relative;
     width: 100%;
 }
 
-.login-input-icon-admin-admin-login {
+.tsup-loginadmin-login-input-icon-admin-admin-login {
     position: absolute;
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--muted);
+    color: var(--tsup-loginadmin-muted);
     pointer-events: none;
 }
-
-/* Inputs: border-box + max-width prevents overflow */
-.login-input-admin-admin-login {
+.tsup-loginadmin-login-input-admin-admin-login {
     display: block;
     width: 100%;
     max-width: 100%;
     background: #f8fafc;
-    border: 1px solid var(--line);
-    color: var(--text);
+    border: 1px solid var(--tsup-loginadmin-line);
+    color: var(--tsup-loginadmin-text);
     padding: 12px 44px 12px 38px;
-    /* room for icon + toggle */
     border-radius: 14px;
     outline: none;
     transition: border-color .2s, box-shadow .2s, background .2s;
 }
 
-.login-input-admin-admin-login:focus {
+.tsup-loginadmin-login-input-admin-admin-login:focus {
     border-color: rgba(255, 216, 77, .65);
     box-shadow: 0 0 0 5px rgba(255, 216, 77, .10);
     background: #f8fafc;
 }
-
-/* Password toggle sits inside the field without causing overflow */
-.login-toggle-btn-admin-admin-login {
+.tsup-loginadmin-login-toggle-btn-admin-admin-login {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
-    color: var(--muted);
+    color: var(--tsup-loginadmin-muted);
     border: none;
     font-size: 12px;
     padding: 6px 8px;
@@ -127,20 +96,16 @@ body {
     transition: color .2s, background .2s;
 }
 
-.login-toggle-btn-admin-admin-login:hover {
-    color: var(--text);
+.tsup-loginadmin-login-toggle-btn-admin-admin-login:hover {
+    color: var(--tsup-loginadmin-text);
     background: rgba(255, 216, 77, 0.08);
 }
-
-/* Error */
-.login-error-admin-admin-login {
-    color: var(--danger);
+.tsup-loginadmin-login-error-admin-admin-login {
+    color: var(--tsup-loginadmin-danger);
     font-size: 13px;
     margin-top: -4px;
 }
-
-/* Row with remember + forgot */
-.login-actions-row-admin-admin-login {
+.tsup-loginadmin-login-actions-row-admin-admin-login {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -148,98 +113,92 @@ body {
     flex-wrap: wrap;
 }
 
-.login-remember-admin-admin-login {
+.tsup-loginadmin-login-remember-admin-admin-login {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--muted);
+    color: var(--tsup-loginadmin-muted);
     font-size: 13px;
     user-select: none;
 }
 
-.login-remember-admin-admin-login input {
+.tsup-loginadmin-login-remember-admin-admin-login input {
     width: 14px;
     height: 14px;
-    accent-color: var(--gold);
+    accent-color: var(--tsup-loginadmin-gold);
 }
 
-.login-alt-admin-admin-login {
-    color: var(--gold);
+.tsup-loginadmin-login-alt-admin-admin-login {
+    color: var(--tsup-loginadmin-gold);
     font-size: 13px;
     text-decoration: none;
     transition: opacity .2s;
 }
 
-.login-alt-admin-admin-login:hover {
+.tsup-loginadmin-login-alt-admin-admin-login:hover {
     opacity: .9;
 }
-
-/* Buttons */
-.login-button-admin-admin-login {
+.tsup-loginadmin-login-button-admin-admin-login {
     width: 100%;
-    background: linear-gradient(180deg, var(--gold), var(--gold-2));
+    background: #f4f7fb;
     color: #111;
     border: 0;
     padding: 12px 16px;
     border-radius: 14px;
-    font-weight: 850;
+    font-weight: 700;
     cursor: pointer;
     box-shadow: 0 12px 24px rgba(255, 216, 77, .25);
     transition: transform .06s, filter .18s, opacity .18s;
 }
 
-.login-button-admin-admin-login:disabled {
+.tsup-loginadmin-login-button-admin-admin-login:disabled {
     opacity: .75;
     cursor: not-allowed;
     filter: grayscale(.5);
 }
 
-.login-button-admin-admin-login:hover:not(:disabled) {
+.tsup-loginadmin-login-button-admin-admin-login:hover:not(:disabled) {
     filter: brightness(1.05);
 }
 
-.login-button-admin-admin-login:active:not(:disabled) {
+.tsup-loginadmin-login-button-admin-admin-login:active:not(:disabled) {
     transform: translateY(1px);
 }
 
-.login-sep-admin-admin-login {
+.tsup-loginadmin-login-sep-admin-admin-login {
     height: 1px;
     width: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 216, 77, .25), transparent);
+    background: #f4f7fb;
     margin: 8px 0;
 }
 
-.login-button-ghost-admin-admin-login {
+.tsup-loginadmin-login-button-ghost-admin-admin-login {
     background: transparent;
-    color: var(--text);
+    color: var(--tsup-loginadmin-text);
     border: 1px solid rgba(255, 216, 77, 0.22);
     box-shadow: none;
 }
 
-.login-button-ghost-admin-admin-login:hover {
+.tsup-loginadmin-login-button-ghost-admin-admin-login:hover {
     background: rgba(255, 216, 77, 0.08);
 }
-
-/* Small screens polish */
 @media (max-width: 380px) {
-    .login-card-admin-admin-login {
+    .tsup-loginadmin-login-card-admin-admin-login {
         width: calc(100vw - 24px);
         padding: 20px;
     }
 
-    .login-input-admin-admin-login {
+    .tsup-loginadmin-login-input-admin-admin-login {
         padding-left: 36px;
         padding-right: 40px;
     }
 }
-
-/* iOS safe areas (prevents “white band” at top on notched devices) */
 @supports (padding: max(env(safe-area-inset-top), 0px)) {
-    .login-wrap-admin-admin-login {
+    .tsup-loginadmin-login-wrap-admin-admin-login {
         padding-top: max(24px, env(safe-area-inset-top));
         padding-bottom: max(24px, env(safe-area-inset-bottom));
         padding-left: max(24px, env(safe-area-inset-left));
         padding-right: max(24px, env(safe-area-inset-right));
     }
 }
-.login-card-admin-admin-login{background:#fff;box-shadow:0 14px 40px #20314a14;border-color:#e0e4eb}.login-title-admin-admin-login{color:#263248}.login-wrap-admin-admin-login{min-height:100vh}.login-subtitle-admin-admin-login{color:#657187}
+.tsup-loginadmin-login-card-admin-admin-login{background:#fff;box-shadow:0 14px 40px #20314a14;border-color:#e0e4eb}.tsup-loginadmin-login-title-admin-admin-login{color:#263248}.tsup-loginadmin-login-wrap-admin-admin-login{min-height:auto}.tsup-loginadmin-login-subtitle-admin-admin-login{color:#657187}

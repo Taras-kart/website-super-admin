@@ -1,7 +1,96 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import axios from "axios";
 import "./BranchAdmin.css";
-import Navbar from "./NavbarAdmin";
+const portalClass = value => String(value || '').split(/\s+/).filter(Boolean).flatMap(name => ({
+  "ops-main": ["tsup-operations-ops-main"],
+  "ops-heading": ["tsup-operations-ops-heading"],
+  "ops-panel": ["tsup-operations-ops-panel"],
+  "ops-actions": ["tsup-operations-ops-actions"],
+  "ops-row-actions": ["tsup-operations-ops-row-actions"],
+  "ops-primary": ["tsup-operations-ops-primary"],
+  "ops-metrics": ["tsup-operations-ops-metrics"],
+  "ops-quick": ["tsup-operations-ops-quick"],
+  "ops-table-wrap": ["tsup-operations-ops-table-wrap"],
+  "ops-badge": ["tsup-operations-ops-badge"],
+  "ops-toolbar": ["tsup-operations-ops-toolbar"],
+  "ops-dates": ["tsup-operations-ops-dates"],
+  "ops-pagination": ["tsup-operations-ops-pagination"],
+  "ops-alert": ["tsup-operations-ops-alert"],
+  "ops-success": ["tsup-operations-ops-success"],
+  "ops-empty": ["tsup-operations-ops-empty"],
+  "ops-overlay": ["tsup-operations-ops-overlay"],
+  "ops-modal": ["tsup-operations-ops-modal"],
+  "ops-form": ["tsup-operations-ops-form"],
+  "ops-form-grid": ["tsup-operations-ops-form-grid"],
+  "ops-nav": ["tsup-operations-ops-nav"],
+  "ops-nav-top": ["tsup-operations-ops-nav-top"],
+  "ops-brand": ["tsup-operations-ops-brand"],
+  "ops-nav-controls": ["tsup-operations-ops-nav-controls"],
+  "ops-nav-links": ["tsup-operations-ops-nav-links"],
+  "ops-mobile-toggle": ["tsup-operations-ops-mobile-toggle"],
+  "ops-pos-grid": ["tsup-operations-ops-pos-grid"],
+  "ops-pos-total": ["tsup-operations-ops-pos-total"],
+  "ops-pos-qty": ["tsup-operations-ops-pos-qty"],
+  "ops-danger": ["tsup-operations-ops-danger"],
+  "ops-password": ["tsup-operations-ops-password"],
+  "branch-admin-page": ["tsup-branchadmin-branch-admin-page"],
+  "ba-header": ["tsup-branchadmin-ba-header"],
+  "ba-title": ["tsup-branchadmin-ba-title"],
+  "ba-subtitle": ["tsup-branchadmin-ba-subtitle"],
+  "ba-header-actions": ["tsup-branchadmin-ba-header-actions"],
+  "ba-stat-card": ["tsup-branchadmin-ba-stat-card"],
+  "ba-stat-card-muted": ["tsup-branchadmin-ba-stat-card-muted"],
+  "ba-stat-label": ["tsup-branchadmin-ba-stat-label"],
+  "ba-stat-value": ["tsup-branchadmin-ba-stat-value"],
+  "ba-button": ["tsup-branchadmin-ba-button"],
+  "ba-button-gold": ["tsup-branchadmin-ba-button-gold"],
+  "ba-button-small": ["tsup-branchadmin-ba-button-small"],
+  "ba-button-outline": ["tsup-branchadmin-ba-button-outline"],
+  "ba-message-row": ["tsup-branchadmin-ba-message-row"],
+  "ba-alert": ["tsup-branchadmin-ba-alert"],
+  "ba-alert-error": ["tsup-branchadmin-ba-alert-error"],
+  "ba-alert-success": ["tsup-branchadmin-ba-alert-success"],
+  "ba-content": ["tsup-branchadmin-ba-content"],
+  "ba-card": ["tsup-branchadmin-ba-card"],
+  "ba-card-left": ["tsup-branchadmin-ba-card-left"],
+  "ba-card-right": ["tsup-branchadmin-ba-card-right"],
+  "ba-card-header": ["tsup-branchadmin-ba-card-header"],
+  "ba-card-header-row": ["tsup-branchadmin-ba-card-header-row"],
+  "ba-card-title": ["tsup-branchadmin-ba-card-title"],
+  "ba-card-subtitle": ["tsup-branchadmin-ba-card-subtitle"],
+  "ba-tag": ["tsup-branchadmin-ba-tag"],
+  "ba-card-controls": ["tsup-branchadmin-ba-card-controls"],
+  "ba-input": ["tsup-branchadmin-ba-input"],
+  "ba-table-wrapper": ["tsup-branchadmin-ba-table-wrapper"],
+  "ba-table": ["tsup-branchadmin-ba-table"],
+  "ba-table-compact": ["tsup-branchadmin-ba-table-compact"],
+  "ba-row-inactive": ["tsup-branchadmin-ba-row-inactive"],
+  "ba-cell-main": ["tsup-branchadmin-ba-cell-main"],
+  "ba-cell-primary": ["tsup-branchadmin-ba-cell-primary"],
+  "ba-cell-secondary": ["tsup-branchadmin-ba-cell-secondary"],
+  "ba-status": ["tsup-branchadmin-ba-status"],
+  "ba-status-active": ["tsup-branchadmin-ba-status-active"],
+  "ba-status-inactive": ["tsup-branchadmin-ba-status-inactive"],
+  "ba-actions-col": ["tsup-branchadmin-ba-actions-col"],
+  "ba-loading": ["tsup-branchadmin-ba-loading"],
+  "ba-empty": ["tsup-branchadmin-ba-empty"],
+  "ba-modal-backdrop": ["tsup-branchadmin-ba-modal-backdrop"],
+  "ba-modal": ["tsup-branchadmin-ba-modal"],
+  "ba-modal-header": ["tsup-branchadmin-ba-modal-header"],
+  "ba-modal-title": ["tsup-branchadmin-ba-modal-title"],
+  "ba-modal-close": ["tsup-branchadmin-ba-modal-close"],
+  "ba-modal-body": ["tsup-branchadmin-ba-modal-body"],
+  "ba-form-grid": ["tsup-branchadmin-ba-form-grid"],
+  "ba-form-group": ["tsup-branchadmin-ba-form-group"],
+  "ba-form-group-inline": ["tsup-branchadmin-ba-form-group-inline"],
+  "ba-label": ["tsup-branchadmin-ba-label"],
+  "ba-label-hint": ["tsup-branchadmin-ba-label-hint"],
+  "ba-helper-text": ["tsup-branchadmin-ba-helper-text"],
+  "ba-modal-footer": ["tsup-branchadmin-ba-modal-footer"],
+  "ba-switch": ["tsup-branchadmin-ba-switch"],
+  "ba-switch-slider": ["tsup-branchadmin-ba-switch-slider"],
+  "ba-switch-label": ["tsup-branchadmin-ba-switch-label"]
+})[name] || ["tsup-branchadmin-" + name]).join(' ');
 const BranchAdmin = () => {
   const [branchAdmins, setBranchAdmins] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
@@ -14,7 +103,6 @@ const BranchAdmin = () => {
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [search, setSearch] = useState("");
-
   const [form, setForm] = useState({
     id: null,
     email: "",
@@ -26,13 +114,10 @@ const BranchAdmin = () => {
     is_active: true,
     warehouseId: ""
   });
-
-const token = useMemo(() => {
+  const token = useMemo(() => {
     if (typeof window === "undefined") return "";
-    // Check in order of priority: Super Admin token, then standard Admin token
     return localStorage.getItem("admin_token") || localStorage.getItem("auth_token") || localStorage.getItem("token") || "";
   }, []);
-
   const axiosInstance = useMemo(() => {
     const instance = axios.create({
       baseURL: process.env.REACT_APP_API_BASE_URL || "https://taras-kart-backend.vercel.app"
@@ -43,21 +128,14 @@ const token = useMemo(() => {
     instance.defaults.headers.common["Content-Type"] = "application/json";
     return instance;
   }, [token]);
-
-  // --- FIX 2: Robust array hunting for Branch Admins ---
   const fetchBranchAdmins = useCallback(async () => {
     setLoadingAdmins(true);
     setError("");
     try {
       const res = await axiosInstance.get("/api/auth-branch/branch-admins");
       const data = res.data;
-      
       let arr = [];
-      if (Array.isArray(data)) arr = data;
-      else if (Array.isArray(data?.data)) arr = data.data;
-      else if (Array.isArray(data?.admins)) arr = data.admins;
-      else if (Array.isArray(data?.data?.data)) arr = data.data.data;
-      
+      if (Array.isArray(data)) arr = data;else if (Array.isArray(data?.data)) arr = data.data;else if (Array.isArray(data?.admins)) arr = data.admins;else if (Array.isArray(data?.data?.data)) arr = data.data.data;
       setBranchAdmins(arr);
     } catch (e) {
       setError(e?.response?.data?.message || "Failed to load branch admins");
@@ -65,13 +143,12 @@ const token = useMemo(() => {
       setLoadingAdmins(false);
     }
   }, [axiosInstance]);
-
-const fetchWarehouses = useCallback(async () => {
+  const fetchWarehouses = useCallback(async () => {
     setLoadingWarehouses(true);
     try {
       const res = await axiosInstance.get("/api/shiprocket/warehouses");
       const data = res.data;
-      let arr = Array.isArray(data) ? data : (data?.data || data?.warehouses || []);
+      let arr = Array.isArray(data) ? data : data?.data || data?.warehouses || [];
       setWarehouses(arr);
     } catch (err) {
       console.warn("Backend failed to fetch warehouses:", err?.response?.status);
@@ -80,12 +157,10 @@ const fetchWarehouses = useCallback(async () => {
       setLoadingWarehouses(false);
     }
   }, [axiosInstance]);
-
   useEffect(() => {
     fetchBranchAdmins();
     fetchWarehouses();
   }, [fetchBranchAdmins, fetchWarehouses]);
-
   const resetForm = () => {
     setForm({
       id: null,
@@ -99,7 +174,6 @@ const fetchWarehouses = useCallback(async () => {
       warehouseId: ""
     });
   };
-
   const handleOpenCreate = () => {
     setIsEditing(false);
     resetForm();
@@ -107,7 +181,6 @@ const fetchWarehouses = useCallback(async () => {
     setSuccess("");
     setShowModal(true);
   };
-
   const handleOpenEdit = admin => {
     setIsEditing(true);
     setError("");
@@ -125,20 +198,22 @@ const fetchWarehouses = useCallback(async () => {
     });
     setShowModal(true);
   };
-
   const handleCloseModal = () => {
     setShowModal(false);
     resetForm();
   };
-
   const handleChange = e => {
-    const { name, value, type, checked } = e.target;
+    const {
+      name,
+      value,
+      type,
+      checked
+    } = e.target;
     setForm(prev => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value
     }));
   };
-
   const handleWarehouseSelect = e => {
     const value = e.target.value;
     setForm(prev => {
@@ -152,7 +227,10 @@ const fetchWarehouses = useCallback(async () => {
       }
       const wh = warehouses.find(w => String(w.id) === String(value));
       if (!wh) {
-        return { ...prev, warehouseId: value };
+        return {
+          ...prev,
+          warehouseId: value
+        };
       }
       return {
         ...prev,
@@ -162,7 +240,6 @@ const fetchWarehouses = useCallback(async () => {
       };
     });
   };
-
   const validateForm = () => {
     if (!form.email.trim()) {
       setError("Email is required");
@@ -180,7 +257,6 @@ const fetchWarehouses = useCallback(async () => {
     }
     return true;
   };
-
   const handleSubmit = async e => {
     e.preventDefault();
     setError("");
@@ -199,14 +275,9 @@ const fetchWarehouses = useCallback(async () => {
         if (form.password.trim()) {
           payload.password = form.password.trim();
         }
-        const res = await axiosInstance.put(
-          `/api/auth-branch/branch-admins/${form.id}`,
-          payload
-        );
+        const res = await axiosInstance.put(`/api/auth-branch/branch-admins/${form.id}`, payload);
         const updated = res.data;
-        setBranchAdmins(prev =>
-          prev.map(a => (a.id === updated.id ? updated : a))
-        );
+        setBranchAdmins(prev => prev.map(a => a.id === updated.id ? updated : a));
         setSuccess("Branch admin updated successfully");
       } else {
         const payload = {
@@ -216,10 +287,7 @@ const fetchWarehouses = useCallback(async () => {
           branch_name: form.branch_name.trim() || null,
           branch_code: form.branch_code.trim() || null
         };
-        const res = await axiosInstance.post(
-          "/api/auth-branch/branch-admins",
-          payload
-        );
+        const res = await axiosInstance.post("/api/auth-branch/branch-admins", payload);
         const created = res.data;
         setBranchAdmins(prev => [created, ...prev]);
         setSuccess("Branch admin created successfully");
@@ -232,20 +300,15 @@ const fetchWarehouses = useCallback(async () => {
       setSaving(false);
     }
   };
-
   const handleDelete = async admin => {
     if (!window.confirm(`Disable branch admin "${admin.email}"?`)) return;
     setError("");
     setSuccess("");
     setDeletingId(admin.id);
     try {
-      const res = await axiosInstance.delete(
-        `/api/auth-branch/branch-admins/${admin.id}`
-      );
+      const res = await axiosInstance.delete(`/api/auth-branch/branch-admins/${admin.id}`);
       const updated = res.data;
-      setBranchAdmins(prev =>
-        prev.map(a => (a.id === updated.id ? updated : a))
-      );
+      setBranchAdmins(prev => prev.map(a => a.id === updated.id ? updated : a));
       setSuccess("Branch admin disabled");
     } catch (e) {
       setError(e?.response?.data?.message || "Failed to disable branch admin");
@@ -253,7 +316,6 @@ const fetchWarehouses = useCallback(async () => {
       setDeletingId(null);
     }
   };
-
   const filteredAdmins = useMemo(() => {
     const q = search.trim().toLowerCase();
     if (!q) return branchAdmins;
@@ -262,354 +324,228 @@ const fetchWarehouses = useCallback(async () => {
       const name = (a.name || "").toLowerCase();
       const branchName = (a.branch_name || "").toLowerCase();
       const branchCode = (a.branch_code || "").toLowerCase();
-      return (
-        email.includes(q) ||
-        name.includes(q) ||
-        branchName.includes(q) ||
-        branchCode.includes(q)
-      );
+      return email.includes(q) || name.includes(q) || branchName.includes(q) || branchCode.includes(q);
     });
   }, [branchAdmins, search]);
-
   const formatDateTime = value => {
     if (!value) return "Never";
     const d = new Date(value);
     if (Number.isNaN(d.getTime())) return "Invalid";
     return d.toLocaleString();
   };
-
-  const activeCount = useMemo(
-    () => branchAdmins.filter(a => a.is_active !== false).length,
-    [branchAdmins]
-  );
-
-  const inactiveCount = useMemo(
-    () => branchAdmins.filter(a => a.is_active === false).length,
-    [branchAdmins]
-  );
-
-  return (
-    <div className="branch-admin-page">
-      <Navbar />
-      <div className="ba-header">
-        <div>
-          <h1 className="ba-title">Branch Admin Control</h1>
-          <p className="ba-subtitle">
+  const activeCount = useMemo(() => branchAdmins.filter(a => a.is_active !== false).length, [branchAdmins]);
+  const inactiveCount = useMemo(() => branchAdmins.filter(a => a.is_active === false).length, [branchAdmins]);
+  return <div className={portalClass("branch-admin-page")}>
+      
+      <div className={portalClass("ba-header")}>
+        <div className="tsup-branchadmin-node-0">
+          <h1 className={portalClass("ba-title")}>Branch Admin Control</h1>
+          <p className={portalClass("ba-subtitle")}>
             Super Admin can create, update, and disable branch administrators and view branch warehouses.
           </p>
         </div>
-        <div className="ba-header-actions">
-          <div className="ba-stat-card">
-            <span className="ba-stat-label">Active Admins</span>
-            <span className="ba-stat-value">{activeCount}</span>
+        <div className={portalClass("ba-header-actions")}>
+          <div className={portalClass("ba-stat-card")}>
+            <span className={portalClass("ba-stat-label")}>Active Admins</span>
+            <span className={portalClass("ba-stat-value")}>{activeCount}</span>
           </div>
-          <div className="ba-stat-card ba-stat-card-muted">
-            <span className="ba-stat-label">Disabled</span>
-            <span className="ba-stat-value">{inactiveCount}</span>
+          <div className={portalClass("ba-stat-card ba-stat-card-muted")}>
+            <span className={portalClass("ba-stat-label")}>Disabled</span>
+            <span className={portalClass("ba-stat-value")}>{inactiveCount}</span>
           </div>
-          <button className="ba-button ba-button-gold" onClick={handleOpenCreate}>
+          <button className={portalClass("ba-button ba-button-gold")} onClick={handleOpenCreate}>
             + Add Branch Admin
           </button>
         </div>
       </div>
 
-      {(error || success) && (
-        <div className="ba-message-row">
-          {error && <div className="ba-alert ba-alert-error">{error}</div>}
-          {success && <div className="ba-alert ba-alert-success">{success}</div>}
-        </div>
-      )}
+      {(error || success) && <div className={portalClass("ba-message-row")}>
+          {error && <div className={portalClass("ba-alert ba-alert-error")}>{error}</div>}
+          {success && <div className={portalClass("ba-alert ba-alert-success")}>{success}</div>}
+        </div>}
 
-      <div className="ba-content">
-        <section className="ba-card ba-card-left">
-          <div className="ba-card-header">
-            <div>
-              <h2 className="ba-card-title">Shiprocket Warehouses</h2>
-              <p className="ba-card-subtitle">
+      <div className={portalClass("ba-content")}>
+        <section className={portalClass("ba-card ba-card-left")}>
+          <div className={portalClass("ba-card-header")}>
+            <div className="tsup-branchadmin-node-1">
+              <h2 className={portalClass("ba-card-title")}>Shiprocket Warehouses</h2>
+              <p className={portalClass("ba-card-subtitle")}>
                 Reference branches from Shiprocket warehouses when assigning branch admins.
               </p>
             </div>
-            <div className="ba-tag">
+            <div className={portalClass("ba-tag")}>
               Total: {warehouses.length}
             </div>
           </div>
-          {loadingWarehouses ? (
-            <div className="ba-loading">Loading warehouses...</div>
-          ) : warehouses.length === 0 ? (
-            <div className="ba-empty">No warehouses configured yet.</div>
-          ) : (
-            <div className="ba-table-wrapper">
-              <table className="ba-table ba-table-compact">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Warehouse ID</th>
-                    <th>Name</th>
-                    <th>City</th>
-                    <th>Pincode</th>
-                    <th>Phone</th>
+          {loadingWarehouses ? <div className={portalClass("ba-loading")}>Loading warehouses...</div> : warehouses.length === 0 ? <div className={portalClass("ba-empty")}>No warehouses configured yet.</div> : <div className={portalClass("ba-table-wrapper")}>
+              <table className={portalClass("ba-table ba-table-compact")}>
+                <thead className="tsup-branchadmin-node-2">
+                  <tr className="tsup-branchadmin-node-3">
+                    <th className="tsup-branchadmin-node-4">ID</th>
+                    <th className="tsup-branchadmin-node-5">Warehouse ID</th>
+                    <th className="tsup-branchadmin-node-6">Name</th>
+                    <th className="tsup-branchadmin-node-7">City</th>
+                    <th className="tsup-branchadmin-node-8">Pincode</th>
+                    <th className="tsup-branchadmin-node-9">Phone</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {warehouses.map(w => (
-                    <tr key={w.id}>
-                      <td>{w.id}</td>
-                      <td>{w.warehouse_id}</td>
-                      <td>{w.name}</td>
-                      <td>{w.city}</td>
-                      <td>{w.pincode}</td>
-                      <td>{w.phone}</td>
-                    </tr>
-                  ))}
+                <tbody className="tsup-branchadmin-node-10">
+                  {warehouses.map(w => <tr key={w.id} className="tsup-branchadmin-node-11">
+                      <td className="tsup-branchadmin-node-12">{w.id}</td>
+                      <td className="tsup-branchadmin-node-13">{w.warehouse_id}</td>
+                      <td className="tsup-branchadmin-node-14">{w.name}</td>
+                      <td className="tsup-branchadmin-node-15">{w.city}</td>
+                      <td className="tsup-branchadmin-node-16">{w.pincode}</td>
+                      <td className="tsup-branchadmin-node-17">{w.phone}</td>
+                    </tr>)}
                 </tbody>
               </table>
-            </div>
-          )}
+            </div>}
         </section>
 
-        <section className="ba-card ba-card-right">
-          <div className="ba-card-header ba-card-header-row">
-            <div>
-              <h2 className="ba-card-title">Branch Admins</h2>
-              <p className="ba-card-subtitle">
+        <section className={portalClass("ba-card ba-card-right")}>
+          <div className={portalClass("ba-card-header ba-card-header-row")}>
+            <div className="tsup-branchadmin-node-18">
+              <h2 className={portalClass("ba-card-title")}>Branch Admins</h2>
+              <p className={portalClass("ba-card-subtitle")}>
                 Manage branch admin credentials and branch mapping.
               </p>
             </div>
-            <div className="ba-card-controls">
-              <input
-                className="ba-input"
-                placeholder="Search by email, name, branch..."
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-              />
+            <div className={portalClass("ba-card-controls")}>
+              <input className={portalClass("ba-input")} placeholder="Search by email, name, branch..." value={search} onChange={e => setSearch(e.target.value)} />
             </div>
           </div>
-          {loadingAdmins ? (
-            <div className="ba-loading">Loading branch admins...</div>
-          ) : filteredAdmins.length === 0 ? (
-            <div className="ba-empty">
+          {loadingAdmins ? <div className={portalClass("ba-loading")}>Loading branch admins...</div> : filteredAdmins.length === 0 ? <div className={portalClass("ba-empty")}>
               No branch admins found. Create the first one using the button above.
-            </div>
-          ) : (
-            <div className="ba-table-wrapper">
-              <table className="ba-table">
-                <thead>
-                  <tr>
-                    <th>Admin</th>
-                    <th>Branch</th>
-                    <th>Status</th>
-                    <th>Last Login</th>
-                    <th className="ba-actions-col">Actions</th>
+            </div> : <div className={portalClass("ba-table-wrapper")}>
+              <table className={portalClass("ba-table")}>
+                <thead className="tsup-branchadmin-node-19">
+                  <tr className="tsup-branchadmin-node-20">
+                    <th className="tsup-branchadmin-node-21">Admin</th>
+                    <th className="tsup-branchadmin-node-22">Branch</th>
+                    <th className="tsup-branchadmin-node-23">Status</th>
+                    <th className="tsup-branchadmin-node-24">Last Login</th>
+                    <th className={portalClass("ba-actions-col")}>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {filteredAdmins.map(admin => (
-                    <tr
-                      key={admin.id}
-                      className={admin.is_active === false ? "ba-row-inactive" : ""}
-                    >
-                      <td>
-                        <div className="ba-cell-main">
-                          <span className="ba-cell-primary">{admin.email}</span>
-                          {admin.name && (
-                            <span className="ba-cell-secondary">{admin.name}</span>
-                          )}
+                <tbody className="tsup-branchadmin-node-25">
+                  {filteredAdmins.map(admin => <tr key={admin.id} className={portalClass(admin.is_active === false ? "ba-row-inactive" : "")}>
+                      <td className="tsup-branchadmin-node-26">
+                        <div className={portalClass("ba-cell-main")}>
+                          <span className={portalClass("ba-cell-primary")}>{admin.email}</span>
+                          {admin.name && <span className={portalClass("ba-cell-secondary")}>{admin.name}</span>}
                         </div>
                       </td>
-                      <td>
-                        <div className="ba-cell-main">
-                          <span className="ba-cell-primary">
+                      <td className="tsup-branchadmin-node-27">
+                        <div className={portalClass("ba-cell-main")}>
+                          <span className={portalClass("ba-cell-primary")}>
                             {admin.branch_name || "Not set"}
                           </span>
-                          {admin.branch_code && (
-                            <span className="ba-cell-secondary">
+                          {admin.branch_code && <span className={portalClass("ba-cell-secondary")}>
                               Code: {admin.branch_code}
-                            </span>
-                          )}
+                            </span>}
                         </div>
                       </td>
-                      <td>
-                        {admin.is_active === false ? (
-                          <span className="ba-status ba-status-inactive">Disabled</span>
-                        ) : (
-                          <span className="ba-status ba-status-active">Active</span>
-                        )}
+                      <td className="tsup-branchadmin-node-28">
+                        {admin.is_active === false ? <span className={portalClass("ba-status ba-status-inactive")}>Disabled</span> : <span className={portalClass("ba-status ba-status-active")}>Active</span>}
                       </td>
-                      <td>{formatDateTime(admin.last_login)}</td>
-                      <td className="ba-actions-col">
-                        <button
-                          className="ba-button ba-button-small"
-                          onClick={() => handleOpenEdit(admin)}
-                        >
+                      <td className="tsup-branchadmin-node-29">{formatDateTime(admin.last_login)}</td>
+                      <td className={portalClass("ba-actions-col")}>
+                        <button className={portalClass("ba-button ba-button-small")} onClick={() => handleOpenEdit(admin)}>
                           Edit
                         </button>
-                        <button
-                          className="ba-button ba-button-small ba-button-outline"
-                          onClick={() => handleDelete(admin)}
-                          disabled={deletingId === admin.id}
-                        >
+                        <button className={portalClass("ba-button ba-button-small ba-button-outline")} onClick={() => handleDelete(admin)} disabled={deletingId === admin.id}>
                           {deletingId === admin.id ? "Disabling..." : "Disable"}
                         </button>
                       </td>
-                    </tr>
-                  ))}
+                    </tr>)}
                 </tbody>
               </table>
-            </div>
-          )}
+            </div>}
         </section>
       </div>
 
-      {showModal && (
-        <div className="ba-modal-backdrop">
-          <div className="ba-modal">
-            <div className="ba-modal-header">
-              <h3 className="ba-modal-title">
+      {showModal && <div className={portalClass("ba-modal-backdrop")}>
+          <div className={portalClass("ba-modal")}>
+            <div className={portalClass("ba-modal-header")}>
+              <h3 className={portalClass("ba-modal-title")}>
                 {isEditing ? "Edit Branch Admin" : "Create Branch Admin"}
               </h3>
-              <button className="ba-modal-close" onClick={handleCloseModal}>
+              <button className={portalClass("ba-modal-close")} onClick={handleCloseModal}>
                 ×
               </button>
             </div>
-            <form onSubmit={handleSubmit} className="ba-modal-body">
-              <div className="ba-form-grid">
-                <div className="ba-form-group">
-                  <label className="ba-label">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    className="ba-input"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                  />
+            <form onSubmit={handleSubmit} className={portalClass("ba-modal-body")}>
+              <div className={portalClass("ba-form-grid")}>
+                <div className={portalClass("ba-form-group")}>
+                  <label className={portalClass("ba-label")}>Email</label>
+                  <input type="email" name="email" className={portalClass("ba-input")} value={form.email} onChange={handleChange} required />
                 </div>
-                <div className="ba-form-group">
-                  <label className="ba-label">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="ba-input"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Optional"
-                  />
+                <div className={portalClass("ba-form-group")}>
+                  <label className={portalClass("ba-label")}>Name</label>
+                  <input type="text" name="name" className={portalClass("ba-input")} value={form.name} onChange={handleChange} placeholder="Optional" />
                 </div>
               </div>
 
-              <div className="ba-form-grid">
-                <div className="ba-form-group">
-                  <label className="ba-label">Branch Name</label>
-                  <input
-                    type="text"
-                    name="branch_name"
-                    className="ba-input"
-                    value={form.branch_name}
-                    onChange={handleChange}
-                    placeholder="Eg: Vizianagaram Main"
-                  />
+              <div className={portalClass("ba-form-grid")}>
+                <div className={portalClass("ba-form-group")}>
+                  <label className={portalClass("ba-label")}>Branch Name</label>
+                  <input type="text" name="branch_name" className={portalClass("ba-input")} value={form.branch_name} onChange={handleChange} placeholder="Eg: Vizianagaram Main" />
                 </div>
-                <div className="ba-form-group">
-                  <label className="ba-label">Branch Code</label>
-                  <input
-                    type="text"
-                    name="branch_code"
-                    className="ba-input"
-                    value={form.branch_code}
-                    onChange={handleChange}
-                    placeholder="Eg: 13435714"
-                  />
+                <div className={portalClass("ba-form-group")}>
+                  <label className={portalClass("ba-label")}>Branch Code</label>
+                  <input type="text" name="branch_code" className={portalClass("ba-input")} value={form.branch_code} onChange={handleChange} placeholder="Eg: 13435714" />
                 </div>
               </div>
 
-              <div className="ba-form-group">
-                <label className="ba-label">Link Warehouse (optional)</label>
-                <select
-                  name="warehouseId"
-                  className="ba-input"
-                  value={form.warehouseId}
-                  onChange={handleWarehouseSelect}
-                >
-                  <option value="">Select warehouse...</option>
-                  {warehouses.map(w => (
-                    <option key={w.id} value={w.id}>
+              <div className={portalClass("ba-form-group")}>
+                <label className={portalClass("ba-label")}>Link Warehouse (optional)</label>
+                <select name="warehouseId" className={portalClass("ba-input")} value={form.warehouseId} onChange={handleWarehouseSelect}>
+                  <option value="" className="tsup-branchadmin-node-30">Select warehouse...</option>
+                  {warehouses.map(w => <option key={w.id} value={w.id} className="tsup-branchadmin-node-31">
                       {w.name} | {w.city} | {w.pincode}
-                    </option>
-                  ))}
+                    </option>)}
                 </select>
-                <div className="ba-helper-text">
+                <div className={portalClass("ba-helper-text")}>
                   Selecting a warehouse will prefill branch name and branch code if empty.
                 </div>
               </div>
 
-              <div className="ba-form-grid">
-                <div className="ba-form-group">
-                  <label className="ba-label">
-                    Password {isEditing && <span className="ba-label-hint">(leave blank to keep)</span>}
+              <div className={portalClass("ba-form-grid")}>
+                <div className={portalClass("ba-form-group")}>
+                  <label className={portalClass("ba-label")}>
+                    Password {isEditing && <span className={portalClass("ba-label-hint")}>(leave blank to keep)</span>}
                   </label>
-                  <input
-                    type="password"
-                    name="password"
-                    className="ba-input"
-                    value={form.password}
-                    onChange={handleChange}
-                    placeholder={isEditing ? "New password (optional)" : "Set password"}
-                  />
+                  <input type="password" name="password" className={portalClass("ba-input")} value={form.password} onChange={handleChange} placeholder={isEditing ? "New password (optional)" : "Set password"} />
                 </div>
-                <div className="ba-form-group">
-                  <label className="ba-label">Confirm Password</label>
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    className="ba-input"
-                    value={form.confirmPassword}
-                    onChange={handleChange}
-                    placeholder="Re-enter password"
-                  />
+                <div className={portalClass("ba-form-group")}>
+                  <label className={portalClass("ba-label")}>Confirm Password</label>
+                  <input type="password" name="confirmPassword" className={portalClass("ba-input")} value={form.confirmPassword} onChange={handleChange} placeholder="Re-enter password" />
                 </div>
               </div>
 
-              {isEditing && (
-                <div className="ba-form-group ba-form-group-inline">
-                  <label className="ba-label">Status</label>
-                  <label className="ba-switch">
-                    <input
-                      type="checkbox"
-                      name="is_active"
-                      checked={form.is_active}
-                      onChange={handleChange}
-                    />
-                    <span className="ba-switch-slider" />
-                    <span className="ba-switch-label">
+              {isEditing && <div className={portalClass("ba-form-group ba-form-group-inline")}>
+                  <label className={portalClass("ba-label")}>Status</label>
+                  <label className={portalClass("ba-switch")}>
+                    <input type="checkbox" name="is_active" checked={form.is_active} onChange={handleChange} className="tsup-branchadmin-node-32" />
+                    <span className={portalClass("ba-switch-slider")} />
+                    <span className={portalClass("ba-switch-label")}>
                       {form.is_active ? "Active" : "Disabled"}
                     </span>
                   </label>
-                </div>
-              )}
+                </div>}
 
-              <div className="ba-modal-footer">
-                <button
-                  type="button"
-                  className="ba-button ba-button-outline"
-                  onClick={handleCloseModal}
-                  disabled={saving}
-                >
+              <div className={portalClass("ba-modal-footer")}>
+                <button type="button" className={portalClass("ba-button ba-button-outline")} onClick={handleCloseModal} disabled={saving}>
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  className="ba-button ba-button-gold"
-                  disabled={saving}
-                >
-                  {saving ? (isEditing ? "Saving..." : "Creating...") : isEditing ? "Save Changes" : "Create Admin"}
+                <button type="submit" className={portalClass("ba-button ba-button-gold")} disabled={saving}>
+                  {saving ? isEditing ? "Saving..." : "Creating..." : isEditing ? "Save Changes" : "Create Admin"}
                 </button>
               </div>
             </form>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        </div>}
+    </div>;
 };
-
 export default BranchAdmin;

@@ -1,21 +1,21 @@
-.App {
+.tsup-app-App {
   text-align: center;
 }
 
-.App-logo {
+.tsup-app-App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .tsup-app-App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
+.tsup-app-App-header {
   background-color: #f8fafc;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,8 +24,8 @@
   color: #263140;
 }
 
-.App-link {
-  color: #61dafb;
+.tsup-app-App-link {
+  color: #42536a;
 }
 
 @keyframes App-logo-spin {
